@@ -488,6 +488,17 @@ void drone_swarm_reset(DroneSwarm* env) {
         );
     }
 
+    if (env->cfg.t_confirm_values_count > 0) {
+        int count = env->cfg.t_confirm_values_count;
+        int idx = (int)(rand_float(&env->rng_state) * (float)count);
+        if (idx < 0) idx = 0;
+        if (idx >= count) idx = count - 1;
+        int value = env->cfg.t_confirm_values[idx];
+        if (value > 0) {
+            env->cfg.t_confirm = value;
+        }
+    }
+
     if (env->cfg.m_deliver_values_count > 0) {
         int count = env->cfg.m_deliver_values_count;
         int idx = (int)(rand_float(&env->rng_state) * (float)count);

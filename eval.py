@@ -24,7 +24,7 @@ except Exception as exc:  # pragma: no cover - runtime guard
 
 # Edit these configs directly instead of passing CLI flags.
 MODEL_PATHS = [
-    "checkpoints/policy_final_step11.pt",
+    "checkpoints/policy_final_step12.pt",
     "checkpoints/policy_final.pt",
 ]
 
@@ -34,6 +34,7 @@ EVAL_SEED = 0
 
 BASE_ENV_CONFIG = EnvConfig.from_dict({
       **ENV_CONFIG.__dict__,
+      "t_confirm_values": (),
       "m_deliver_values": (),
       "obs_n_nearest": 1,
       "r_sense": 40.0,
@@ -43,24 +44,27 @@ BASE_ENV_CONFIG = EnvConfig.from_dict({
       "p_comm_drop_max": 0.0,
   })
 EVAL_VARIANTS = {
-    "r_comm=16 p_drop=0.10 m_deliver=20": {
+    "r_comm=16 p_drop=0.10 m_deliver=20 t_confirm=5": {
         "r_comm": 16.0,
         "p_comm_drop": 0.10,
         "m_deliver": 20,
+        "t_confirm": 5,
         "victim_min_dist_from_base": 0.0,
         "victim_max_dist_from_base": 55.0,
     },
-    "r_comm=16 p_drop=0.10 m_deliver=30": {
+    "r_comm=16 p_drop=0.10 m_deliver=30 t_confirm=5": {
         "r_comm": 16.0,
         "p_comm_drop": 0.10,
         "m_deliver": 30,
+        "t_confirm": 5,
         "victim_min_dist_from_base": 0.0,
         "victim_max_dist_from_base": 55.0,
     },
-    "r_comm=16 p_drop=0.10 m_deliver=45": {
+    "r_comm=16 p_drop=0.10 m_deliver=45 t_confirm=5": {
         "r_comm": 16.0,
         "p_comm_drop": 0.10,
         "m_deliver": 45,
+        "t_confirm": 5,
         "victim_min_dist_from_base": 0.0,
         "victim_max_dist_from_base": 55.0,
     },

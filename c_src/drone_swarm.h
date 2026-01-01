@@ -10,7 +10,8 @@ enum {
     MAX_VICTIMS = 128,
     MAX_NEAREST = 8,
     MAX_GRID = 64,
-    MAX_M_DELIVER_VALUES = 8
+    MAX_M_DELIVER_VALUES = 8,
+    MAX_T_CONFIRM_VALUES = 8
 };
 
 typedef struct {
@@ -23,6 +24,8 @@ typedef struct {
     float r_confirm_radius;
     float r_sense;
     int t_confirm;
+    int t_confirm_values_count;
+    int t_confirm_values[MAX_T_CONFIRM_VALUES];
     int m_deliver;
     int m_deliver_values_count;
     int m_deliver_values[MAX_M_DELIVER_VALUES];

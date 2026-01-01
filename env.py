@@ -23,6 +23,7 @@ class EnvConfig:
     r_confirm_radius: float = 3.0
     r_sense: float = 15.0  # Slightly larger sense range
     t_confirm: int = 4
+    t_confirm_values: Tuple[int, ...] = ()
     m_deliver: int = 15
     m_deliver_values: Tuple[int, ...] = ()
     v_max: float = 2.5
@@ -80,6 +81,10 @@ class EnvConfig:
             payload["r_comm_min"] = cls().r_comm_min
         if "r_comm_max" not in payload:
             payload["r_comm_max"] = cls().r_comm_max
+        if "t_confirm_values" not in payload:
+            payload["t_confirm_values"] = cls().t_confirm_values
+        elif isinstance(payload["t_confirm_values"], list):
+            payload["t_confirm_values"] = tuple(payload["t_confirm_values"])
         if "m_deliver_values" not in payload:
             payload["m_deliver_values"] = cls().m_deliver_values
         elif isinstance(payload["m_deliver_values"], list):
@@ -134,6 +139,9 @@ class DroneSwarmEnv:
             self.cfg.p_comm_drop = float(
                 self.rng.uniform(self.cfg.p_comm_drop_min, self.cfg.p_comm_drop_max)
             )
+
+        if self.cfg.t_confirm_values:
+            self.cfg.t_confirm = int(self.rng.choice(self.cfg.t_confirm_values))
 
         if self.cfg.m_deliver_values:
             self.cfg.m_deliver = int(self.rng.choice(self.cfg.m_deliver_values))

@@ -16,6 +16,7 @@ DEF MAX_DRONES = 64
 DEF MAX_VICTIMS = 128
 DEF MAX_NEAREST = 8
 DEF MAX_M_DELIVER_VALUES = 8
+DEF MAX_T_CONFIRM_VALUES = 8
 
 cdef extern from "drone_swarm.h":
     ctypedef struct DroneSwarmConfig:
@@ -28,6 +29,8 @@ cdef extern from "drone_swarm.h":
         float r_confirm_radius
         float r_sense
         int t_confirm
+        int t_confirm_values_count
+        int t_confirm_values[MAX_T_CONFIRM_VALUES]
         int m_deliver
         int m_deliver_values_count
         int m_deliver_values[MAX_M_DELIVER_VALUES]
@@ -117,6 +120,14 @@ cdef class CyDroneSwarm:
         if obs_n_nearest < 0 or obs_n_nearest > MAX_NEAREST:
             raise ValueError(f"obs_n_nearest must be in [0, {MAX_NEAREST}]")
 
+        t_confirm_values = getattr(config, "t_confirm_values", ())
+        if t_confirm_values is None:
+            t_confirm_values = ()
+        if isinstance(t_confirm_values, list):
+            t_confirm_values = tuple(t_confirm_values)
+        if len(t_confirm_values) > MAX_T_CONFIRM_VALUES:
+            raise ValueError(f"t_confirm_values must have at most {MAX_T_CONFIRM_VALUES} entries")
+
         m_deliver_values = getattr(config, "m_deliver_values", ())
         if m_deliver_values is None:
             m_deliver_values = ()
@@ -148,6 +159,15 @@ cdef class CyDroneSwarm:
         self.cfg.r_confirm_radius = float(config.r_confirm_radius)
         self.cfg.r_sense = float(config.r_sense)
         self.cfg.t_confirm = int(config.t_confirm)
+        self.cfg.t_confirm_values_count = 0
+        for i in range(MAX_T_CONFIRM_VALUES):
+            self.cfg.t_confirm_values[i] = 0
+        for i, value in enumerate(t_confirm_values):
+            ivalue = int(value)
+            if ivalue <= 0:
+                raise ValueError("t_confirm_values must be positive integers")
+            self.cfg.t_confirm_values[i] = ivalue
+            self.cfg.t_confirm_values_count += 1
         self.cfg.m_deliver = int(config.m_deliver)
         self.cfg.m_deliver_values_count = 0
         for i in range(MAX_M_DELIVER_VALUES):
