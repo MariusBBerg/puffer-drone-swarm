@@ -1,0 +1,13 @@
+[project]
+name = "pufferdroneswarm"
+version = "0.1.0"
+description = "High-throughput multi-agent SAR benchmark with comm constraints"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "gymnasium>=0.29.1",
+    "numpy>=1.26.0,<2.0.0",
+    "pufferlib>=2.0.6",
+    "torch>=2.0.0",
+    "pygame>=2.5.0",
+]

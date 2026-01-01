@@ -1,0 +1,183 @@
+/Users/Marius/Documents/Prosjekter/PufferDroneSwarm/.venv/lib/python3.11/site-packages/torch/cuda/__init__.py:63: FutureWarning: The pynvml package is deprecated. Please install nvidia-ml-py instead. If you did not install pynvml directly, please report this to the maintainers of the package that installed pynvml for you.
+  import pynvml  # type: ignore[import]
+Using device: cpu
+Observation size: 6
+Action size: 3
+Total agents per step: 32
+
+============================================================
+Training Drone Swarm with 8 drones, 10 victims
+Total timesteps: 500,000
+Batch size: 8192, Minibatch size: 2048
+Num iterations: 61
+============================================================
+
+
+============================================================
+Iteration 1/61
+Global Step: 8,192
+SPS: 30422
+Value Loss: 0.9726
+Policy Loss: -0.0020
+Entropy: 4.2605
+Approx KL: 0.0028
+Clipfrac: 0.0022
+============================================================
+
+============================================================
+Iteration 5/61
+Global Step: 40,960
+SPS: 32938
+Mean Episode Return: -59.757
+Mean Episode Length: 600.0
+Value Loss: 0.7811
+Policy Loss: -0.0001
+Entropy: 4.2729
+Approx KL: 0.0033
+Clipfrac: 0.0063
+============================================================
+
+============================================================
+Iteration 10/61
+Global Step: 81,920
+SPS: 33335
+Mean Episode Return: -59.774
+Mean Episode Length: 600.0
+Value Loss: 0.8182
+Policy Loss: -0.0017
+Entropy: 4.2930
+Approx KL: 0.0047
+Clipfrac: 0.0112
+============================================================
+
+============================================================
+Iteration 15/61
+Global Step: 122,880
+SPS: 33738
+Mean Episode Return: -59.370
+Mean Episode Length: 600.0
+Value Loss: 2.3302
+Policy Loss: -0.0053
+Entropy: 4.3020
+Approx KL: 0.0051
+Clipfrac: 0.0384
+============================================================
+
+============================================================
+Iteration 20/61
+Global Step: 163,840
+SPS: 33755
+Mean Episode Return: -58.546
+Mean Episode Length: 600.0
+Value Loss: 0.0451
+Policy Loss: -0.0036
+Entropy: 4.3142
+Approx KL: 0.0029
+Clipfrac: 0.0168
+============================================================
+
+============================================================
+Iteration 25/61
+Global Step: 204,800
+SPS: 33817
+Mean Episode Return: -58.551
+Mean Episode Length: 600.0
+Value Loss: 0.0089
+Policy Loss: -0.0028
+Entropy: 4.3285
+Approx KL: 0.0029
+Clipfrac: 0.0037
+============================================================
+
+============================================================
+Iteration 30/61
+Global Step: 245,760
+SPS: 33829
+Mean Episode Return: -58.552
+Mean Episode Length: 600.0
+Value Loss: 0.0061
+Policy Loss: -0.0009
+Entropy: 4.3348
+Approx KL: 0.0009
+Clipfrac: 0.0081
+============================================================
+
+============================================================
+Iteration 35/61
+Global Step: 286,720
+SPS: 33763
+Mean Episode Return: -58.375
+Mean Episode Length: 600.0
+Value Loss: 0.0069
+Policy Loss: -0.0015
+Entropy: 4.3417
+Approx KL: 0.0017
+Clipfrac: 0.0206
+============================================================
+
+============================================================
+Iteration 40/61
+Global Step: 327,680
+SPS: 33543
+Mean Episode Return: -58.555
+Mean Episode Length: 600.0
+Value Loss: 0.8808
+Policy Loss: 0.0007
+Entropy: 4.3352
+Approx KL: 0.0014
+Clipfrac: 0.0000
+============================================================
+
+============================================================
+Iteration 45/61
+Global Step: 368,640
+SPS: 33359
+Mean Episode Return: -58.554
+Mean Episode Length: 600.0
+Value Loss: 1.9516
+Policy Loss: -0.0017
+Entropy: 4.3405
+Approx KL: 0.0022
+Clipfrac: 0.0002
+============================================================
+
+============================================================
+Iteration 50/61
+Global Step: 409,600
+SPS: 33150
+Mean Episode Return: -58.435
+Mean Episode Length: 600.0
+Value Loss: 1.2457
+Policy Loss: -0.0018
+Entropy: 4.3412
+Approx KL: 0.0061
+Clipfrac: 0.0132
+============================================================
+
+============================================================
+Iteration 55/61
+Global Step: 450,560
+SPS: 32861
+Mean Episode Return: -58.663
+Mean Episode Length: 600.0
+Value Loss: 0.3061
+Policy Loss: -0.0001
+Entropy: 4.3413
+Approx KL: 0.0071
+Clipfrac: 0.0626
+============================================================
+
+============================================================
+Iteration 60/61
+Global Step: 491,520
+SPS: 32835
+Mean Episode Return: -58.555
+Mean Episode Length: 600.0
+Value Loss: 0.0036
+Policy Loss: -0.0008
+Entropy: 4.3434
+Approx KL: 0.0018
+Clipfrac: 0.0097
+============================================================
+
+Saved final model to checkpoints/policy_final.pt
