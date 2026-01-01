@@ -15,6 +15,7 @@ np.import_array()
 DEF MAX_DRONES = 64
 DEF MAX_VICTIMS = 128
 DEF MAX_NEAREST = 8
+DEF MAX_M_DELIVER_VALUES = 8
 
 cdef extern from "drone_swarm.h":
     ctypedef struct DroneSwarmConfig:
@@ -28,6 +29,8 @@ cdef extern from "drone_swarm.h":
         float r_sense
         int t_confirm
         int m_deliver
+        int m_deliver_values_count
+        int m_deliver_values[MAX_M_DELIVER_VALUES]
         float v_max
         float dt
         float c_idle
@@ -114,6 +117,14 @@ cdef class CyDroneSwarm:
         if obs_n_nearest < 0 or obs_n_nearest > MAX_NEAREST:
             raise ValueError(f"obs_n_nearest must be in [0, {MAX_NEAREST}]")
 
+        m_deliver_values = getattr(config, "m_deliver_values", ())
+        if m_deliver_values is None:
+            m_deliver_values = ()
+        if isinstance(m_deliver_values, list):
+            m_deliver_values = tuple(m_deliver_values)
+        if len(m_deliver_values) > MAX_M_DELIVER_VALUES:
+            raise ValueError(f"m_deliver_values must have at most {MAX_M_DELIVER_VALUES} entries")
+
         base_pos = config.base_pos
         if base_pos is None:
             base_x = world_size / 2.0
@@ -138,6 +149,15 @@ cdef class CyDroneSwarm:
         self.cfg.r_sense = float(config.r_sense)
         self.cfg.t_confirm = int(config.t_confirm)
         self.cfg.m_deliver = int(config.m_deliver)
+        self.cfg.m_deliver_values_count = 0
+        for i in range(MAX_M_DELIVER_VALUES):
+            self.cfg.m_deliver_values[i] = 0
+        for i, value in enumerate(m_deliver_values):
+            ivalue = int(value)
+            if ivalue <= 0:
+                raise ValueError("m_deliver_values must be positive integers")
+            self.cfg.m_deliver_values[i] = ivalue
+            self.cfg.m_deliver_values_count += 1
         self.cfg.v_max = float(config.v_max)
         self.cfg.dt = float(config.dt)
         self.cfg.c_idle = float(config.c_idle)

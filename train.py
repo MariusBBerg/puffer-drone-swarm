@@ -31,6 +31,7 @@ ENV_CONFIG = EnvConfig(
     r_confirm_radius=8.0,
     t_confirm=3,
     m_deliver=30,
+    m_deliver_values=(20, 30, 45),
     r_found=1.0,
     r_found_divide_by_n=False,
     r_confirm_reward=0.0,
@@ -58,7 +59,7 @@ ENV_CONFIG = EnvConfig(
 )
 
 TRAINING_CONFIG = {
-    "total_timesteps": 18_500_000,
+    "total_timesteps": 20_500_000,
     "num_envs": 64,
     "num_workers": 1,
     "num_steps": 256,
@@ -81,7 +82,7 @@ TRAINING_CONFIG = {
     "seed": 42,
     "checkpoint_dir": "checkpoints",
     "checkpoint_interval": 50,
-    "resume": "checkpoints/policy_final_step10.pt",
+    "resume": "checkpoints/policy_final_step11.pt",
     "reset_optimizer": False,
 }
 

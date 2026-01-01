@@ -24,7 +24,7 @@ except Exception as exc:  # pragma: no cover - runtime guard
 
 # Edit these configs directly instead of passing CLI flags.
 MODEL_PATHS = [
-    "checkpoints/policy_final_step10.pt",
+    "checkpoints/policy_final_step11.pt",
     "checkpoints/policy_final.pt",
 ]
 
@@ -34,6 +34,7 @@ EVAL_SEED = 0
 
 BASE_ENV_CONFIG = EnvConfig.from_dict({
       **ENV_CONFIG.__dict__,
+      "m_deliver_values": (),
       "obs_n_nearest": 1,
       "r_sense": 40.0,
       "r_comm_min": 0.0,
@@ -42,39 +43,45 @@ BASE_ENV_CONFIG = EnvConfig.from_dict({
       "p_comm_drop_max": 0.0,
   })
 EVAL_VARIANTS = {
-    "r_comm=16 p_drop=0.0": {
+    "r_comm=16 p_drop=0.10 m_deliver=20": {
         "r_comm": 16.0,
-        "p_comm_drop": 0.0,
+        "p_comm_drop": 0.10,
+        "m_deliver": 20,
         "victim_min_dist_from_base": 0.0,
         "victim_max_dist_from_base": 55.0,
     },
-    "r_comm=18 p_drop=0.0": {
-        "r_comm": 18.0,
-        "p_comm_drop": 0.0,
+    "r_comm=16 p_drop=0.10 m_deliver=30": {
+        "r_comm": 16.0,
+        "p_comm_drop": 0.10,
+        "m_deliver": 30,
         "victim_min_dist_from_base": 0.0,
         "victim_max_dist_from_base": 55.0,
     },
-    "r_comm=20 p_drop=0.0": {
+    "r_comm=16 p_drop=0.10 m_deliver=45": {
+        "r_comm": 16.0,
+        "p_comm_drop": 0.10,
+        "m_deliver": 45,
+        "victim_min_dist_from_base": 0.0,
+        "victim_max_dist_from_base": 55.0,
+    },
+    "r_comm=20 p_drop=0.0 m_deliver=20": {
         "r_comm": 20.0,
         "p_comm_drop": 0.0,
+        "m_deliver": 20,
         "victim_min_dist_from_base": 0.0,
         "victim_max_dist_from_base": 55.0,
     },
-    "r_comm=16 p_drop=0.05": {
-        "r_comm": 16.0,
-        "p_comm_drop": 0.05,
+    "r_comm=20 p_drop=0.0 m_deliver=30": {
+        "r_comm": 20.0,
+        "p_comm_drop": 0.0,
+        "m_deliver": 30,
         "victim_min_dist_from_base": 0.0,
         "victim_max_dist_from_base": 55.0,
     },
-    "r_comm=16 p_drop=0.10": {
-        "r_comm": 16.0,
-        "p_comm_drop": 0.10,
-        "victim_min_dist_from_base": 0.0,
-        "victim_max_dist_from_base": 55.0,
-    },
-    "r_comm=18 p_drop=0.10": {
-        "r_comm": 18.0,
-        "p_comm_drop": 0.10,
+    "r_comm=20 p_drop=0.0 m_deliver=45": {
+        "r_comm": 20.0,
+        "p_comm_drop": 0.0,
+        "m_deliver": 45,
         "victim_min_dist_from_base": 0.0,
         "victim_max_dist_from_base": 55.0,
     },

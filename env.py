@@ -24,6 +24,7 @@ class EnvConfig:
     r_sense: float = 15.0  # Slightly larger sense range
     t_confirm: int = 4
     m_deliver: int = 15
+    m_deliver_values: Tuple[int, ...] = ()
     v_max: float = 2.5
     dt: float = 1.0
     # Battery costs
@@ -79,6 +80,10 @@ class EnvConfig:
             payload["r_comm_min"] = cls().r_comm_min
         if "r_comm_max" not in payload:
             payload["r_comm_max"] = cls().r_comm_max
+        if "m_deliver_values" not in payload:
+            payload["m_deliver_values"] = cls().m_deliver_values
+        elif isinstance(payload["m_deliver_values"], list):
+            payload["m_deliver_values"] = tuple(payload["m_deliver_values"])
         if "victim_mix_prob" not in payload:
             payload["victim_mix_prob"] = cls().victim_mix_prob
         if "victim_min_dist_from_base_alt" not in payload:
@@ -129,6 +134,9 @@ class DroneSwarmEnv:
             self.cfg.p_comm_drop = float(
                 self.rng.uniform(self.cfg.p_comm_drop_min, self.cfg.p_comm_drop_max)
             )
+
+        if self.cfg.m_deliver_values:
+            self.cfg.m_deliver = int(self.rng.choice(self.cfg.m_deliver_values))
 
         if self.cfg.spawn_near_base:
             radius = self.cfg.spawn_radius
@@ -205,7 +213,7 @@ class DroneSwarmEnv:
         self.connected = self._compute_connectivity()
         self._update_comm_age()
 
-        new_delivered, new_confirmed, confirming_drone = self._update_confirm_and_delivery(scan)
+        new_delivered, new_confirmed, new_expired, confirming_drone = self._update_confirm_and_delivery(scan)
         
         # INDIVIDUAL exploration tracking - which drone explored new cells
         drone_explored = self._update_explored_cells_per_drone()
@@ -280,6 +288,7 @@ class DroneSwarmEnv:
             "connected_fraction": float(np.mean(self.connected)),
             "new_delivered": int(new_delivered),
             "new_confirmed": int(new_confirmed),
+            "new_expired": int(new_expired),
             "explored_cells": len(self.explored_cells),
         }
 
