@@ -26,6 +26,8 @@ ENV_CONFIG = EnvConfig(
     n_drones=4,
     n_victims=6,
     r_comm=18.0,
+    r_comm_min=16,
+    r_comm_max=20,
     r_confirm_radius=8.0,
     t_confirm=3,
     m_deliver=30,
@@ -38,6 +40,8 @@ ENV_CONFIG = EnvConfig(
     r_dispersion=0.0,
     r_owner_connected=0.0,
     p_comm_drop=0.0,
+    p_comm_drop_min=0.0,
+    p_comm_drop_max=0.10,
     c_time=0.01,
     c_energy=0.01,
     c_scan=0.01,
@@ -54,7 +58,7 @@ ENV_CONFIG = EnvConfig(
 )
 
 TRAINING_CONFIG = {
-    "total_timesteps": 12_500_000,
+    "total_timesteps": 18_500_000,
     "num_envs": 64,
     "num_workers": 1,
     "num_steps": 256,
@@ -77,7 +81,7 @@ TRAINING_CONFIG = {
     "seed": 42,
     "checkpoint_dir": "checkpoints",
     "checkpoint_interval": 50,
-    "resume": "checkpoints/checkpoint_150.pt",
+    "resume": "checkpoints/policy_final_step10.pt",
     "reset_optimizer": False,
 }
 
