@@ -17,6 +17,8 @@ typedef struct {
     int n_drones;
     int n_victims;
     float r_comm;
+    float r_comm_min;
+    float r_comm_max;
     float r_confirm_radius;
     float r_sense;
     int t_confirm;
@@ -41,6 +43,8 @@ typedef struct {
     float min_drone_separation;
     float r_owner_connected;
     float p_comm_drop;
+    float p_comm_drop_min;
+    float p_comm_drop_max;
     int max_steps;
     float base_pos[2];
     int spawn_near_base;

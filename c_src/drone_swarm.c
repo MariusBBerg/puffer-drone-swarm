@@ -478,6 +478,16 @@ void drone_swarm_reset(DroneSwarm* env) {
     float base_x = env->cfg.base_pos[0];
     float base_y = env->cfg.base_pos[1];
 
+    if (env->cfg.r_comm_max > env->cfg.r_comm_min && env->cfg.r_comm_min > 0.0f) {
+        env->cfg.r_comm = rand_uniform(&env->rng_state, env->cfg.r_comm_min, env->cfg.r_comm_max);
+    }
+
+    if (env->cfg.p_comm_drop_max > env->cfg.p_comm_drop_min && env->cfg.p_comm_drop_min >= 0.0f) {
+        env->cfg.p_comm_drop = rand_uniform(
+            &env->rng_state, env->cfg.p_comm_drop_min, env->cfg.p_comm_drop_max
+        );
+    }
+
     if (env->cfg.spawn_near_base) {
         float radius = env->cfg.spawn_radius;
         if (radius <= 0.0f) {

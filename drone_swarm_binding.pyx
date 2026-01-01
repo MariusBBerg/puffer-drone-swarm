@@ -22,6 +22,8 @@ cdef extern from "drone_swarm.h":
         int n_drones
         int n_victims
         float r_comm
+        float r_comm_min
+        float r_comm_max
         float r_confirm_radius
         float r_sense
         int t_confirm
@@ -44,6 +46,8 @@ cdef extern from "drone_swarm.h":
         float min_drone_separation
         float r_owner_connected
         float p_comm_drop
+        float p_comm_drop_min
+        float p_comm_drop_max
         int max_steps
         float base_pos[2]
         int spawn_near_base
@@ -128,6 +132,8 @@ cdef class CyDroneSwarm:
         self.cfg.n_drones = n_drones
         self.cfg.n_victims = n_victims
         self.cfg.r_comm = float(config.r_comm)
+        self.cfg.r_comm_min = float(config.r_comm_min)
+        self.cfg.r_comm_max = float(config.r_comm_max)
         self.cfg.r_confirm_radius = float(config.r_confirm_radius)
         self.cfg.r_sense = float(config.r_sense)
         self.cfg.t_confirm = int(config.t_confirm)
@@ -150,6 +156,8 @@ cdef class CyDroneSwarm:
         self.cfg.min_drone_separation = float(config.min_drone_separation)
         self.cfg.r_owner_connected = float(config.r_owner_connected)
         self.cfg.p_comm_drop = float(config.p_comm_drop)
+        self.cfg.p_comm_drop_min = float(config.p_comm_drop_min)
+        self.cfg.p_comm_drop_max = float(config.p_comm_drop_max)
         self.cfg.max_steps = int(config.max_steps)
         self.cfg.base_pos[0] = base_x
         self.cfg.base_pos[1] = base_y

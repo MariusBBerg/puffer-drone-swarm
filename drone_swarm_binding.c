@@ -1846,7 +1846,7 @@ typedef npy_clongdouble __pyx_t_5numpy_clongdouble_t;
 */
 typedef npy_cdouble __pyx_t_5numpy_complex_t;
 
-/* "drone_swarm_binding.pyx":77
+/* "drone_swarm_binding.pyx":81
  * 
  * 
  * @cython.final             # <<<<<<<<<<<<<<
@@ -3184,7 +3184,7 @@ typedef struct {
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_values;
   PyObject *__pyx_tuple[1];
   PyObject *__pyx_codeobj_tab[13];
-  PyObject *__pyx_string_tab[137];
+  PyObject *__pyx_string_tab[141];
   PyObject *__pyx_number_tab[1];
 /* #### Code section: module_state_contents ### */
 /* CommonTypesMetaclass.module_state_decls */
@@ -3317,52 +3317,56 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_obs __pyx_string_tab[88]
 #define __pyx_n_u_obs_n_nearest __pyx_string_tab[89]
 #define __pyx_n_u_p_comm_drop __pyx_string_tab[90]
-#define __pyx_n_u_pop __pyx_string_tab[91]
-#define __pyx_n_u_pyx_state __pyx_string_tab[92]
-#define __pyx_n_u_pyx_vtable __pyx_string_tab[93]
-#define __pyx_n_u_qualname __pyx_string_tab[94]
-#define __pyx_n_u_r_approach __pyx_string_tab[95]
-#define __pyx_n_u_r_comm __pyx_string_tab[96]
-#define __pyx_n_u_r_confirm_radius __pyx_string_tab[97]
-#define __pyx_n_u_r_confirm_reward __pyx_string_tab[98]
-#define __pyx_n_u_r_connectivity __pyx_string_tab[99]
-#define __pyx_n_u_r_dispersion __pyx_string_tab[100]
-#define __pyx_n_u_r_explore __pyx_string_tab[101]
-#define __pyx_n_u_r_found __pyx_string_tab[102]
-#define __pyx_n_u_r_found_divide_by_n __pyx_string_tab[103]
-#define __pyx_n_u_r_owner_connected __pyx_string_tab[104]
-#define __pyx_n_u_r_scan_near_victim __pyx_string_tab[105]
-#define __pyx_n_u_r_sense __pyx_string_tab[106]
-#define __pyx_n_u_reduce __pyx_string_tab[107]
-#define __pyx_n_u_reduce_cython __pyx_string_tab[108]
-#define __pyx_n_u_reduce_ex __pyx_string_tab[109]
-#define __pyx_n_u_reset __pyx_string_tab[110]
-#define __pyx_n_u_rewards __pyx_string_tab[111]
-#define __pyx_n_u_seed __pyx_string_tab[112]
-#define __pyx_n_u_self __pyx_string_tab[113]
-#define __pyx_n_u_set_name __pyx_string_tab[114]
-#define __pyx_n_u_setdefault __pyx_string_tab[115]
-#define __pyx_n_u_setstate __pyx_string_tab[116]
-#define __pyx_n_u_setstate_cython __pyx_string_tab[117]
-#define __pyx_n_u_spawn_near_base __pyx_string_tab[118]
-#define __pyx_n_u_spawn_radius __pyx_string_tab[119]
-#define __pyx_n_u_step __pyx_string_tab[120]
-#define __pyx_n_u_t_confirm __pyx_string_tab[121]
-#define __pyx_n_u_test __pyx_string_tab[122]
-#define __pyx_n_u_v_max __pyx_string_tab[123]
-#define __pyx_n_u_values __pyx_string_tab[124]
-#define __pyx_n_u_victim_max_dist_from_base __pyx_string_tab[125]
-#define __pyx_n_u_victim_max_dist_from_base_alt __pyx_string_tab[126]
-#define __pyx_n_u_victim_min_dist_from_base __pyx_string_tab[127]
-#define __pyx_n_u_victim_min_dist_from_base_alt __pyx_string_tab[128]
-#define __pyx_n_u_victim_mix_prob __pyx_string_tab[129]
-#define __pyx_n_u_world_size __pyx_string_tab[130]
-#define __pyx_kp_b_iso88591_5_q_AQd_4q_t9A __pyx_string_tab[131]
-#define __pyx_kp_b_iso88591_A_Bhay_b_9F_3c_Zs_6_S_A_6_ivQa_4 __pyx_string_tab[132]
-#define __pyx_kp_b_iso88591_A_s_4q __pyx_string_tab[133]
-#define __pyx_kp_b_iso88591_A_s_4t1 __pyx_string_tab[134]
-#define __pyx_kp_b_iso88591_A_uAT __pyx_string_tab[135]
-#define __pyx_kp_b_iso88591_Q __pyx_string_tab[136]
+#define __pyx_n_u_p_comm_drop_max __pyx_string_tab[91]
+#define __pyx_n_u_p_comm_drop_min __pyx_string_tab[92]
+#define __pyx_n_u_pop __pyx_string_tab[93]
+#define __pyx_n_u_pyx_state __pyx_string_tab[94]
+#define __pyx_n_u_pyx_vtable __pyx_string_tab[95]
+#define __pyx_n_u_qualname __pyx_string_tab[96]
+#define __pyx_n_u_r_approach __pyx_string_tab[97]
+#define __pyx_n_u_r_comm __pyx_string_tab[98]
+#define __pyx_n_u_r_comm_max __pyx_string_tab[99]
+#define __pyx_n_u_r_comm_min __pyx_string_tab[100]
+#define __pyx_n_u_r_confirm_radius __pyx_string_tab[101]
+#define __pyx_n_u_r_confirm_reward __pyx_string_tab[102]
+#define __pyx_n_u_r_connectivity __pyx_string_tab[103]
+#define __pyx_n_u_r_dispersion __pyx_string_tab[104]
+#define __pyx_n_u_r_explore __pyx_string_tab[105]
+#define __pyx_n_u_r_found __pyx_string_tab[106]
+#define __pyx_n_u_r_found_divide_by_n __pyx_string_tab[107]
+#define __pyx_n_u_r_owner_connected __pyx_string_tab[108]
+#define __pyx_n_u_r_scan_near_victim __pyx_string_tab[109]
+#define __pyx_n_u_r_sense __pyx_string_tab[110]
+#define __pyx_n_u_reduce __pyx_string_tab[111]
+#define __pyx_n_u_reduce_cython __pyx_string_tab[112]
+#define __pyx_n_u_reduce_ex __pyx_string_tab[113]
+#define __pyx_n_u_reset __pyx_string_tab[114]
+#define __pyx_n_u_rewards __pyx_string_tab[115]
+#define __pyx_n_u_seed __pyx_string_tab[116]
+#define __pyx_n_u_self __pyx_string_tab[117]
+#define __pyx_n_u_set_name __pyx_string_tab[118]
+#define __pyx_n_u_setdefault __pyx_string_tab[119]
+#define __pyx_n_u_setstate __pyx_string_tab[120]
+#define __pyx_n_u_setstate_cython __pyx_string_tab[121]
+#define __pyx_n_u_spawn_near_base __pyx_string_tab[122]
+#define __pyx_n_u_spawn_radius __pyx_string_tab[123]
+#define __pyx_n_u_step __pyx_string_tab[124]
+#define __pyx_n_u_t_confirm __pyx_string_tab[125]
+#define __pyx_n_u_test __pyx_string_tab[126]
+#define __pyx_n_u_v_max __pyx_string_tab[127]
+#define __pyx_n_u_values __pyx_string_tab[128]
+#define __pyx_n_u_victim_max_dist_from_base __pyx_string_tab[129]
+#define __pyx_n_u_victim_max_dist_from_base_alt __pyx_string_tab[130]
+#define __pyx_n_u_victim_min_dist_from_base __pyx_string_tab[131]
+#define __pyx_n_u_victim_min_dist_from_base_alt __pyx_string_tab[132]
+#define __pyx_n_u_victim_mix_prob __pyx_string_tab[133]
+#define __pyx_n_u_world_size __pyx_string_tab[134]
+#define __pyx_kp_b_iso88591_5_q_AQd_4q_t9A __pyx_string_tab[135]
+#define __pyx_kp_b_iso88591_A_Bhay_b_9F_3c_Zs_6_S_A_6_ivQa_4 __pyx_string_tab[136]
+#define __pyx_kp_b_iso88591_A_s_4q __pyx_string_tab[137]
+#define __pyx_kp_b_iso88591_A_s_4t1 __pyx_string_tab[138]
+#define __pyx_kp_b_iso88591_A_uAT __pyx_string_tab[139]
+#define __pyx_kp_b_iso88591_Q __pyx_string_tab[140]
 #define __pyx_float_0_0 __pyx_number_tab[0]
 /* #### Code section: module_state_clear ### */
 #if CYTHON_USE_MODULE_STATE
@@ -3398,7 +3402,7 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   Py_CLEAR(clear_module_state->__pyx_type_13drone_swarm_c_CyDroneSwarm);
   for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_tuple[i]); }
   for (int i=0; i<13; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<137; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<141; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<1; ++i) { Py_CLEAR(clear_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_clear_contents ### */
 /* CommonTypesMetaclass.module_state_clear */
@@ -3442,7 +3446,7 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   Py_VISIT(traverse_module_state->__pyx_type_13drone_swarm_c_CyDroneSwarm);
   for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_tuple[i]); }
   for (int i=0; i<13; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<137; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<141; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   for (int i=0; i<1; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_number_tab[i]); }
 /* #### Code section: module_state_traverse_contents ### */
 /* CommonTypesMetaclass.module_state_traverse */
@@ -4749,7 +4753,7 @@ static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObjec
   return __pyx_r;
 }
 
-/* "drone_swarm_binding.pyx":84
+/* "drone_swarm_binding.pyx":88
  *     cdef int n_drones
  * 
  *     def __init__(self, config=None):             # <<<<<<<<<<<<<<
@@ -4779,24 +4783,24 @@ static int __pyx_pw_13drone_swarm_c_12CyDroneSwarm_1__init__(PyObject *__pyx_v_s
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_config,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_VARARGS(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 84, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 88, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 84, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 88, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 84, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "__init__", 0) < (0)) __PYX_ERR(0, 88, __pyx_L3_error)
       if (!values[0]) values[0] = __Pyx_NewRef(((PyObject *)Py_None));
     } else {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_VARARGS(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 84, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 88, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
@@ -4807,7 +4811,7 @@ static int __pyx_pw_13drone_swarm_c_12CyDroneSwarm_1__init__(PyObject *__pyx_v_s
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 84, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__init__", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 88, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -4846,7 +4850,7 @@ static int __pyx_pf_13drone_swarm_c_12CyDroneSwarm___init__(struct __pyx_obj_13d
   __Pyx_RefNannySetupContext("__init__", 0);
   __Pyx_INCREF(__pyx_v_config);
 
-  /* "drone_swarm_binding.pyx":85
+  /* "drone_swarm_binding.pyx":89
  * 
  *     def __init__(self, config=None):
  *         if config is None:             # <<<<<<<<<<<<<<
@@ -4856,7 +4860,7 @@ static int __pyx_pf_13drone_swarm_c_12CyDroneSwarm___init__(struct __pyx_obj_13d
   __pyx_t_1 = (__pyx_v_config == Py_None);
   if (__pyx_t_1) {
 
-    /* "drone_swarm_binding.pyx":86
+    /* "drone_swarm_binding.pyx":90
  *     def __init__(self, config=None):
  *         if config is None:
  *             from env import EnvConfig             # <<<<<<<<<<<<<<
@@ -4865,14 +4869,14 @@ static int __pyx_pf_13drone_swarm_c_12CyDroneSwarm___init__(struct __pyx_obj_13d
 */
     {
       PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_EnvConfig};
-      __pyx_t_3 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_env, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 86, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_env, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 90, __pyx_L1_error)
     }
     __pyx_t_2 = __pyx_t_3;
     __Pyx_GOTREF(__pyx_t_2);
     {
       PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_EnvConfig};
       __pyx_t_4 = 0; {
-        __pyx_t_5 = __Pyx_ImportFrom(__pyx_t_2, __pyx_imported_names[__pyx_t_4]); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 86, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_ImportFrom(__pyx_t_2, __pyx_imported_names[__pyx_t_4]); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 90, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         switch (__pyx_t_4) {
           case 0:
@@ -4886,7 +4890,7 @@ static int __pyx_pf_13drone_swarm_c_12CyDroneSwarm___init__(struct __pyx_obj_13d
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "drone_swarm_binding.pyx":87
+    /* "drone_swarm_binding.pyx":91
  *         if config is None:
  *             from env import EnvConfig
  *             config = EnvConfig()             # <<<<<<<<<<<<<<
@@ -4913,13 +4917,13 @@ static int __pyx_pf_13drone_swarm_c_12CyDroneSwarm___init__(struct __pyx_obj_13d
       __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)__pyx_t_6, __pyx_callargs+__pyx_t_7, (1-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 87, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_DECREF_SET(__pyx_v_config, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "drone_swarm_binding.pyx":85
+    /* "drone_swarm_binding.pyx":89
  * 
  *     def __init__(self, config=None):
  *         if config is None:             # <<<<<<<<<<<<<<
@@ -4929,7 +4933,7 @@ static int __pyx_pf_13drone_swarm_c_12CyDroneSwarm___init__(struct __pyx_obj_13d
     goto __pyx_L3;
   }
 
-  /* "drone_swarm_binding.pyx":88
+  /* "drone_swarm_binding.pyx":92
  *             from env import EnvConfig
  *             config = EnvConfig()
  *         elif isinstance(config, dict):             # <<<<<<<<<<<<<<
@@ -4939,7 +4943,7 @@ static int __pyx_pf_13drone_swarm_c_12CyDroneSwarm___init__(struct __pyx_obj_13d
   __pyx_t_1 = PyDict_Check(__pyx_v_config); 
   if (__pyx_t_1) {
 
-    /* "drone_swarm_binding.pyx":89
+    /* "drone_swarm_binding.pyx":93
  *             config = EnvConfig()
  *         elif isinstance(config, dict):
  *             from env import EnvConfig             # <<<<<<<<<<<<<<
@@ -4948,14 +4952,14 @@ static int __pyx_pf_13drone_swarm_c_12CyDroneSwarm___init__(struct __pyx_obj_13d
 */
     {
       PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_EnvConfig};
-      __pyx_t_3 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_env, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 89, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_Import(__pyx_mstate_global->__pyx_n_u_env, __pyx_imported_names, 1, NULL, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 93, __pyx_L1_error)
     }
     __pyx_t_2 = __pyx_t_3;
     __Pyx_GOTREF(__pyx_t_2);
     {
       PyObject* const __pyx_imported_names[] = {__pyx_mstate_global->__pyx_n_u_EnvConfig};
       __pyx_t_4 = 0; {
-        __pyx_t_6 = __Pyx_ImportFrom(__pyx_t_2, __pyx_imported_names[__pyx_t_4]); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 89, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_ImportFrom(__pyx_t_2, __pyx_imported_names[__pyx_t_4]); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 93, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
         switch (__pyx_t_4) {
           case 0:
@@ -4969,7 +4973,7 @@ static int __pyx_pf_13drone_swarm_c_12CyDroneSwarm___init__(struct __pyx_obj_13d
     }
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "drone_swarm_binding.pyx":90
+    /* "drone_swarm_binding.pyx":94
  *         elif isinstance(config, dict):
  *             from env import EnvConfig
  *             config = EnvConfig.from_dict(config)             # <<<<<<<<<<<<<<
@@ -4983,13 +4987,13 @@ static int __pyx_pf_13drone_swarm_c_12CyDroneSwarm___init__(struct __pyx_obj_13d
       PyObject *__pyx_callargs[2] = {__pyx_t_6, __pyx_v_config};
       __pyx_t_2 = __Pyx_PyObject_FastCallMethod((PyObject*)__pyx_mstate_global->__pyx_n_u_from_dict, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (1*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 90, __pyx_L1_error)
+      if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 94, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_2);
     }
     __Pyx_DECREF_SET(__pyx_v_config, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "drone_swarm_binding.pyx":88
+    /* "drone_swarm_binding.pyx":92
  *             from env import EnvConfig
  *             config = EnvConfig()
  *         elif isinstance(config, dict):             # <<<<<<<<<<<<<<
@@ -4999,16 +5003,16 @@ static int __pyx_pf_13drone_swarm_c_12CyDroneSwarm___init__(struct __pyx_obj_13d
   }
   __pyx_L3:;
 
-  /* "drone_swarm_binding.pyx":92
+  /* "drone_swarm_binding.pyx":96
  *             config = EnvConfig.from_dict(config)
  * 
  *         self._init_cfg(config)             # <<<<<<<<<<<<<<
  *         drone_swarm_init(&self.env, &self.cfg)
  *         self.n_drones = self.cfg.n_drones
 */
-  __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(__pyx_v_self, __pyx_v_config); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 92, __pyx_L1_error)
+  __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(__pyx_v_self, __pyx_v_config); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 96, __pyx_L1_error)
 
-  /* "drone_swarm_binding.pyx":93
+  /* "drone_swarm_binding.pyx":97
  * 
  *         self._init_cfg(config)
  *         drone_swarm_init(&self.env, &self.cfg)             # <<<<<<<<<<<<<<
@@ -5017,7 +5021,7 @@ static int __pyx_pf_13drone_swarm_c_12CyDroneSwarm___init__(struct __pyx_obj_13d
 */
   drone_swarm_init((&__pyx_v_self->env), (&__pyx_v_self->cfg));
 
-  /* "drone_swarm_binding.pyx":94
+  /* "drone_swarm_binding.pyx":98
  *         self._init_cfg(config)
  *         drone_swarm_init(&self.env, &self.cfg)
  *         self.n_drones = self.cfg.n_drones             # <<<<<<<<<<<<<<
@@ -5027,7 +5031,7 @@ static int __pyx_pf_13drone_swarm_c_12CyDroneSwarm___init__(struct __pyx_obj_13d
   __pyx_t_8 = __pyx_v_self->cfg.n_drones;
   __pyx_v_self->n_drones = __pyx_t_8;
 
-  /* "drone_swarm_binding.pyx":95
+  /* "drone_swarm_binding.pyx":99
  *         drone_swarm_init(&self.env, &self.cfg)
  *         self.n_drones = self.cfg.n_drones
  *         self.obs_size = 10 + 3 * self.cfg.obs_n_nearest             # <<<<<<<<<<<<<<
@@ -5036,7 +5040,7 @@ static int __pyx_pf_13drone_swarm_c_12CyDroneSwarm___init__(struct __pyx_obj_13d
 */
   __pyx_v_self->obs_size = (10 + (3 * __pyx_v_self->cfg.obs_n_nearest));
 
-  /* "drone_swarm_binding.pyx":84
+  /* "drone_swarm_binding.pyx":88
  *     cdef int n_drones
  * 
  *     def __init__(self, config=None):             # <<<<<<<<<<<<<<
@@ -5060,7 +5064,7 @@ static int __pyx_pf_13drone_swarm_c_12CyDroneSwarm___init__(struct __pyx_obj_13d
   return __pyx_r;
 }
 
-/* "drone_swarm_binding.pyx":97
+/* "drone_swarm_binding.pyx":101
  *         self.obs_size = 10 + 3 * self.cfg.obs_n_nearest
  * 
  *     cdef void _init_cfg(self, config):             # <<<<<<<<<<<<<<
@@ -5091,20 +5095,20 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_init_cfg", 0);
 
-  /* "drone_swarm_binding.pyx":98
+  /* "drone_swarm_binding.pyx":102
  * 
  *     cdef void _init_cfg(self, config):
  *         cdef float world_size = float(config.world_size)             # <<<<<<<<<<<<<<
  *         if world_size <= 0.0:
  *             raise ValueError("world_size must be positive")
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_world_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_world_size); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 98, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 102, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_world_size = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":99
+  /* "drone_swarm_binding.pyx":103
  *     cdef void _init_cfg(self, config):
  *         cdef float world_size = float(config.world_size)
  *         if world_size <= 0.0:             # <<<<<<<<<<<<<<
@@ -5114,7 +5118,7 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
   __pyx_t_3 = (__pyx_v_world_size <= 0.0);
   if (unlikely(__pyx_t_3)) {
 
-    /* "drone_swarm_binding.pyx":100
+    /* "drone_swarm_binding.pyx":104
  *         cdef float world_size = float(config.world_size)
  *         if world_size <= 0.0:
  *             raise ValueError("world_size must be positive")             # <<<<<<<<<<<<<<
@@ -5127,14 +5131,14 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
       PyObject *__pyx_callargs[2] = {__pyx_t_4, __pyx_mstate_global->__pyx_kp_u_world_size_must_be_positive};
       __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 100, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 100, __pyx_L1_error)
+    __PYX_ERR(0, 104, __pyx_L1_error)
 
-    /* "drone_swarm_binding.pyx":99
+    /* "drone_swarm_binding.pyx":103
  *     cdef void _init_cfg(self, config):
  *         cdef float world_size = float(config.world_size)
  *         if world_size <= 0.0:             # <<<<<<<<<<<<<<
@@ -5143,55 +5147,55 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
 */
   }
 
-  /* "drone_swarm_binding.pyx":102
+  /* "drone_swarm_binding.pyx":106
  *             raise ValueError("world_size must be positive")
  * 
  *         cdef int n_drones = int(config.n_drones)             # <<<<<<<<<<<<<<
  *         cdef int n_victims = int(config.n_victims)
  *         cdef int obs_n_nearest = int(config.obs_n_nearest)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_n_drones); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_n_drones); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 102, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_n_drones = __pyx_t_6;
 
-  /* "drone_swarm_binding.pyx":103
+  /* "drone_swarm_binding.pyx":107
  * 
  *         cdef int n_drones = int(config.n_drones)
  *         cdef int n_victims = int(config.n_victims)             # <<<<<<<<<<<<<<
  *         cdef int obs_n_nearest = int(config.obs_n_nearest)
  * 
 */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_n_victims); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_n_victims); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_1); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 103, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_1); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 107, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_n_victims = __pyx_t_6;
 
-  /* "drone_swarm_binding.pyx":104
+  /* "drone_swarm_binding.pyx":108
  *         cdef int n_drones = int(config.n_drones)
  *         cdef int n_victims = int(config.n_victims)
  *         cdef int obs_n_nearest = int(config.obs_n_nearest)             # <<<<<<<<<<<<<<
  * 
  *         if n_drones < 0 or n_drones > MAX_DRONES:
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_obs_n_nearest); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_obs_n_nearest); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 108, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 108, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 104, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 108, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_obs_n_nearest = __pyx_t_6;
 
-  /* "drone_swarm_binding.pyx":106
+  /* "drone_swarm_binding.pyx":110
  *         cdef int obs_n_nearest = int(config.obs_n_nearest)
  * 
  *         if n_drones < 0 or n_drones > MAX_DRONES:             # <<<<<<<<<<<<<<
@@ -5209,7 +5213,7 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
   __pyx_L5_bool_binop_done:;
   if (unlikely(__pyx_t_3)) {
 
-    /* "drone_swarm_binding.pyx":107
+    /* "drone_swarm_binding.pyx":111
  * 
  *         if n_drones < 0 or n_drones > MAX_DRONES:
  *             raise ValueError(f"n_drones must be in [0, {MAX_DRONES}]")             # <<<<<<<<<<<<<<
@@ -5222,14 +5226,14 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
       PyObject *__pyx_callargs[2] = {__pyx_t_1, __pyx_mstate_global->__pyx_kp_u_n_drones_must_be_in_0_64};
       __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 107, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 111, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     }
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 107, __pyx_L1_error)
+    __PYX_ERR(0, 111, __pyx_L1_error)
 
-    /* "drone_swarm_binding.pyx":106
+    /* "drone_swarm_binding.pyx":110
  *         cdef int obs_n_nearest = int(config.obs_n_nearest)
  * 
  *         if n_drones < 0 or n_drones > MAX_DRONES:             # <<<<<<<<<<<<<<
@@ -5238,7 +5242,7 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
 */
   }
 
-  /* "drone_swarm_binding.pyx":108
+  /* "drone_swarm_binding.pyx":112
  *         if n_drones < 0 or n_drones > MAX_DRONES:
  *             raise ValueError(f"n_drones must be in [0, {MAX_DRONES}]")
  *         if n_victims < 0 or n_victims > MAX_VICTIMS:             # <<<<<<<<<<<<<<
@@ -5256,7 +5260,7 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
   __pyx_L8_bool_binop_done:;
   if (unlikely(__pyx_t_3)) {
 
-    /* "drone_swarm_binding.pyx":109
+    /* "drone_swarm_binding.pyx":113
  *             raise ValueError(f"n_drones must be in [0, {MAX_DRONES}]")
  *         if n_victims < 0 or n_victims > MAX_VICTIMS:
  *             raise ValueError(f"n_victims must be in [0, {MAX_VICTIMS}]")             # <<<<<<<<<<<<<<
@@ -5269,14 +5273,14 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
       PyObject *__pyx_callargs[2] = {__pyx_t_1, __pyx_mstate_global->__pyx_kp_u_n_victims_must_be_in_0_128};
       __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 109, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     }
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 109, __pyx_L1_error)
+    __PYX_ERR(0, 113, __pyx_L1_error)
 
-    /* "drone_swarm_binding.pyx":108
+    /* "drone_swarm_binding.pyx":112
  *         if n_drones < 0 or n_drones > MAX_DRONES:
  *             raise ValueError(f"n_drones must be in [0, {MAX_DRONES}]")
  *         if n_victims < 0 or n_victims > MAX_VICTIMS:             # <<<<<<<<<<<<<<
@@ -5285,7 +5289,7 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
 */
   }
 
-  /* "drone_swarm_binding.pyx":110
+  /* "drone_swarm_binding.pyx":114
  *         if n_victims < 0 or n_victims > MAX_VICTIMS:
  *             raise ValueError(f"n_victims must be in [0, {MAX_VICTIMS}]")
  *         if obs_n_nearest < 0 or obs_n_nearest > MAX_NEAREST:             # <<<<<<<<<<<<<<
@@ -5303,7 +5307,7 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
   __pyx_L11_bool_binop_done:;
   if (unlikely(__pyx_t_3)) {
 
-    /* "drone_swarm_binding.pyx":111
+    /* "drone_swarm_binding.pyx":115
  *             raise ValueError(f"n_victims must be in [0, {MAX_VICTIMS}]")
  *         if obs_n_nearest < 0 or obs_n_nearest > MAX_NEAREST:
  *             raise ValueError(f"obs_n_nearest must be in [0, {MAX_NEAREST}]")             # <<<<<<<<<<<<<<
@@ -5316,14 +5320,14 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
       PyObject *__pyx_callargs[2] = {__pyx_t_1, __pyx_mstate_global->__pyx_kp_u_obs_n_nearest_must_be_in_0_8};
       __pyx_t_4 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 111, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 115, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     }
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 111, __pyx_L1_error)
+    __PYX_ERR(0, 115, __pyx_L1_error)
 
-    /* "drone_swarm_binding.pyx":110
+    /* "drone_swarm_binding.pyx":114
  *         if n_victims < 0 or n_victims > MAX_VICTIMS:
  *             raise ValueError(f"n_victims must be in [0, {MAX_VICTIMS}]")
  *         if obs_n_nearest < 0 or obs_n_nearest > MAX_NEAREST:             # <<<<<<<<<<<<<<
@@ -5332,19 +5336,19 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
 */
   }
 
-  /* "drone_swarm_binding.pyx":113
+  /* "drone_swarm_binding.pyx":117
  *             raise ValueError(f"obs_n_nearest must be in [0, {MAX_NEAREST}]")
  * 
  *         base_pos = config.base_pos             # <<<<<<<<<<<<<<
  *         if base_pos is None:
  *             base_x = world_size / 2.0
 */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_base_pos); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 113, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_base_pos); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 117, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_v_base_pos = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "drone_swarm_binding.pyx":114
+  /* "drone_swarm_binding.pyx":118
  * 
  *         base_pos = config.base_pos
  *         if base_pos is None:             # <<<<<<<<<<<<<<
@@ -5354,7 +5358,7 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
   __pyx_t_3 = (__pyx_v_base_pos == Py_None);
   if (__pyx_t_3) {
 
-    /* "drone_swarm_binding.pyx":115
+    /* "drone_swarm_binding.pyx":119
  *         base_pos = config.base_pos
  *         if base_pos is None:
  *             base_x = world_size / 2.0             # <<<<<<<<<<<<<<
@@ -5363,7 +5367,7 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
 */
     __pyx_v_base_x = (((double)__pyx_v_world_size) / 2.0);
 
-    /* "drone_swarm_binding.pyx":116
+    /* "drone_swarm_binding.pyx":120
  *         if base_pos is None:
  *             base_x = world_size / 2.0
  *             base_y = world_size / 2.0             # <<<<<<<<<<<<<<
@@ -5372,7 +5376,7 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
 */
     __pyx_v_base_y = (((double)__pyx_v_world_size) / 2.0);
 
-    /* "drone_swarm_binding.pyx":114
+    /* "drone_swarm_binding.pyx":118
  * 
  *         base_pos = config.base_pos
  *         if base_pos is None:             # <<<<<<<<<<<<<<
@@ -5382,7 +5386,7 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
     goto __pyx_L13;
   }
 
-  /* "drone_swarm_binding.pyx":118
+  /* "drone_swarm_binding.pyx":122
  *             base_y = world_size / 2.0
  *         else:
  *             base_x = float(base_pos[0])             # <<<<<<<<<<<<<<
@@ -5390,40 +5394,40 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
  * 
 */
   /*else*/ {
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_base_pos, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 118, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_base_pos, 0, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 122, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_4); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 118, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_4); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 122, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_base_x = __pyx_t_2;
 
-    /* "drone_swarm_binding.pyx":119
+    /* "drone_swarm_binding.pyx":123
  *         else:
  *             base_x = float(base_pos[0])
  *             base_y = float(base_pos[1])             # <<<<<<<<<<<<<<
  * 
  *         spawn_radius = config.spawn_radius
 */
-    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_base_pos, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 119, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt(__pyx_v_base_pos, 1, long, 1, __Pyx_PyLong_From_long, 0, 0, 1, 1, __Pyx_ReferenceSharing_OwnStrongReference); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 123, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_4); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 119, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_4); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 123, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_v_base_y = __pyx_t_2;
   }
   __pyx_L13:;
 
-  /* "drone_swarm_binding.pyx":121
+  /* "drone_swarm_binding.pyx":125
  *             base_y = float(base_pos[1])
  * 
  *         spawn_radius = config.spawn_radius             # <<<<<<<<<<<<<<
  *         if spawn_radius is None:
  *             spawn_radius = float(config.r_comm)
 */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_spawn_radius); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 121, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_spawn_radius); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 125, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_v_spawn_radius = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "drone_swarm_binding.pyx":122
+  /* "drone_swarm_binding.pyx":126
  * 
  *         spawn_radius = config.spawn_radius
  *         if spawn_radius is None:             # <<<<<<<<<<<<<<
@@ -5433,22 +5437,22 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
   __pyx_t_3 = (__pyx_v_spawn_radius == Py_None);
   if (__pyx_t_3) {
 
-    /* "drone_swarm_binding.pyx":123
+    /* "drone_swarm_binding.pyx":127
  *         spawn_radius = config.spawn_radius
  *         if spawn_radius is None:
  *             spawn_radius = float(config.r_comm)             # <<<<<<<<<<<<<<
  *         else:
  *             spawn_radius = float(spawn_radius)
 */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_comm); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_comm); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 127, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 123, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 127, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF_SET(__pyx_v_spawn_radius, __pyx_t_1);
     __pyx_t_1 = 0;
 
-    /* "drone_swarm_binding.pyx":122
+    /* "drone_swarm_binding.pyx":126
  * 
  *         spawn_radius = config.spawn_radius
  *         if spawn_radius is None:             # <<<<<<<<<<<<<<
@@ -5458,7 +5462,7 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
     goto __pyx_L14;
   }
 
-  /* "drone_swarm_binding.pyx":125
+  /* "drone_swarm_binding.pyx":129
  *             spawn_radius = float(config.r_comm)
  *         else:
  *             spawn_radius = float(spawn_radius)             # <<<<<<<<<<<<<<
@@ -5466,14 +5470,14 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
  *         self.cfg.world_size = world_size
 */
   /*else*/ {
-    __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_v_spawn_radius); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 125, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyNumber_Float(__pyx_v_spawn_radius); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF_SET(__pyx_v_spawn_radius, __pyx_t_1);
     __pyx_t_1 = 0;
   }
   __pyx_L14:;
 
-  /* "drone_swarm_binding.pyx":127
+  /* "drone_swarm_binding.pyx":131
  *             spawn_radius = float(spawn_radius)
  * 
  *         self.cfg.world_size = world_size             # <<<<<<<<<<<<<<
@@ -5482,7 +5486,7 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
 */
   __pyx_v_self->cfg.world_size = __pyx_v_world_size;
 
-  /* "drone_swarm_binding.pyx":128
+  /* "drone_swarm_binding.pyx":132
  * 
  *         self.cfg.world_size = world_size
  *         self.cfg.n_drones = n_drones             # <<<<<<<<<<<<<<
@@ -5491,200 +5495,226 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
 */
   __pyx_v_self->cfg.n_drones = __pyx_v_n_drones;
 
-  /* "drone_swarm_binding.pyx":129
+  /* "drone_swarm_binding.pyx":133
  *         self.cfg.world_size = world_size
  *         self.cfg.n_drones = n_drones
  *         self.cfg.n_victims = n_victims             # <<<<<<<<<<<<<<
  *         self.cfg.r_comm = float(config.r_comm)
- *         self.cfg.r_confirm_radius = float(config.r_confirm_radius)
+ *         self.cfg.r_comm_min = float(config.r_comm_min)
 */
   __pyx_v_self->cfg.n_victims = __pyx_v_n_victims;
 
-  /* "drone_swarm_binding.pyx":130
+  /* "drone_swarm_binding.pyx":134
  *         self.cfg.n_drones = n_drones
  *         self.cfg.n_victims = n_victims
  *         self.cfg.r_comm = float(config.r_comm)             # <<<<<<<<<<<<<<
- *         self.cfg.r_confirm_radius = float(config.r_confirm_radius)
- *         self.cfg.r_sense = float(config.r_sense)
+ *         self.cfg.r_comm_min = float(config.r_comm_min)
+ *         self.cfg.r_comm_max = float(config.r_comm_max)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_comm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_comm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 130, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 134, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.r_comm = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":131
+  /* "drone_swarm_binding.pyx":135
  *         self.cfg.n_victims = n_victims
  *         self.cfg.r_comm = float(config.r_comm)
+ *         self.cfg.r_comm_min = float(config.r_comm_min)             # <<<<<<<<<<<<<<
+ *         self.cfg.r_comm_max = float(config.r_comm_max)
+ *         self.cfg.r_confirm_radius = float(config.r_confirm_radius)
+*/
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_comm_min); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 135, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_self->cfg.r_comm_min = __pyx_t_2;
+
+  /* "drone_swarm_binding.pyx":136
+ *         self.cfg.r_comm = float(config.r_comm)
+ *         self.cfg.r_comm_min = float(config.r_comm_min)
+ *         self.cfg.r_comm_max = float(config.r_comm_max)             # <<<<<<<<<<<<<<
+ *         self.cfg.r_confirm_radius = float(config.r_confirm_radius)
+ *         self.cfg.r_sense = float(config.r_sense)
+*/
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_comm_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 136, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_self->cfg.r_comm_max = __pyx_t_2;
+
+  /* "drone_swarm_binding.pyx":137
+ *         self.cfg.r_comm_min = float(config.r_comm_min)
+ *         self.cfg.r_comm_max = float(config.r_comm_max)
  *         self.cfg.r_confirm_radius = float(config.r_confirm_radius)             # <<<<<<<<<<<<<<
  *         self.cfg.r_sense = float(config.r_sense)
  *         self.cfg.t_confirm = int(config.t_confirm)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_confirm_radius); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_confirm_radius); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 137, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.r_confirm_radius = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":132
- *         self.cfg.r_comm = float(config.r_comm)
+  /* "drone_swarm_binding.pyx":138
+ *         self.cfg.r_comm_max = float(config.r_comm_max)
  *         self.cfg.r_confirm_radius = float(config.r_confirm_radius)
  *         self.cfg.r_sense = float(config.r_sense)             # <<<<<<<<<<<<<<
  *         self.cfg.t_confirm = int(config.t_confirm)
  *         self.cfg.m_deliver = int(config.m_deliver)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_sense); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_sense); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 132, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 138, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.r_sense = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":133
+  /* "drone_swarm_binding.pyx":139
  *         self.cfg.r_confirm_radius = float(config.r_confirm_radius)
  *         self.cfg.r_sense = float(config.r_sense)
  *         self.cfg.t_confirm = int(config.t_confirm)             # <<<<<<<<<<<<<<
  *         self.cfg.m_deliver = int(config.m_deliver)
  *         self.cfg.v_max = float(config.v_max)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_t_confirm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_t_confirm); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 133, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 133, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 139, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_self->cfg.t_confirm = __pyx_t_6;
 
-  /* "drone_swarm_binding.pyx":134
+  /* "drone_swarm_binding.pyx":140
  *         self.cfg.r_sense = float(config.r_sense)
  *         self.cfg.t_confirm = int(config.t_confirm)
  *         self.cfg.m_deliver = int(config.m_deliver)             # <<<<<<<<<<<<<<
  *         self.cfg.v_max = float(config.v_max)
  *         self.cfg.dt = float(config.dt)
 */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_m_deliver); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_m_deliver); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyNumber_Int(__pyx_t_4); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-  __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_1); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 134, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_1); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 140, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.m_deliver = __pyx_t_6;
 
-  /* "drone_swarm_binding.pyx":135
+  /* "drone_swarm_binding.pyx":141
  *         self.cfg.t_confirm = int(config.t_confirm)
  *         self.cfg.m_deliver = int(config.m_deliver)
  *         self.cfg.v_max = float(config.v_max)             # <<<<<<<<<<<<<<
  *         self.cfg.dt = float(config.dt)
  *         self.cfg.c_idle = float(config.c_idle)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_v_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_v_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 141, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 135, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 141, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.v_max = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":136
+  /* "drone_swarm_binding.pyx":142
  *         self.cfg.m_deliver = int(config.m_deliver)
  *         self.cfg.v_max = float(config.v_max)
  *         self.cfg.dt = float(config.dt)             # <<<<<<<<<<<<<<
  *         self.cfg.c_idle = float(config.c_idle)
  *         self.cfg.c_move = float(config.c_move)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_dt); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_dt); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 136, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.dt = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":137
+  /* "drone_swarm_binding.pyx":143
  *         self.cfg.v_max = float(config.v_max)
  *         self.cfg.dt = float(config.dt)
  *         self.cfg.c_idle = float(config.c_idle)             # <<<<<<<<<<<<<<
  *         self.cfg.c_move = float(config.c_move)
  *         self.cfg.c_scan = float(config.c_scan)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_c_idle); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_c_idle); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 143, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.c_idle = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":138
+  /* "drone_swarm_binding.pyx":144
  *         self.cfg.dt = float(config.dt)
  *         self.cfg.c_idle = float(config.c_idle)
  *         self.cfg.c_move = float(config.c_move)             # <<<<<<<<<<<<<<
  *         self.cfg.c_scan = float(config.c_scan)
  *         self.cfg.c_time = float(config.c_time)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_c_move); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_c_move); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 138, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 144, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.c_move = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":139
+  /* "drone_swarm_binding.pyx":145
  *         self.cfg.c_idle = float(config.c_idle)
  *         self.cfg.c_move = float(config.c_move)
  *         self.cfg.c_scan = float(config.c_scan)             # <<<<<<<<<<<<<<
  *         self.cfg.c_time = float(config.c_time)
  *         self.cfg.c_energy = float(config.c_energy)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_c_scan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 139, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_c_scan); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 139, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 145, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.c_scan = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":140
+  /* "drone_swarm_binding.pyx":146
  *         self.cfg.c_move = float(config.c_move)
  *         self.cfg.c_scan = float(config.c_scan)
  *         self.cfg.c_time = float(config.c_time)             # <<<<<<<<<<<<<<
  *         self.cfg.c_energy = float(config.c_energy)
  *         self.cfg.r_found = float(config.r_found)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_c_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 140, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_c_time); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 146, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 140, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 146, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.c_time = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":141
+  /* "drone_swarm_binding.pyx":147
  *         self.cfg.c_scan = float(config.c_scan)
  *         self.cfg.c_time = float(config.c_time)
  *         self.cfg.c_energy = float(config.c_energy)             # <<<<<<<<<<<<<<
  *         self.cfg.r_found = float(config.r_found)
  *         self.cfg.r_found_divide_by_n = 1 if bool(config.r_found_divide_by_n) else 0
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_c_energy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 141, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_c_energy); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 147, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 141, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 147, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.c_energy = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":142
+  /* "drone_swarm_binding.pyx":148
  *         self.cfg.c_time = float(config.c_time)
  *         self.cfg.c_energy = float(config.c_energy)
  *         self.cfg.r_found = float(config.r_found)             # <<<<<<<<<<<<<<
  *         self.cfg.r_found_divide_by_n = 1 if bool(config.r_found_divide_by_n) else 0
  *         self.cfg.r_confirm_reward = float(config.r_confirm_reward)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_found); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_found); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 142, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 148, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.r_found = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":143
+  /* "drone_swarm_binding.pyx":149
  *         self.cfg.c_energy = float(config.c_energy)
  *         self.cfg.r_found = float(config.r_found)
  *         self.cfg.r_found_divide_by_n = 1 if bool(config.r_found_divide_by_n) else 0             # <<<<<<<<<<<<<<
  *         self.cfg.r_confirm_reward = float(config.r_confirm_reward)
  *         self.cfg.r_approach = float(config.r_approach)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_found_divide_by_n); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_found_divide_by_n); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_1); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 149, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if ((!(!__pyx_t_3))) {
     __pyx_t_6 = 1;
@@ -5693,141 +5723,167 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
   }
   __pyx_v_self->cfg.r_found_divide_by_n = __pyx_t_6;
 
-  /* "drone_swarm_binding.pyx":144
+  /* "drone_swarm_binding.pyx":150
  *         self.cfg.r_found = float(config.r_found)
  *         self.cfg.r_found_divide_by_n = 1 if bool(config.r_found_divide_by_n) else 0
  *         self.cfg.r_confirm_reward = float(config.r_confirm_reward)             # <<<<<<<<<<<<<<
  *         self.cfg.r_approach = float(config.r_approach)
  *         self.cfg.r_explore = float(config.r_explore)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_confirm_reward); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_confirm_reward); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 144, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 150, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.r_confirm_reward = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":145
+  /* "drone_swarm_binding.pyx":151
  *         self.cfg.r_found_divide_by_n = 1 if bool(config.r_found_divide_by_n) else 0
  *         self.cfg.r_confirm_reward = float(config.r_confirm_reward)
  *         self.cfg.r_approach = float(config.r_approach)             # <<<<<<<<<<<<<<
  *         self.cfg.r_explore = float(config.r_explore)
  *         self.cfg.r_scan_near_victim = float(config.r_scan_near_victim)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_approach); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 145, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_approach); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 145, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 151, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.r_approach = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":146
+  /* "drone_swarm_binding.pyx":152
  *         self.cfg.r_confirm_reward = float(config.r_confirm_reward)
  *         self.cfg.r_approach = float(config.r_approach)
  *         self.cfg.r_explore = float(config.r_explore)             # <<<<<<<<<<<<<<
  *         self.cfg.r_scan_near_victim = float(config.r_scan_near_victim)
  *         self.cfg.r_connectivity = float(config.r_connectivity)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_explore); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 146, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_explore); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 152, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 146, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 152, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.r_explore = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":147
+  /* "drone_swarm_binding.pyx":153
  *         self.cfg.r_approach = float(config.r_approach)
  *         self.cfg.r_explore = float(config.r_explore)
  *         self.cfg.r_scan_near_victim = float(config.r_scan_near_victim)             # <<<<<<<<<<<<<<
  *         self.cfg.r_connectivity = float(config.r_connectivity)
  *         self.cfg.r_dispersion = float(config.r_dispersion)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_scan_near_victim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 147, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_scan_near_victim); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 147, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 153, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.r_scan_near_victim = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":148
+  /* "drone_swarm_binding.pyx":154
  *         self.cfg.r_explore = float(config.r_explore)
  *         self.cfg.r_scan_near_victim = float(config.r_scan_near_victim)
  *         self.cfg.r_connectivity = float(config.r_connectivity)             # <<<<<<<<<<<<<<
  *         self.cfg.r_dispersion = float(config.r_dispersion)
  *         self.cfg.min_drone_separation = float(config.min_drone_separation)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_connectivity); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_connectivity); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 154, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 148, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 154, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.r_connectivity = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":149
+  /* "drone_swarm_binding.pyx":155
  *         self.cfg.r_scan_near_victim = float(config.r_scan_near_victim)
  *         self.cfg.r_connectivity = float(config.r_connectivity)
  *         self.cfg.r_dispersion = float(config.r_dispersion)             # <<<<<<<<<<<<<<
  *         self.cfg.min_drone_separation = float(config.min_drone_separation)
  *         self.cfg.r_owner_connected = float(config.r_owner_connected)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_dispersion); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_dispersion); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 155, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.r_dispersion = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":150
+  /* "drone_swarm_binding.pyx":156
  *         self.cfg.r_connectivity = float(config.r_connectivity)
  *         self.cfg.r_dispersion = float(config.r_dispersion)
  *         self.cfg.min_drone_separation = float(config.min_drone_separation)             # <<<<<<<<<<<<<<
  *         self.cfg.r_owner_connected = float(config.r_owner_connected)
  *         self.cfg.p_comm_drop = float(config.p_comm_drop)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_min_drone_separation); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_min_drone_separation); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 150, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.min_drone_separation = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":151
+  /* "drone_swarm_binding.pyx":157
  *         self.cfg.r_dispersion = float(config.r_dispersion)
  *         self.cfg.min_drone_separation = float(config.min_drone_separation)
  *         self.cfg.r_owner_connected = float(config.r_owner_connected)             # <<<<<<<<<<<<<<
  *         self.cfg.p_comm_drop = float(config.p_comm_drop)
- *         self.cfg.max_steps = int(config.max_steps)
+ *         self.cfg.p_comm_drop_min = float(config.p_comm_drop_min)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_owner_connected); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_r_owner_connected); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 151, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 157, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.r_owner_connected = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":152
+  /* "drone_swarm_binding.pyx":158
  *         self.cfg.min_drone_separation = float(config.min_drone_separation)
  *         self.cfg.r_owner_connected = float(config.r_owner_connected)
  *         self.cfg.p_comm_drop = float(config.p_comm_drop)             # <<<<<<<<<<<<<<
- *         self.cfg.max_steps = int(config.max_steps)
- *         self.cfg.base_pos[0] = base_x
+ *         self.cfg.p_comm_drop_min = float(config.p_comm_drop_min)
+ *         self.cfg.p_comm_drop_max = float(config.p_comm_drop_max)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_p_comm_drop); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 152, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_p_comm_drop); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 152, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_self->cfg.p_comm_drop = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":153
+  /* "drone_swarm_binding.pyx":159
  *         self.cfg.r_owner_connected = float(config.r_owner_connected)
  *         self.cfg.p_comm_drop = float(config.p_comm_drop)
+ *         self.cfg.p_comm_drop_min = float(config.p_comm_drop_min)             # <<<<<<<<<<<<<<
+ *         self.cfg.p_comm_drop_max = float(config.p_comm_drop_max)
+ *         self.cfg.max_steps = int(config.max_steps)
+*/
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_p_comm_drop_min); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 159, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_self->cfg.p_comm_drop_min = __pyx_t_2;
+
+  /* "drone_swarm_binding.pyx":160
+ *         self.cfg.p_comm_drop = float(config.p_comm_drop)
+ *         self.cfg.p_comm_drop_min = float(config.p_comm_drop_min)
+ *         self.cfg.p_comm_drop_max = float(config.p_comm_drop_max)             # <<<<<<<<<<<<<<
+ *         self.cfg.max_steps = int(config.max_steps)
+ *         self.cfg.base_pos[0] = base_x
+*/
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_p_comm_drop_max); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_1); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 160, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_v_self->cfg.p_comm_drop_max = __pyx_t_2;
+
+  /* "drone_swarm_binding.pyx":161
+ *         self.cfg.p_comm_drop_min = float(config.p_comm_drop_min)
+ *         self.cfg.p_comm_drop_max = float(config.p_comm_drop_max)
  *         self.cfg.max_steps = int(config.max_steps)             # <<<<<<<<<<<<<<
  *         self.cfg.base_pos[0] = base_x
  *         self.cfg.base_pos[1] = base_y
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_max_steps); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_max_steps); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_4 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyNumber_Int(__pyx_t_1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 153, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyLong_As_int(__pyx_t_4); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 161, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_self->cfg.max_steps = __pyx_t_6;
 
-  /* "drone_swarm_binding.pyx":154
- *         self.cfg.p_comm_drop = float(config.p_comm_drop)
+  /* "drone_swarm_binding.pyx":162
+ *         self.cfg.p_comm_drop_max = float(config.p_comm_drop_max)
  *         self.cfg.max_steps = int(config.max_steps)
  *         self.cfg.base_pos[0] = base_x             # <<<<<<<<<<<<<<
  *         self.cfg.base_pos[1] = base_y
@@ -5835,7 +5891,7 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
 */
   (__pyx_v_self->cfg.base_pos[0]) = __pyx_v_base_x;
 
-  /* "drone_swarm_binding.pyx":155
+  /* "drone_swarm_binding.pyx":163
  *         self.cfg.max_steps = int(config.max_steps)
  *         self.cfg.base_pos[0] = base_x
  *         self.cfg.base_pos[1] = base_y             # <<<<<<<<<<<<<<
@@ -5844,16 +5900,16 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
 */
   (__pyx_v_self->cfg.base_pos[1]) = __pyx_v_base_y;
 
-  /* "drone_swarm_binding.pyx":156
+  /* "drone_swarm_binding.pyx":164
  *         self.cfg.base_pos[0] = base_x
  *         self.cfg.base_pos[1] = base_y
  *         self.cfg.spawn_near_base = 1 if bool(config.spawn_near_base) else 0             # <<<<<<<<<<<<<<
  *         self.cfg.spawn_radius = spawn_radius
  *         self.cfg.obs_n_nearest = obs_n_nearest
 */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_spawn_near_base); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_spawn_near_base); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 156, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely((__pyx_t_3 < 0))) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   if ((!(!__pyx_t_3))) {
     __pyx_t_6 = 1;
@@ -5862,17 +5918,17 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
   }
   __pyx_v_self->cfg.spawn_near_base = __pyx_t_6;
 
-  /* "drone_swarm_binding.pyx":157
+  /* "drone_swarm_binding.pyx":165
  *         self.cfg.base_pos[1] = base_y
  *         self.cfg.spawn_near_base = 1 if bool(config.spawn_near_base) else 0
  *         self.cfg.spawn_radius = spawn_radius             # <<<<<<<<<<<<<<
  *         self.cfg.obs_n_nearest = obs_n_nearest
  *         self.cfg.victim_min_dist_from_base = float(config.victim_min_dist_from_base)
 */
-  __pyx_t_8 = __Pyx_PyFloat_AsFloat(__pyx_v_spawn_radius); if (unlikely((__pyx_t_8 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 157, __pyx_L1_error)
+  __pyx_t_8 = __Pyx_PyFloat_AsFloat(__pyx_v_spawn_radius); if (unlikely((__pyx_t_8 == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 165, __pyx_L1_error)
   __pyx_v_self->cfg.spawn_radius = __pyx_t_8;
 
-  /* "drone_swarm_binding.pyx":158
+  /* "drone_swarm_binding.pyx":166
  *         self.cfg.spawn_near_base = 1 if bool(config.spawn_near_base) else 0
  *         self.cfg.spawn_radius = spawn_radius
  *         self.cfg.obs_n_nearest = obs_n_nearest             # <<<<<<<<<<<<<<
@@ -5881,72 +5937,72 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
 */
   __pyx_v_self->cfg.obs_n_nearest = __pyx_v_obs_n_nearest;
 
-  /* "drone_swarm_binding.pyx":159
+  /* "drone_swarm_binding.pyx":167
  *         self.cfg.spawn_radius = spawn_radius
  *         self.cfg.obs_n_nearest = obs_n_nearest
  *         self.cfg.victim_min_dist_from_base = float(config.victim_min_dist_from_base)             # <<<<<<<<<<<<<<
  *         self.cfg.victim_max_dist_from_base = float(config.victim_max_dist_from_base)
  *         self.cfg.victim_mix_prob = float(config.victim_mix_prob)
 */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_victim_min_dist_from_base); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_victim_min_dist_from_base); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_4); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_4); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 167, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_self->cfg.victim_min_dist_from_base = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":160
+  /* "drone_swarm_binding.pyx":168
  *         self.cfg.obs_n_nearest = obs_n_nearest
  *         self.cfg.victim_min_dist_from_base = float(config.victim_min_dist_from_base)
  *         self.cfg.victim_max_dist_from_base = float(config.victim_max_dist_from_base)             # <<<<<<<<<<<<<<
  *         self.cfg.victim_mix_prob = float(config.victim_mix_prob)
  *         self.cfg.victim_min_dist_from_base_alt = float(config.victim_min_dist_from_base_alt)
 */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_victim_max_dist_from_base); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_victim_max_dist_from_base); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 168, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_4); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 160, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_4); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 168, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_self->cfg.victim_max_dist_from_base = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":161
+  /* "drone_swarm_binding.pyx":169
  *         self.cfg.victim_min_dist_from_base = float(config.victim_min_dist_from_base)
  *         self.cfg.victim_max_dist_from_base = float(config.victim_max_dist_from_base)
  *         self.cfg.victim_mix_prob = float(config.victim_mix_prob)             # <<<<<<<<<<<<<<
  *         self.cfg.victim_min_dist_from_base_alt = float(config.victim_min_dist_from_base_alt)
  *         self.cfg.victim_max_dist_from_base_alt = float(config.victim_max_dist_from_base_alt)
 */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_victim_mix_prob); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 161, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_victim_mix_prob); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_4); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 161, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_4); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 169, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_self->cfg.victim_mix_prob = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":162
+  /* "drone_swarm_binding.pyx":170
  *         self.cfg.victim_max_dist_from_base = float(config.victim_max_dist_from_base)
  *         self.cfg.victim_mix_prob = float(config.victim_mix_prob)
  *         self.cfg.victim_min_dist_from_base_alt = float(config.victim_min_dist_from_base_alt)             # <<<<<<<<<<<<<<
  *         self.cfg.victim_max_dist_from_base_alt = float(config.victim_max_dist_from_base_alt)
  * 
 */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_victim_min_dist_from_base_alt); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_victim_min_dist_from_base_alt); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_4); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 162, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_4); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 170, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_self->cfg.victim_min_dist_from_base_alt = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":163
+  /* "drone_swarm_binding.pyx":171
  *         self.cfg.victim_mix_prob = float(config.victim_mix_prob)
  *         self.cfg.victim_min_dist_from_base_alt = float(config.victim_min_dist_from_base_alt)
  *         self.cfg.victim_max_dist_from_base_alt = float(config.victim_max_dist_from_base_alt)             # <<<<<<<<<<<<<<
  * 
  *     def reset(self, seed=None):
 */
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_victim_max_dist_from_base_alt); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_v_config, __pyx_mstate_global->__pyx_n_u_victim_max_dist_from_base_alt); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_4); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsDouble(__pyx_t_4); if (unlikely(__PYX_CHECK_FLOAT_EXCEPTION(__pyx_t_2, ((double)((double)-1))) && PyErr_Occurred())) __PYX_ERR(0, 171, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_v_self->cfg.victim_max_dist_from_base_alt = __pyx_t_2;
 
-  /* "drone_swarm_binding.pyx":97
+  /* "drone_swarm_binding.pyx":101
  *         self.obs_size = 10 + 3 * self.cfg.obs_n_nearest
  * 
  *     cdef void _init_cfg(self, config):             # <<<<<<<<<<<<<<
@@ -5966,7 +6022,7 @@ static void __pyx_f_13drone_swarm_c_12CyDroneSwarm__init_cfg(struct __pyx_obj_13
   __Pyx_RefNannyFinishContext();
 }
 
-/* "drone_swarm_binding.pyx":165
+/* "drone_swarm_binding.pyx":173
  *         self.cfg.victim_max_dist_from_base_alt = float(config.victim_max_dist_from_base_alt)
  * 
  *     def reset(self, seed=None):             # <<<<<<<<<<<<<<
@@ -6013,24 +6069,24 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_seed,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 165, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 173, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 165, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 173, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "reset", 0) < (0)) __PYX_ERR(0, 165, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "reset", 0) < (0)) __PYX_ERR(0, 173, __pyx_L3_error)
       if (!values[0]) values[0] = __Pyx_NewRef(((PyObject *)Py_None));
     } else {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 165, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 173, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
@@ -6041,7 +6097,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("reset", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 165, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("reset", 0, 0, 1, __pyx_nargs); __PYX_ERR(0, 173, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -6073,7 +6129,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_2reset(struct __pyx_obj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("reset", 0);
 
-  /* "drone_swarm_binding.pyx":166
+  /* "drone_swarm_binding.pyx":174
  * 
  *     def reset(self, seed=None):
  *         if seed is not None:             # <<<<<<<<<<<<<<
@@ -6083,17 +6139,17 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_2reset(struct __pyx_obj
   __pyx_t_1 = (__pyx_v_seed != Py_None);
   if (__pyx_t_1) {
 
-    /* "drone_swarm_binding.pyx":167
+    /* "drone_swarm_binding.pyx":175
  *     def reset(self, seed=None):
  *         if seed is not None:
  *             drone_swarm_seed(&self.env, <uint64_t>seed)             # <<<<<<<<<<<<<<
  *         drone_swarm_reset(&self.env)
  *         return self._get_obs()
 */
-    __pyx_t_2 = __Pyx_PyLong_As_uint64_t(__pyx_v_seed); if (unlikely((__pyx_t_2 == ((uint64_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 167, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyLong_As_uint64_t(__pyx_v_seed); if (unlikely((__pyx_t_2 == ((uint64_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 175, __pyx_L1_error)
     drone_swarm_seed((&__pyx_v_self->env), ((uint64_t)__pyx_t_2));
 
-    /* "drone_swarm_binding.pyx":166
+    /* "drone_swarm_binding.pyx":174
  * 
  *     def reset(self, seed=None):
  *         if seed is not None:             # <<<<<<<<<<<<<<
@@ -6102,7 +6158,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_2reset(struct __pyx_obj
 */
   }
 
-  /* "drone_swarm_binding.pyx":168
+  /* "drone_swarm_binding.pyx":176
  *         if seed is not None:
  *             drone_swarm_seed(&self.env, <uint64_t>seed)
  *         drone_swarm_reset(&self.env)             # <<<<<<<<<<<<<<
@@ -6111,7 +6167,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_2reset(struct __pyx_obj
 */
   drone_swarm_reset((&__pyx_v_self->env));
 
-  /* "drone_swarm_binding.pyx":169
+  /* "drone_swarm_binding.pyx":177
  *             drone_swarm_seed(&self.env, <uint64_t>seed)
  *         drone_swarm_reset(&self.env)
  *         return self._get_obs()             # <<<<<<<<<<<<<<
@@ -6119,13 +6175,13 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_2reset(struct __pyx_obj
  *     def step(self, actions):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = ((PyObject *)__pyx_f_13drone_swarm_c_12CyDroneSwarm__get_obs(__pyx_v_self)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 169, __pyx_L1_error)
+  __pyx_t_3 = ((PyObject *)__pyx_f_13drone_swarm_c_12CyDroneSwarm__get_obs(__pyx_v_self)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 177, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_r = __pyx_t_3;
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "drone_swarm_binding.pyx":165
+  /* "drone_swarm_binding.pyx":173
  *         self.cfg.victim_max_dist_from_base_alt = float(config.victim_max_dist_from_base_alt)
  * 
  *     def reset(self, seed=None):             # <<<<<<<<<<<<<<
@@ -6144,7 +6200,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_2reset(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "drone_swarm_binding.pyx":171
+/* "drone_swarm_binding.pyx":179
  *         return self._get_obs()
  * 
  *     def step(self, actions):             # <<<<<<<<<<<<<<
@@ -6191,32 +6247,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_actions,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 171, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 179, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 171, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 179, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "step", 0) < (0)) __PYX_ERR(0, 171, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "step", 0) < (0)) __PYX_ERR(0, 179, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("step", 1, 1, 1, i); __PYX_ERR(0, 171, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("step", 1, 1, 1, i); __PYX_ERR(0, 179, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 171, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 179, __pyx_L3_error)
     }
     __pyx_v_actions = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("step", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 171, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("step", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 179, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -6271,7 +6327,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
   __pyx_pybuffernd_actions_c.data = NULL;
   __pyx_pybuffernd_actions_c.rcbuffer = &__pyx_pybuffer_actions_c;
 
-  /* "drone_swarm_binding.pyx":173
+  /* "drone_swarm_binding.pyx":181
  *     def step(self, actions):
  *         cdef np.ndarray[np.float32_t, ndim=2, mode="c"] actions_c
  *         actions_c = np.asarray(actions, dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -6279,14 +6335,14 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
  *             raise ValueError(
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_asarray); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_float32); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 173, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_float32); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 181, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   __pyx_t_6 = 1;
@@ -6303,18 +6359,18 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_v_actions};
-    __pyx_t_3 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 173, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 181, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_5, __pyx_t_3, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 173, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_5, __pyx_t_3, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 181, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_3);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 173, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 173, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 181, __pyx_L1_error)
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_actions_c.rcbuffer->pybuffer);
@@ -6330,32 +6386,32 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
       __pyx_t_8 = __pyx_t_9 = __pyx_t_10 = 0;
     }
     __pyx_pybuffernd_actions_c.diminfo[0].strides = __pyx_pybuffernd_actions_c.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_actions_c.diminfo[0].shape = __pyx_pybuffernd_actions_c.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_actions_c.diminfo[1].strides = __pyx_pybuffernd_actions_c.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_actions_c.diminfo[1].shape = __pyx_pybuffernd_actions_c.rcbuffer->pybuffer.shape[1];
-    if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 173, __pyx_L1_error)
+    if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 181, __pyx_L1_error)
   }
   __pyx_v_actions_c = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "drone_swarm_binding.pyx":174
+  /* "drone_swarm_binding.pyx":182
  *         cdef np.ndarray[np.float32_t, ndim=2, mode="c"] actions_c
  *         actions_c = np.asarray(actions, dtype=np.float32)
  *         if actions_c.shape[0] != self.n_drones or actions_c.shape[1] != 3:             # <<<<<<<<<<<<<<
  *             raise ValueError(
  *                 "actions must have shape (%d, 3), got (%d, %d)"
 */
-  __pyx_t_12 = __pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_actions_c)); if (unlikely(__pyx_t_12 == ((void *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 174, __pyx_L1_error)
+  __pyx_t_12 = __pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_actions_c)); if (unlikely(__pyx_t_12 == ((void *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L1_error)
   __pyx_t_13 = ((__pyx_t_12[0]) != __pyx_v_self->n_drones);
   if (!__pyx_t_13) {
   } else {
     __pyx_t_11 = __pyx_t_13;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_12 = __pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_actions_c)); if (unlikely(__pyx_t_12 == ((void *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 174, __pyx_L1_error)
+  __pyx_t_12 = __pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_actions_c)); if (unlikely(__pyx_t_12 == ((void *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L1_error)
   __pyx_t_13 = ((__pyx_t_12[1]) != 3);
   __pyx_t_11 = __pyx_t_13;
   __pyx_L4_bool_binop_done:;
   if (unlikely(__pyx_t_11)) {
 
-    /* "drone_swarm_binding.pyx":175
+    /* "drone_swarm_binding.pyx":183
  *         actions_c = np.asarray(actions, dtype=np.float32)
  *         if actions_c.shape[0] != self.n_drones or actions_c.shape[1] != 3:
  *             raise ValueError(             # <<<<<<<<<<<<<<
@@ -6364,20 +6420,20 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
 */
     __pyx_t_4 = NULL;
 
-    /* "drone_swarm_binding.pyx":177
+    /* "drone_swarm_binding.pyx":185
  *             raise ValueError(
  *                 "actions must have shape (%d, 3), got (%d, %d)"
  *                 % (self.n_drones, actions_c.shape[0], actions_c.shape[1])             # <<<<<<<<<<<<<<
  *             )
  *         if not actions_c.flags['C_CONTIGUOUS']:
 */
-    __pyx_t_3 = __Pyx_PyUnicode_From_int(__pyx_v_self->n_drones, 0, ' ', 'd'); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 177, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyUnicode_From_int(__pyx_v_self->n_drones, 0, ' ', 'd'); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 185, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_12 = __pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_actions_c)); if (unlikely(__pyx_t_12 == ((void *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 177, __pyx_L1_error)
-    __pyx_t_5 = __Pyx_PyUnicode_From_npy_intp((__pyx_t_12[0]), 0, ' ', 'd'); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 177, __pyx_L1_error)
+    __pyx_t_12 = __pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_actions_c)); if (unlikely(__pyx_t_12 == ((void *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 185, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyUnicode_From_npy_intp((__pyx_t_12[0]), 0, ' ', 'd'); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 185, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    __pyx_t_12 = __pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_actions_c)); if (unlikely(__pyx_t_12 == ((void *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 177, __pyx_L1_error)
-    __pyx_t_2 = __Pyx_PyUnicode_From_npy_intp((__pyx_t_12[1]), 0, ' ', 'd'); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 177, __pyx_L1_error)
+    __pyx_t_12 = __pyx_f_5numpy_7ndarray_5shape_shape(((PyArrayObject *)__pyx_v_actions_c)); if (unlikely(__pyx_t_12 == ((void *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 185, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyUnicode_From_npy_intp((__pyx_t_12[1]), 0, ' ', 'd'); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_t_14[0] = __pyx_mstate_global->__pyx_kp_u_actions_must_have_shape;
     __pyx_t_14[1] = __pyx_t_3;
@@ -6387,7 +6443,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
     __pyx_t_14[5] = __pyx_t_2;
     __pyx_t_14[6] = __pyx_mstate_global->__pyx_kp_u__3;
 
-    /* "drone_swarm_binding.pyx":176
+    /* "drone_swarm_binding.pyx":184
  *         if actions_c.shape[0] != self.n_drones or actions_c.shape[1] != 3:
  *             raise ValueError(
  *                 "actions must have shape (%d, 3), got (%d, %d)"             # <<<<<<<<<<<<<<
@@ -6395,7 +6451,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
  *             )
 */
     __pyx_t_15 = __Pyx_PyUnicode_Join(__pyx_t_14, 7, 25 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_3) + 11 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_5) + 2 + __Pyx_PyUnicode_GET_LENGTH(__pyx_t_2) + 1, 127);
-    if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 176, __pyx_L1_error)
+    if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 184, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_15);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
@@ -6406,14 +6462,14 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
       __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)(((PyTypeObject*)PyExc_ValueError)), __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
       __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 175, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 175, __pyx_L1_error)
+    __PYX_ERR(0, 183, __pyx_L1_error)
 
-    /* "drone_swarm_binding.pyx":174
+    /* "drone_swarm_binding.pyx":182
  *         cdef np.ndarray[np.float32_t, ndim=2, mode="c"] actions_c
  *         actions_c = np.asarray(actions, dtype=np.float32)
  *         if actions_c.shape[0] != self.n_drones or actions_c.shape[1] != 3:             # <<<<<<<<<<<<<<
@@ -6422,24 +6478,24 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
 */
   }
 
-  /* "drone_swarm_binding.pyx":179
+  /* "drone_swarm_binding.pyx":187
  *                 % (self.n_drones, actions_c.shape[0], actions_c.shape[1])
  *             )
  *         if not actions_c.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
  *             actions_c = np.ascontiguousarray(actions_c, dtype=np.float32)
  * 
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_actions_c), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_actions_c), __pyx_mstate_global->__pyx_n_u_flags); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_15 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 179, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyObject_Dict_GetItem(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_C_CONTIGUOUS); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_15); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 179, __pyx_L1_error)
+  __pyx_t_11 = __Pyx_PyObject_IsTrue(__pyx_t_15); if (unlikely((__pyx_t_11 < 0))) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_15); __pyx_t_15 = 0;
   __pyx_t_13 = (!__pyx_t_11);
   if (__pyx_t_13) {
 
-    /* "drone_swarm_binding.pyx":180
+    /* "drone_swarm_binding.pyx":188
  *             )
  *         if not actions_c.flags['C_CONTIGUOUS']:
  *             actions_c = np.ascontiguousarray(actions_c, dtype=np.float32)             # <<<<<<<<<<<<<<
@@ -6447,14 +6503,14 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
  *         drone_swarm_step(&self.env, <float*>actions_c.data)
 */
     __pyx_t_1 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 180, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 188, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 180, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_ascontiguousarray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 188, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 180, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 188, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_float32); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 180, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_float32); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 188, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __pyx_t_6 = 1;
@@ -6471,18 +6527,18 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
     #endif
     {
       PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_1, ((PyObject *)__pyx_v_actions_c)};
-      __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 180, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 188, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
-      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_5, __pyx_t_4, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 180, __pyx_L1_error)
+      if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_5, __pyx_t_4, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 188, __pyx_L1_error)
       __pyx_t_15 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_2, __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_4);
       __Pyx_XDECREF(__pyx_t_1); __pyx_t_1 = 0;
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-      if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 180, __pyx_L1_error)
+      if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 188, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_15);
     }
-    if (!(likely(((__pyx_t_15) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_15, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 180, __pyx_L1_error)
+    if (!(likely(((__pyx_t_15) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_15, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 188, __pyx_L1_error)
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(&__pyx_pybuffernd_actions_c.rcbuffer->pybuffer);
@@ -6498,12 +6554,12 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
         __pyx_t_10 = __pyx_t_9 = __pyx_t_8 = 0;
       }
       __pyx_pybuffernd_actions_c.diminfo[0].strides = __pyx_pybuffernd_actions_c.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_actions_c.diminfo[0].shape = __pyx_pybuffernd_actions_c.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_actions_c.diminfo[1].strides = __pyx_pybuffernd_actions_c.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_actions_c.diminfo[1].shape = __pyx_pybuffernd_actions_c.rcbuffer->pybuffer.shape[1];
-      if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 180, __pyx_L1_error)
+      if (unlikely((__pyx_t_7 < 0))) __PYX_ERR(0, 188, __pyx_L1_error)
     }
     __Pyx_DECREF_SET(__pyx_v_actions_c, ((PyArrayObject *)__pyx_t_15));
     __pyx_t_15 = 0;
 
-    /* "drone_swarm_binding.pyx":179
+    /* "drone_swarm_binding.pyx":187
  *                 % (self.n_drones, actions_c.shape[0], actions_c.shape[1])
  *             )
  *         if not actions_c.flags['C_CONTIGUOUS']:             # <<<<<<<<<<<<<<
@@ -6512,51 +6568,51 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
 */
   }
 
-  /* "drone_swarm_binding.pyx":182
+  /* "drone_swarm_binding.pyx":190
  *             actions_c = np.ascontiguousarray(actions_c, dtype=np.float32)
  * 
  *         drone_swarm_step(&self.env, <float*>actions_c.data)             # <<<<<<<<<<<<<<
  *         obs = self._get_obs()
  *         rewards = self._get_rewards()
 */
-  __pyx_t_16 = __pyx_f_5numpy_7ndarray_4data_data(((PyArrayObject *)__pyx_v_actions_c)); if (unlikely(__pyx_t_16 == ((void *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L1_error)
+  __pyx_t_16 = __pyx_f_5numpy_7ndarray_4data_data(((PyArrayObject *)__pyx_v_actions_c)); if (unlikely(__pyx_t_16 == ((void *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 190, __pyx_L1_error)
   drone_swarm_step((&__pyx_v_self->env), ((float *)__pyx_t_16));
 
-  /* "drone_swarm_binding.pyx":183
+  /* "drone_swarm_binding.pyx":191
  * 
  *         drone_swarm_step(&self.env, <float*>actions_c.data)
  *         obs = self._get_obs()             # <<<<<<<<<<<<<<
  *         rewards = self._get_rewards()
  * 
 */
-  __pyx_t_15 = ((PyObject *)__pyx_f_13drone_swarm_c_12CyDroneSwarm__get_obs(__pyx_v_self)); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_t_15 = ((PyObject *)__pyx_f_13drone_swarm_c_12CyDroneSwarm__get_obs(__pyx_v_self)); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 191, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
   __pyx_v_obs = ((PyArrayObject *)__pyx_t_15);
   __pyx_t_15 = 0;
 
-  /* "drone_swarm_binding.pyx":184
+  /* "drone_swarm_binding.pyx":192
  *         drone_swarm_step(&self.env, <float*>actions_c.data)
  *         obs = self._get_obs()
  *         rewards = self._get_rewards()             # <<<<<<<<<<<<<<
  * 
  *         info = {
 */
-  __pyx_t_15 = ((PyObject *)__pyx_f_13drone_swarm_c_12CyDroneSwarm__get_rewards(__pyx_v_self)); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 184, __pyx_L1_error)
+  __pyx_t_15 = ((PyObject *)__pyx_f_13drone_swarm_c_12CyDroneSwarm__get_rewards(__pyx_v_self)); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 192, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
   __pyx_v_rewards = ((PyArrayObject *)__pyx_t_15);
   __pyx_t_15 = 0;
 
-  /* "drone_swarm_binding.pyx":187
+  /* "drone_swarm_binding.pyx":195
  * 
  *         info = {
  *             "step": int(self.env.step_count),             # <<<<<<<<<<<<<<
  *             "delivered": int(self.env.delivered_count),
  *             "confirmed": int(self.env.confirmed_count),
 */
-  __pyx_t_15 = __Pyx_PyDict_NewPresized(7); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyDict_NewPresized(7); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
   __pyx_t_4 = NULL;
-  __pyx_t_5 = __Pyx_PyLong_From_int(__pyx_v_self->env.step_count); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 187, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyLong_From_int(__pyx_v_self->env.step_count); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = 1;
   {
@@ -6564,13 +6620,13 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
     __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(&PyLong_Type), __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 187, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 195, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
-  if (PyDict_SetItem(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_step, __pyx_t_2) < (0)) __PYX_ERR(0, 187, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_step, __pyx_t_2) < (0)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "drone_swarm_binding.pyx":188
+  /* "drone_swarm_binding.pyx":196
  *         info = {
  *             "step": int(self.env.step_count),
  *             "delivered": int(self.env.delivered_count),             # <<<<<<<<<<<<<<
@@ -6578,7 +6634,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
  *             "connected_fraction": float(self.connected_fraction),
 */
   __pyx_t_5 = NULL;
-  __pyx_t_4 = __Pyx_PyLong_From_int(__pyx_v_self->env.delivered_count); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 188, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_int(__pyx_v_self->env.delivered_count); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 196, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_6 = 1;
   {
@@ -6586,13 +6642,13 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
     __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(&PyLong_Type), __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 188, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 196, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
-  if (PyDict_SetItem(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_delivered, __pyx_t_2) < (0)) __PYX_ERR(0, 187, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_delivered, __pyx_t_2) < (0)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "drone_swarm_binding.pyx":189
+  /* "drone_swarm_binding.pyx":197
  *             "step": int(self.env.step_count),
  *             "delivered": int(self.env.delivered_count),
  *             "confirmed": int(self.env.confirmed_count),             # <<<<<<<<<<<<<<
@@ -6600,7 +6656,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
  *             "new_delivered": int(self.env.last_new_delivered),
 */
   __pyx_t_4 = NULL;
-  __pyx_t_5 = __Pyx_PyLong_From_int(__pyx_v_self->env.confirmed_count); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 189, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyLong_From_int(__pyx_v_self->env.confirmed_count); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 197, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __pyx_t_6 = 1;
   {
@@ -6608,28 +6664,28 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
     __pyx_t_2 = __Pyx_PyObject_FastCall((PyObject*)(&PyLong_Type), __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 189, __pyx_L1_error)
+    if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 197, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   }
-  if (PyDict_SetItem(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_confirmed, __pyx_t_2) < (0)) __PYX_ERR(0, 187, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_confirmed, __pyx_t_2) < (0)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "drone_swarm_binding.pyx":190
+  /* "drone_swarm_binding.pyx":198
  *             "delivered": int(self.env.delivered_count),
  *             "confirmed": int(self.env.confirmed_count),
  *             "connected_fraction": float(self.connected_fraction),             # <<<<<<<<<<<<<<
  *             "new_delivered": int(self.env.last_new_delivered),
  *             "new_confirmed": int(self.env.last_new_confirmed),
 */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_connected_fraction); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_connected_fraction); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 198, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = __Pyx_PyNumber_Float(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 190, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyNumber_Float(__pyx_t_2); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 198, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (PyDict_SetItem(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_connected_fraction, __pyx_t_5) < (0)) __PYX_ERR(0, 187, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_connected_fraction, __pyx_t_5) < (0)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "drone_swarm_binding.pyx":191
+  /* "drone_swarm_binding.pyx":199
  *             "confirmed": int(self.env.confirmed_count),
  *             "connected_fraction": float(self.connected_fraction),
  *             "new_delivered": int(self.env.last_new_delivered),             # <<<<<<<<<<<<<<
@@ -6637,7 +6693,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
  *             "explored_cells": int(self.env.explored_global_count),
 */
   __pyx_t_2 = NULL;
-  __pyx_t_4 = __Pyx_PyLong_From_int(__pyx_v_self->env.last_new_delivered); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 191, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_int(__pyx_v_self->env.last_new_delivered); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 199, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_6 = 1;
   {
@@ -6645,13 +6701,13 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
     __pyx_t_5 = __Pyx_PyObject_FastCall((PyObject*)(&PyLong_Type), __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 191, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 199, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
   }
-  if (PyDict_SetItem(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_new_delivered, __pyx_t_5) < (0)) __PYX_ERR(0, 187, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_new_delivered, __pyx_t_5) < (0)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "drone_swarm_binding.pyx":192
+  /* "drone_swarm_binding.pyx":200
  *             "connected_fraction": float(self.connected_fraction),
  *             "new_delivered": int(self.env.last_new_delivered),
  *             "new_confirmed": int(self.env.last_new_confirmed),             # <<<<<<<<<<<<<<
@@ -6659,7 +6715,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
  *         }
 */
   __pyx_t_4 = NULL;
-  __pyx_t_2 = __Pyx_PyLong_From_int(__pyx_v_self->env.last_new_confirmed); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 192, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyLong_From_int(__pyx_v_self->env.last_new_confirmed); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 200, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_6 = 1;
   {
@@ -6667,13 +6723,13 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
     __pyx_t_5 = __Pyx_PyObject_FastCall((PyObject*)(&PyLong_Type), __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 192, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 200, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
   }
-  if (PyDict_SetItem(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_new_confirmed, __pyx_t_5) < (0)) __PYX_ERR(0, 187, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_new_confirmed, __pyx_t_5) < (0)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "drone_swarm_binding.pyx":193
+  /* "drone_swarm_binding.pyx":201
  *             "new_delivered": int(self.env.last_new_delivered),
  *             "new_confirmed": int(self.env.last_new_confirmed),
  *             "explored_cells": int(self.env.explored_global_count),             # <<<<<<<<<<<<<<
@@ -6681,7 +6737,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
  * 
 */
   __pyx_t_2 = NULL;
-  __pyx_t_4 = __Pyx_PyLong_From_int(__pyx_v_self->env.explored_global_count); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 193, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyLong_From_int(__pyx_v_self->env.explored_global_count); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 201, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_t_6 = 1;
   {
@@ -6689,15 +6745,15 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
     __pyx_t_5 = __Pyx_PyObject_FastCall((PyObject*)(&PyLong_Type), __pyx_callargs+__pyx_t_6, (2-__pyx_t_6) | (__pyx_t_6*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 193, __pyx_L1_error)
+    if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 201, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
   }
-  if (PyDict_SetItem(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_explored_cells, __pyx_t_5) < (0)) __PYX_ERR(0, 187, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_15, __pyx_mstate_global->__pyx_n_u_explored_cells, __pyx_t_5) < (0)) __PYX_ERR(0, 195, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_v_info = ((PyObject*)__pyx_t_15);
   __pyx_t_15 = 0;
 
-  /* "drone_swarm_binding.pyx":196
+  /* "drone_swarm_binding.pyx":204
  *         }
  * 
  *         return obs, rewards, bool(self.env.done), info             # <<<<<<<<<<<<<<
@@ -6706,27 +6762,27 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_13 = __pyx_v_self->env.done;
-  __pyx_t_15 = __Pyx_PyBool_FromLong((!(!__pyx_t_13))); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_15 = __Pyx_PyBool_FromLong((!(!__pyx_t_13))); if (unlikely(!__pyx_t_15)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_15);
-  __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 196, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 204, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_INCREF((PyObject *)__pyx_v_obs);
   __Pyx_GIVEREF((PyObject *)__pyx_v_obs);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, ((PyObject *)__pyx_v_obs)) != (0)) __PYX_ERR(0, 196, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 0, ((PyObject *)__pyx_v_obs)) != (0)) __PYX_ERR(0, 204, __pyx_L1_error);
   __Pyx_INCREF((PyObject *)__pyx_v_rewards);
   __Pyx_GIVEREF((PyObject *)__pyx_v_rewards);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, ((PyObject *)__pyx_v_rewards)) != (0)) __PYX_ERR(0, 196, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 1, ((PyObject *)__pyx_v_rewards)) != (0)) __PYX_ERR(0, 204, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_15);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 2, __pyx_t_15) != (0)) __PYX_ERR(0, 196, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 2, __pyx_t_15) != (0)) __PYX_ERR(0, 204, __pyx_L1_error);
   __Pyx_INCREF(__pyx_v_info);
   __Pyx_GIVEREF(__pyx_v_info);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 3, __pyx_v_info) != (0)) __PYX_ERR(0, 196, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_5, 3, __pyx_v_info) != (0)) __PYX_ERR(0, 204, __pyx_L1_error);
   __pyx_t_15 = 0;
   __pyx_r = __pyx_t_5;
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "drone_swarm_binding.pyx":171
+  /* "drone_swarm_binding.pyx":179
  *         return self._get_obs()
  * 
  *     def step(self, actions):             # <<<<<<<<<<<<<<
@@ -6763,7 +6819,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_4step(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "drone_swarm_binding.pyx":198
+/* "drone_swarm_binding.pyx":206
  *         return obs, rewards, bool(self.env.done), info
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -6796,7 +6852,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_18connected_fraction___
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 0);
 
-  /* "drone_swarm_binding.pyx":200
+  /* "drone_swarm_binding.pyx":208
  *     @property
  *     def connected_fraction(self):
  *         if self.env.cfg.n_drones == 0:             # <<<<<<<<<<<<<<
@@ -6806,7 +6862,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_18connected_fraction___
   __pyx_t_1 = (__pyx_v_self->env.cfg.n_drones == 0);
   if (__pyx_t_1) {
 
-    /* "drone_swarm_binding.pyx":201
+    /* "drone_swarm_binding.pyx":209
  *     def connected_fraction(self):
  *         if self.env.cfg.n_drones == 0:
  *             return 0.0             # <<<<<<<<<<<<<<
@@ -6818,7 +6874,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_18connected_fraction___
     __pyx_r = __pyx_mstate_global->__pyx_float_0_0;
     goto __pyx_L0;
 
-    /* "drone_swarm_binding.pyx":200
+    /* "drone_swarm_binding.pyx":208
  *     @property
  *     def connected_fraction(self):
  *         if self.env.cfg.n_drones == 0:             # <<<<<<<<<<<<<<
@@ -6827,7 +6883,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_18connected_fraction___
 */
   }
 
-  /* "drone_swarm_binding.pyx":202
+  /* "drone_swarm_binding.pyx":210
  *         if self.env.cfg.n_drones == 0:
  *             return 0.0
  *         return float(self.env.connected_count) / float(self.env.cfg.n_drones)             # <<<<<<<<<<<<<<
@@ -6837,15 +6893,15 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_18connected_fraction___
   __Pyx_XDECREF(__pyx_r);
   if (unlikely(((double)__pyx_v_self->env.cfg.n_drones) == 0)) {
     PyErr_SetString(PyExc_ZeroDivisionError, "float division");
-    __PYX_ERR(0, 202, __pyx_L1_error)
+    __PYX_ERR(0, 210, __pyx_L1_error)
   }
-  __pyx_t_2 = PyFloat_FromDouble((((double)__pyx_v_self->env.connected_count) / ((double)__pyx_v_self->env.cfg.n_drones))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 202, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble((((double)__pyx_v_self->env.connected_count) / ((double)__pyx_v_self->env.cfg.n_drones))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 210, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "drone_swarm_binding.pyx":198
+  /* "drone_swarm_binding.pyx":206
  *         return obs, rewards, bool(self.env.done), info
  * 
  *     @property             # <<<<<<<<<<<<<<
@@ -6864,7 +6920,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_18connected_fraction___
   return __pyx_r;
 }
 
-/* "drone_swarm_binding.pyx":204
+/* "drone_swarm_binding.pyx":212
  *         return float(self.env.connected_count) / float(self.env.cfg.n_drones)
  * 
  *     def get_delivered_count(self):             # <<<<<<<<<<<<<<
@@ -6926,7 +6982,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_6get_delivered_count(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_delivered_count", 0);
 
-  /* "drone_swarm_binding.pyx":205
+  /* "drone_swarm_binding.pyx":213
  * 
  *     def get_delivered_count(self):
  *         return int(self.env.delivered_count)             # <<<<<<<<<<<<<<
@@ -6935,7 +6991,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_6get_delivered_count(st
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->env.delivered_count); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->env.delivered_count); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 213, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = 1;
   {
@@ -6943,14 +6999,14 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_6get_delivered_count(st
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)(&PyLong_Type), __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 205, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 213, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "drone_swarm_binding.pyx":204
+  /* "drone_swarm_binding.pyx":212
  *         return float(self.env.connected_count) / float(self.env.cfg.n_drones)
  * 
  *     def get_delivered_count(self):             # <<<<<<<<<<<<<<
@@ -6971,7 +7027,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_6get_delivered_count(st
   return __pyx_r;
 }
 
-/* "drone_swarm_binding.pyx":207
+/* "drone_swarm_binding.pyx":215
  *         return int(self.env.delivered_count)
  * 
  *     def get_confirmed_count(self):             # <<<<<<<<<<<<<<
@@ -7033,7 +7089,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_8get_confirmed_count(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_confirmed_count", 0);
 
-  /* "drone_swarm_binding.pyx":208
+  /* "drone_swarm_binding.pyx":216
  * 
  *     def get_confirmed_count(self):
  *         return int(self.env.confirmed_count)             # <<<<<<<<<<<<<<
@@ -7042,7 +7098,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_8get_confirmed_count(st
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->env.confirmed_count); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 208, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->env.confirmed_count); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 216, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = 1;
   {
@@ -7050,14 +7106,14 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_8get_confirmed_count(st
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)(&PyLong_Type), __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 208, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 216, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "drone_swarm_binding.pyx":207
+  /* "drone_swarm_binding.pyx":215
  *         return int(self.env.delivered_count)
  * 
  *     def get_confirmed_count(self):             # <<<<<<<<<<<<<<
@@ -7078,7 +7134,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_8get_confirmed_count(st
   return __pyx_r;
 }
 
-/* "drone_swarm_binding.pyx":210
+/* "drone_swarm_binding.pyx":218
  *         return int(self.env.confirmed_count)
  * 
  *     def get_connected_fraction(self):             # <<<<<<<<<<<<<<
@@ -7138,7 +7194,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_10get_connected_fractio
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_connected_fraction", 0);
 
-  /* "drone_swarm_binding.pyx":211
+  /* "drone_swarm_binding.pyx":219
  * 
  *     def get_connected_fraction(self):
  *         return float(self.connected_fraction)             # <<<<<<<<<<<<<<
@@ -7146,16 +7202,16 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_10get_connected_fractio
  *     def get_step_count(self):
 */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_connected_fraction); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 211, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_connected_fraction); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 219, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 211, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyNumber_Float(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "drone_swarm_binding.pyx":210
+  /* "drone_swarm_binding.pyx":218
  *         return int(self.env.confirmed_count)
  * 
  *     def get_connected_fraction(self):             # <<<<<<<<<<<<<<
@@ -7175,7 +7231,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_10get_connected_fractio
   return __pyx_r;
 }
 
-/* "drone_swarm_binding.pyx":213
+/* "drone_swarm_binding.pyx":221
  *         return float(self.connected_fraction)
  * 
  *     def get_step_count(self):             # <<<<<<<<<<<<<<
@@ -7237,7 +7293,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_12get_step_count(struct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_step_count", 0);
 
-  /* "drone_swarm_binding.pyx":214
+  /* "drone_swarm_binding.pyx":222
  * 
  *     def get_step_count(self):
  *         return int(self.env.step_count)             # <<<<<<<<<<<<<<
@@ -7246,7 +7302,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_12get_step_count(struct
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->env.step_count); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 214, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->env.step_count); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 222, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = 1;
   {
@@ -7254,14 +7310,14 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_12get_step_count(struct
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)(&PyLong_Type), __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 214, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "drone_swarm_binding.pyx":213
+  /* "drone_swarm_binding.pyx":221
  *         return float(self.connected_fraction)
  * 
  *     def get_step_count(self):             # <<<<<<<<<<<<<<
@@ -7282,7 +7338,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_12get_step_count(struct
   return __pyx_r;
 }
 
-/* "drone_swarm_binding.pyx":216
+/* "drone_swarm_binding.pyx":224
  *         return int(self.env.step_count)
  * 
  *     def get_explored_cells(self):             # <<<<<<<<<<<<<<
@@ -7344,7 +7400,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_14get_explored_cells(st
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_explored_cells", 0);
 
-  /* "drone_swarm_binding.pyx":217
+  /* "drone_swarm_binding.pyx":225
  * 
  *     def get_explored_cells(self):
  *         return int(self.env.explored_global_count)             # <<<<<<<<<<<<<<
@@ -7353,7 +7409,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_14get_explored_cells(st
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->env.explored_global_count); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 217, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->env.explored_global_count); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 225, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = 1;
   {
@@ -7361,14 +7417,14 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_14get_explored_cells(st
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)(&PyLong_Type), __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 217, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 225, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "drone_swarm_binding.pyx":216
+  /* "drone_swarm_binding.pyx":224
  *         return int(self.env.step_count)
  * 
  *     def get_explored_cells(self):             # <<<<<<<<<<<<<<
@@ -7389,7 +7445,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_14get_explored_cells(st
   return __pyx_r;
 }
 
-/* "drone_swarm_binding.pyx":219
+/* "drone_swarm_binding.pyx":227
  *         return int(self.env.explored_global_count)
  * 
  *     def get_new_delivered(self):             # <<<<<<<<<<<<<<
@@ -7451,7 +7507,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_16get_new_delivered(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_new_delivered", 0);
 
-  /* "drone_swarm_binding.pyx":220
+  /* "drone_swarm_binding.pyx":228
  * 
  *     def get_new_delivered(self):
  *         return int(self.env.last_new_delivered)             # <<<<<<<<<<<<<<
@@ -7460,7 +7516,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_16get_new_delivered(str
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->env.last_new_delivered); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 220, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->env.last_new_delivered); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 228, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = 1;
   {
@@ -7468,14 +7524,14 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_16get_new_delivered(str
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)(&PyLong_Type), __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 220, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 228, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "drone_swarm_binding.pyx":219
+  /* "drone_swarm_binding.pyx":227
  *         return int(self.env.explored_global_count)
  * 
  *     def get_new_delivered(self):             # <<<<<<<<<<<<<<
@@ -7496,7 +7552,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_16get_new_delivered(str
   return __pyx_r;
 }
 
-/* "drone_swarm_binding.pyx":222
+/* "drone_swarm_binding.pyx":230
  *         return int(self.env.last_new_delivered)
  * 
  *     def get_new_confirmed(self):             # <<<<<<<<<<<<<<
@@ -7558,7 +7614,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_18get_new_confirmed(str
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_new_confirmed", 0);
 
-  /* "drone_swarm_binding.pyx":223
+  /* "drone_swarm_binding.pyx":231
  * 
  *     def get_new_confirmed(self):
  *         return int(self.env.last_new_confirmed)             # <<<<<<<<<<<<<<
@@ -7567,7 +7623,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_18get_new_confirmed(str
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->env.last_new_confirmed); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 223, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->env.last_new_confirmed); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 231, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = 1;
   {
@@ -7575,14 +7631,14 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_18get_new_confirmed(str
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)(&PyLong_Type), __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 223, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 231, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "drone_swarm_binding.pyx":222
+  /* "drone_swarm_binding.pyx":230
  *         return int(self.env.last_new_delivered)
  * 
  *     def get_new_confirmed(self):             # <<<<<<<<<<<<<<
@@ -7603,7 +7659,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_18get_new_confirmed(str
   return __pyx_r;
 }
 
-/* "drone_swarm_binding.pyx":225
+/* "drone_swarm_binding.pyx":233
  *         return int(self.env.last_new_confirmed)
  * 
  *     def get_obs_size(self):             # <<<<<<<<<<<<<<
@@ -7665,7 +7721,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_20get_obs_size(struct _
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_obs_size", 0);
 
-  /* "drone_swarm_binding.pyx":226
+  /* "drone_swarm_binding.pyx":234
  * 
  *     def get_obs_size(self):
  *         return int(self.obs_size)             # <<<<<<<<<<<<<<
@@ -7674,7 +7730,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_20get_obs_size(struct _
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->obs_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 226, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->obs_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = 1;
   {
@@ -7682,14 +7738,14 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_20get_obs_size(struct _
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)(&PyLong_Type), __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 226, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "drone_swarm_binding.pyx":225
+  /* "drone_swarm_binding.pyx":233
  *         return int(self.env.last_new_confirmed)
  * 
  *     def get_obs_size(self):             # <<<<<<<<<<<<<<
@@ -7710,7 +7766,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_20get_obs_size(struct _
   return __pyx_r;
 }
 
-/* "drone_swarm_binding.pyx":228
+/* "drone_swarm_binding.pyx":236
  *         return int(self.obs_size)
  * 
  *     def get_num_drones(self):             # <<<<<<<<<<<<<<
@@ -7772,7 +7828,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_22get_num_drones(struct
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get_num_drones", 0);
 
-  /* "drone_swarm_binding.pyx":229
+  /* "drone_swarm_binding.pyx":237
  * 
  *     def get_num_drones(self):
  *         return int(self.n_drones)             # <<<<<<<<<<<<<<
@@ -7781,7 +7837,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_22get_num_drones(struct
 */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_2 = NULL;
-  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->n_drones); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 229, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->n_drones); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 237, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_4 = 1;
   {
@@ -7789,14 +7845,14 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_22get_num_drones(struct
     __pyx_t_1 = __Pyx_PyObject_FastCall((PyObject*)(&PyLong_Type), __pyx_callargs+__pyx_t_4, (2-__pyx_t_4) | (__pyx_t_4*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 237, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "drone_swarm_binding.pyx":228
+  /* "drone_swarm_binding.pyx":236
  *         return int(self.obs_size)
  * 
  *     def get_num_drones(self):             # <<<<<<<<<<<<<<
@@ -7817,7 +7873,7 @@ static PyObject *__pyx_pf_13drone_swarm_c_12CyDroneSwarm_22get_num_drones(struct
   return __pyx_r;
 }
 
-/* "drone_swarm_binding.pyx":231
+/* "drone_swarm_binding.pyx":239
  *         return int(self.n_drones)
  * 
  *     cdef np.ndarray _get_obs(self):             # <<<<<<<<<<<<<<
@@ -7849,7 +7905,7 @@ static PyArrayObject *__pyx_f_13drone_swarm_c_12CyDroneSwarm__get_obs(struct __p
   __pyx_pybuffernd_obs.data = NULL;
   __pyx_pybuffernd_obs.rcbuffer = &__pyx_pybuffer_obs;
 
-  /* "drone_swarm_binding.pyx":232
+  /* "drone_swarm_binding.pyx":240
  * 
  *     cdef np.ndarray _get_obs(self):
  *         cdef np.ndarray[np.float32_t, ndim=2] obs = np.empty(             # <<<<<<<<<<<<<<
@@ -7857,34 +7913,34 @@ static PyArrayObject *__pyx_f_13drone_swarm_c_12CyDroneSwarm__get_obs(struct __p
  *         )
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 240, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 240, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "drone_swarm_binding.pyx":233
+  /* "drone_swarm_binding.pyx":241
  *     cdef np.ndarray _get_obs(self):
  *         cdef np.ndarray[np.float32_t, ndim=2] obs = np.empty(
  *             (self.n_drones, self.obs_size), dtype=np.float32             # <<<<<<<<<<<<<<
  *         )
  *         cdef Py_ssize_t count = self.n_drones * self.obs_size
 */
-  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->n_drones); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->n_drones); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_5 = __Pyx_PyLong_From_int(__pyx_v_self->obs_size); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyLong_From_int(__pyx_v_self->obs_size); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_t_6 = PyTuple_New(2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_GIVEREF(__pyx_t_3);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 233, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_3) != (0)) __PYX_ERR(0, 241, __pyx_L1_error);
   __Pyx_GIVEREF(__pyx_t_5);
-  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_5) != (0)) __PYX_ERR(0, 233, __pyx_L1_error);
+  if (__Pyx_PyTuple_SET_ITEM(__pyx_t_6, 1, __pyx_t_5) != (0)) __PYX_ERR(0, 241, __pyx_L1_error);
   __pyx_t_3 = 0;
   __pyx_t_5 = 0;
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_float32); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_float32); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 241, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_7 = 1;
@@ -7901,39 +7957,39 @@ static PyArrayObject *__pyx_f_13drone_swarm_c_12CyDroneSwarm__get_obs(struct __p
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_6};
-    __pyx_t_5 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 232, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 240, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_3, __pyx_t_5, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 232, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_3, __pyx_t_5, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 240, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_5);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 232, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 240, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
 
-  /* "drone_swarm_binding.pyx":232
+  /* "drone_swarm_binding.pyx":240
  * 
  *     cdef np.ndarray _get_obs(self):
  *         cdef np.ndarray[np.float32_t, ndim=2] obs = np.empty(             # <<<<<<<<<<<<<<
  *             (self.n_drones, self.obs_size), dtype=np.float32
  *         )
 */
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 232, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 240, __pyx_L1_error)
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_obs.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_1), &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES, 2, 0, __pyx_stack) == -1)) {
       __pyx_v_obs = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_obs.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 232, __pyx_L1_error)
+      __PYX_ERR(0, 240, __pyx_L1_error)
     } else {__pyx_pybuffernd_obs.diminfo[0].strides = __pyx_pybuffernd_obs.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_obs.diminfo[0].shape = __pyx_pybuffernd_obs.rcbuffer->pybuffer.shape[0]; __pyx_pybuffernd_obs.diminfo[1].strides = __pyx_pybuffernd_obs.rcbuffer->pybuffer.strides[1]; __pyx_pybuffernd_obs.diminfo[1].shape = __pyx_pybuffernd_obs.rcbuffer->pybuffer.shape[1];
     }
   }
   __pyx_v_obs = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "drone_swarm_binding.pyx":235
+  /* "drone_swarm_binding.pyx":243
  *             (self.n_drones, self.obs_size), dtype=np.float32
  *         )
  *         cdef Py_ssize_t count = self.n_drones * self.obs_size             # <<<<<<<<<<<<<<
@@ -7942,17 +7998,17 @@ static PyArrayObject *__pyx_f_13drone_swarm_c_12CyDroneSwarm__get_obs(struct __p
 */
   __pyx_v_count = (__pyx_v_self->n_drones * __pyx_v_self->obs_size);
 
-  /* "drone_swarm_binding.pyx":236
+  /* "drone_swarm_binding.pyx":244
  *         )
  *         cdef Py_ssize_t count = self.n_drones * self.obs_size
  *         memcpy(obs.data, self.env.observations, count * sizeof(float))             # <<<<<<<<<<<<<<
  *         return obs
  * 
 */
-  __pyx_t_8 = __pyx_f_5numpy_7ndarray_4data_data(((PyArrayObject *)__pyx_v_obs)); if (unlikely(__pyx_t_8 == ((void *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 236, __pyx_L1_error)
+  __pyx_t_8 = __pyx_f_5numpy_7ndarray_4data_data(((PyArrayObject *)__pyx_v_obs)); if (unlikely(__pyx_t_8 == ((void *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 244, __pyx_L1_error)
   (void)(memcpy(__pyx_t_8, __pyx_v_self->env.observations, (__pyx_v_count * (sizeof(float)))));
 
-  /* "drone_swarm_binding.pyx":237
+  /* "drone_swarm_binding.pyx":245
  *         cdef Py_ssize_t count = self.n_drones * self.obs_size
  *         memcpy(obs.data, self.env.observations, count * sizeof(float))
  *         return obs             # <<<<<<<<<<<<<<
@@ -7964,7 +8020,7 @@ static PyArrayObject *__pyx_f_13drone_swarm_c_12CyDroneSwarm__get_obs(struct __p
   __pyx_r = ((PyArrayObject *)__pyx_v_obs);
   goto __pyx_L0;
 
-  /* "drone_swarm_binding.pyx":231
+  /* "drone_swarm_binding.pyx":239
  *         return int(self.n_drones)
  * 
  *     cdef np.ndarray _get_obs(self):             # <<<<<<<<<<<<<<
@@ -7998,7 +8054,7 @@ static PyArrayObject *__pyx_f_13drone_swarm_c_12CyDroneSwarm__get_obs(struct __p
   return __pyx_r;
 }
 
-/* "drone_swarm_binding.pyx":239
+/* "drone_swarm_binding.pyx":247
  *         return obs
  * 
  *     cdef np.ndarray _get_rewards(self):             # <<<<<<<<<<<<<<
@@ -8031,7 +8087,7 @@ static PyArrayObject *__pyx_f_13drone_swarm_c_12CyDroneSwarm__get_rewards(struct
   __pyx_pybuffernd_rewards.data = NULL;
   __pyx_pybuffernd_rewards.rcbuffer = &__pyx_pybuffer_rewards;
 
-  /* "drone_swarm_binding.pyx":240
+  /* "drone_swarm_binding.pyx":248
  * 
  *     cdef np.ndarray _get_rewards(self):
  *         cdef np.ndarray[np.float32_t, ndim=1] rewards = np.empty(             # <<<<<<<<<<<<<<
@@ -8039,24 +8095,24 @@ static PyArrayObject *__pyx_f_13drone_swarm_c_12CyDroneSwarm__get_rewards(struct
  *         )
 */
   __pyx_t_2 = NULL;
-  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_t_3, __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 248, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "drone_swarm_binding.pyx":241
+  /* "drone_swarm_binding.pyx":249
  *     cdef np.ndarray _get_rewards(self):
  *         cdef np.ndarray[np.float32_t, ndim=1] rewards = np.empty(
  *             self.n_drones, dtype=np.float32             # <<<<<<<<<<<<<<
  *         )
  *         cdef Py_ssize_t count = self.n_drones
 */
-  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->n_drones); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyLong_From_int(__pyx_v_self->n_drones); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __Pyx_GetModuleGlobalName(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_np); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_float32); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 241, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_float32); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_6);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __pyx_t_7 = 1;
@@ -8073,39 +8129,39 @@ static PyArrayObject *__pyx_f_13drone_swarm_c_12CyDroneSwarm__get_rewards(struct
   #endif
   {
     PyObject *__pyx_callargs[2 + ((CYTHON_VECTORCALL) ? 1 : 0)] = {__pyx_t_2, __pyx_t_3};
-    __pyx_t_5 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 240, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_MakeVectorcallBuilderKwds(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 248, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
-    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_6, __pyx_t_5, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 240, __pyx_L1_error)
+    if (__Pyx_VectorcallBuilder_AddArg(__pyx_mstate_global->__pyx_n_u_dtype, __pyx_t_6, __pyx_t_5, __pyx_callargs+2, 0) < (0)) __PYX_ERR(0, 248, __pyx_L1_error)
     __pyx_t_1 = __Pyx_Object_Vectorcall_CallFromBuilder((PyObject*)__pyx_t_4, __pyx_callargs+__pyx_t_7, (2-__pyx_t_7) | (__pyx_t_7*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET), __pyx_t_5);
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 240, __pyx_L1_error)
+    if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 248, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
   }
 
-  /* "drone_swarm_binding.pyx":240
+  /* "drone_swarm_binding.pyx":248
  * 
  *     cdef np.ndarray _get_rewards(self):
  *         cdef np.ndarray[np.float32_t, ndim=1] rewards = np.empty(             # <<<<<<<<<<<<<<
  *             self.n_drones, dtype=np.float32
  *         )
 */
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 240, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_mstate_global->__pyx_ptype_5numpy_ndarray))))) __PYX_ERR(0, 248, __pyx_L1_error)
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     if (unlikely(__Pyx_GetBufferAndValidate(&__pyx_pybuffernd_rewards.rcbuffer->pybuffer, (PyObject*)((PyArrayObject *)__pyx_t_1), &__Pyx_TypeInfo_nn___pyx_t_5numpy_float32_t, PyBUF_FORMAT| PyBUF_STRIDES, 1, 0, __pyx_stack) == -1)) {
       __pyx_v_rewards = ((PyArrayObject *)Py_None); __Pyx_INCREF(Py_None); __pyx_pybuffernd_rewards.rcbuffer->pybuffer.buf = NULL;
-      __PYX_ERR(0, 240, __pyx_L1_error)
+      __PYX_ERR(0, 248, __pyx_L1_error)
     } else {__pyx_pybuffernd_rewards.diminfo[0].strides = __pyx_pybuffernd_rewards.rcbuffer->pybuffer.strides[0]; __pyx_pybuffernd_rewards.diminfo[0].shape = __pyx_pybuffernd_rewards.rcbuffer->pybuffer.shape[0];
     }
   }
   __pyx_v_rewards = ((PyArrayObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "drone_swarm_binding.pyx":243
+  /* "drone_swarm_binding.pyx":251
  *             self.n_drones, dtype=np.float32
  *         )
  *         cdef Py_ssize_t count = self.n_drones             # <<<<<<<<<<<<<<
@@ -8115,16 +8171,16 @@ static PyArrayObject *__pyx_f_13drone_swarm_c_12CyDroneSwarm__get_rewards(struct
   __pyx_t_8 = __pyx_v_self->n_drones;
   __pyx_v_count = __pyx_t_8;
 
-  /* "drone_swarm_binding.pyx":244
+  /* "drone_swarm_binding.pyx":252
  *         )
  *         cdef Py_ssize_t count = self.n_drones
  *         memcpy(rewards.data, self.env.rewards, count * sizeof(float))             # <<<<<<<<<<<<<<
  *         return rewards
 */
-  __pyx_t_9 = __pyx_f_5numpy_7ndarray_4data_data(((PyArrayObject *)__pyx_v_rewards)); if (unlikely(__pyx_t_9 == ((void *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 244, __pyx_L1_error)
+  __pyx_t_9 = __pyx_f_5numpy_7ndarray_4data_data(((PyArrayObject *)__pyx_v_rewards)); if (unlikely(__pyx_t_9 == ((void *)NULL) && PyErr_Occurred())) __PYX_ERR(0, 252, __pyx_L1_error)
   (void)(memcpy(__pyx_t_9, __pyx_v_self->env.rewards, (__pyx_v_count * (sizeof(float)))));
 
-  /* "drone_swarm_binding.pyx":245
+  /* "drone_swarm_binding.pyx":253
  *         cdef Py_ssize_t count = self.n_drones
  *         memcpy(rewards.data, self.env.rewards, count * sizeof(float))
  *         return rewards             # <<<<<<<<<<<<<<
@@ -8134,7 +8190,7 @@ static PyArrayObject *__pyx_f_13drone_swarm_c_12CyDroneSwarm__get_rewards(struct
   __pyx_r = ((PyArrayObject *)__pyx_v_rewards);
   goto __pyx_L0;
 
-  /* "drone_swarm_binding.pyx":239
+  /* "drone_swarm_binding.pyx":247
  *         return obs
  * 
  *     cdef np.ndarray _get_rewards(self):             # <<<<<<<<<<<<<<
@@ -8573,15 +8629,15 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   __pyx_vtable_13drone_swarm_c_CyDroneSwarm._get_obs = (PyArrayObject *(*)(struct __pyx_obj_13drone_swarm_c_CyDroneSwarm *))__pyx_f_13drone_swarm_c_12CyDroneSwarm__get_obs;
   __pyx_vtable_13drone_swarm_c_CyDroneSwarm._get_rewards = (PyArrayObject *(*)(struct __pyx_obj_13drone_swarm_c_CyDroneSwarm *))__pyx_f_13drone_swarm_c_12CyDroneSwarm__get_rewards;
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_13drone_swarm_c_CyDroneSwarm = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_13drone_swarm_c_CyDroneSwarm_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_13drone_swarm_c_CyDroneSwarm)) __PYX_ERR(0, 77, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_13drone_swarm_c_CyDroneSwarm_spec, __pyx_mstate->__pyx_ptype_13drone_swarm_c_CyDroneSwarm) < (0)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_13drone_swarm_c_CyDroneSwarm = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_13drone_swarm_c_CyDroneSwarm_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_13drone_swarm_c_CyDroneSwarm)) __PYX_ERR(0, 81, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_13drone_swarm_c_CyDroneSwarm_spec, __pyx_mstate->__pyx_ptype_13drone_swarm_c_CyDroneSwarm) < (0)) __PYX_ERR(0, 81, __pyx_L1_error)
   #else
   __pyx_mstate->__pyx_ptype_13drone_swarm_c_CyDroneSwarm = &__pyx_type_13drone_swarm_c_CyDroneSwarm;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_13drone_swarm_c_CyDroneSwarm) < (0)) __PYX_ERR(0, 77, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_13drone_swarm_c_CyDroneSwarm) < (0)) __PYX_ERR(0, 81, __pyx_L1_error)
   #endif
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount((PyObject*)__pyx_mstate->__pyx_ptype_13drone_swarm_c_CyDroneSwarm);
@@ -8591,10 +8647,10 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate->__pyx_ptype_13drone_swarm_c_CyDroneSwarm->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_mstate->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_vtabptr_13drone_swarm_c_CyDroneSwarm) < (0)) __PYX_ERR(0, 77, __pyx_L1_error)
-  if (__Pyx_MergeVtables(__pyx_mstate->__pyx_ptype_13drone_swarm_c_CyDroneSwarm) < (0)) __PYX_ERR(0, 77, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm, (PyObject *) __pyx_mstate->__pyx_ptype_13drone_swarm_c_CyDroneSwarm) < (0)) __PYX_ERR(0, 77, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_13drone_swarm_c_CyDroneSwarm) < (0)) __PYX_ERR(0, 77, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_mstate->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_vtabptr_13drone_swarm_c_CyDroneSwarm) < (0)) __PYX_ERR(0, 81, __pyx_L1_error)
+  if (__Pyx_MergeVtables(__pyx_mstate->__pyx_ptype_13drone_swarm_c_CyDroneSwarm) < (0)) __PYX_ERR(0, 81, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm, (PyObject *) __pyx_mstate->__pyx_ptype_13drone_swarm_c_CyDroneSwarm) < (0)) __PYX_ERR(0, 81, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_13drone_swarm_c_CyDroneSwarm) < (0)) __PYX_ERR(0, 81, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -9076,170 +9132,170 @@ __Pyx_RefNannySetupContext("PyInit_drone_swarm_c", 0);
 */
   __pyx_t_3 = __pyx_f_5numpy_import_array(); if (unlikely(__pyx_t_3 == ((int)-1))) __PYX_ERR(0, 13, __pyx_L1_error)
 
-  /* "drone_swarm_binding.pyx":165
+  /* "drone_swarm_binding.pyx":173
  *         self.cfg.victim_max_dist_from_base_alt = float(config.victim_max_dist_from_base_alt)
  * 
  *     def reset(self, seed=None):             # <<<<<<<<<<<<<<
  *         if seed is not None:
  *             drone_swarm_seed(&self.env, <uint64_t>seed)
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_3reset, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_reset, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_3reset, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_reset, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
   __Pyx_CyFunction_SetDefaultsTuple(__pyx_t_2, __pyx_mstate_global->__pyx_tuple[0]);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_reset, __pyx_t_2) < (0)) __PYX_ERR(0, 165, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_reset, __pyx_t_2) < (0)) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "drone_swarm_binding.pyx":171
+  /* "drone_swarm_binding.pyx":179
  *         return self._get_obs()
  * 
  *     def step(self, actions):             # <<<<<<<<<<<<<<
  *         cdef np.ndarray[np.float32_t, ndim=2, mode="c"] actions_c
  *         actions_c = np.asarray(actions, dtype=np.float32)
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_5step, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_step, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 171, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_5step, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_step, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[1])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_step, __pyx_t_2) < (0)) __PYX_ERR(0, 171, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_step, __pyx_t_2) < (0)) __PYX_ERR(0, 179, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "drone_swarm_binding.pyx":204
+  /* "drone_swarm_binding.pyx":212
  *         return float(self.env.connected_count) / float(self.env.cfg.n_drones)
  * 
  *     def get_delivered_count(self):             # <<<<<<<<<<<<<<
  *         return int(self.env.delivered_count)
  * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_7get_delivered_count, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_get_delivered_count, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_7get_delivered_count, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_get_delivered_count, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_get_delivered_count, __pyx_t_2) < (0)) __PYX_ERR(0, 204, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_get_delivered_count, __pyx_t_2) < (0)) __PYX_ERR(0, 212, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "drone_swarm_binding.pyx":207
+  /* "drone_swarm_binding.pyx":215
  *         return int(self.env.delivered_count)
  * 
  *     def get_confirmed_count(self):             # <<<<<<<<<<<<<<
  *         return int(self.env.confirmed_count)
  * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_9get_confirmed_count, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_get_confirmed_count, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 207, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_9get_confirmed_count, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_get_confirmed_count, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 215, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_get_confirmed_count, __pyx_t_2) < (0)) __PYX_ERR(0, 207, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_get_confirmed_count, __pyx_t_2) < (0)) __PYX_ERR(0, 215, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "drone_swarm_binding.pyx":210
+  /* "drone_swarm_binding.pyx":218
  *         return int(self.env.confirmed_count)
  * 
  *     def get_connected_fraction(self):             # <<<<<<<<<<<<<<
  *         return float(self.connected_fraction)
  * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_11get_connected_fraction, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_get_connected_fract, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 210, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_11get_connected_fraction, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_get_connected_fract, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_get_connected_fraction, __pyx_t_2) < (0)) __PYX_ERR(0, 210, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_get_connected_fraction, __pyx_t_2) < (0)) __PYX_ERR(0, 218, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "drone_swarm_binding.pyx":213
+  /* "drone_swarm_binding.pyx":221
  *         return float(self.connected_fraction)
  * 
  *     def get_step_count(self):             # <<<<<<<<<<<<<<
  *         return int(self.env.step_count)
  * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_13get_step_count, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_get_step_count, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 213, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_13get_step_count, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_get_step_count, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 221, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_get_step_count, __pyx_t_2) < (0)) __PYX_ERR(0, 213, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_get_step_count, __pyx_t_2) < (0)) __PYX_ERR(0, 221, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "drone_swarm_binding.pyx":216
+  /* "drone_swarm_binding.pyx":224
  *         return int(self.env.step_count)
  * 
  *     def get_explored_cells(self):             # <<<<<<<<<<<<<<
  *         return int(self.env.explored_global_count)
  * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_15get_explored_cells, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_get_explored_cells, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 216, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_15get_explored_cells, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_get_explored_cells, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_get_explored_cells, __pyx_t_2) < (0)) __PYX_ERR(0, 216, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_get_explored_cells, __pyx_t_2) < (0)) __PYX_ERR(0, 224, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "drone_swarm_binding.pyx":219
+  /* "drone_swarm_binding.pyx":227
  *         return int(self.env.explored_global_count)
  * 
  *     def get_new_delivered(self):             # <<<<<<<<<<<<<<
  *         return int(self.env.last_new_delivered)
  * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_17get_new_delivered, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_get_new_delivered, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 219, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_17get_new_delivered, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_get_new_delivered, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[7])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_get_new_delivered, __pyx_t_2) < (0)) __PYX_ERR(0, 219, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_get_new_delivered, __pyx_t_2) < (0)) __PYX_ERR(0, 227, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "drone_swarm_binding.pyx":222
+  /* "drone_swarm_binding.pyx":230
  *         return int(self.env.last_new_delivered)
  * 
  *     def get_new_confirmed(self):             # <<<<<<<<<<<<<<
  *         return int(self.env.last_new_confirmed)
  * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_19get_new_confirmed, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_get_new_confirmed, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_19get_new_confirmed, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_get_new_confirmed, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[8])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_get_new_confirmed, __pyx_t_2) < (0)) __PYX_ERR(0, 222, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_get_new_confirmed, __pyx_t_2) < (0)) __PYX_ERR(0, 230, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "drone_swarm_binding.pyx":225
+  /* "drone_swarm_binding.pyx":233
  *         return int(self.env.last_new_confirmed)
  * 
  *     def get_obs_size(self):             # <<<<<<<<<<<<<<
  *         return int(self.obs_size)
  * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_21get_obs_size, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_get_obs_size, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 225, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_21get_obs_size, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_get_obs_size, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_get_obs_size, __pyx_t_2) < (0)) __PYX_ERR(0, 225, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_get_obs_size, __pyx_t_2) < (0)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "drone_swarm_binding.pyx":228
+  /* "drone_swarm_binding.pyx":236
  *         return int(self.obs_size)
  * 
  *     def get_num_drones(self):             # <<<<<<<<<<<<<<
  *         return int(self.n_drones)
  * 
 */
-  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_23get_num_drones, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_get_num_drones, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 228, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_13drone_swarm_c_12CyDroneSwarm_23get_num_drones, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_CyDroneSwarm_get_num_drones, NULL, __pyx_mstate_global->__pyx_n_u_drone_swarm_c, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 236, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   #if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX >= 0x030E0000
   PyUnstable_Object_EnableDeferredRefcount(__pyx_t_2);
   #endif
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_get_num_drones, __pyx_t_2) < (0)) __PYX_ERR(0, 228, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_13drone_swarm_c_CyDroneSwarm, __pyx_mstate_global->__pyx_n_u_get_num_drones, __pyx_t_2) < (0)) __PYX_ERR(0, 236, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "(tree fragment)":1
@@ -9332,14 +9388,14 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "drone_swarm_binding.pyx":165
+  /* "drone_swarm_binding.pyx":173
  *         self.cfg.victim_max_dist_from_base_alt = float(config.victim_max_dist_from_base_alt)
  * 
  *     def reset(self, seed=None):             # <<<<<<<<<<<<<<
  *         if seed is not None:
  *             drone_swarm_seed(&self.env, <uint64_t>seed)
 */
-  __pyx_mstate_global->__pyx_tuple[0] = PyTuple_Pack(1, Py_None); if (unlikely(!__pyx_mstate_global->__pyx_tuple[0])) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[0] = PyTuple_Pack(1, Py_None); if (unlikely(!__pyx_mstate_global->__pyx_tuple[0])) __PYX_ERR(0, 173, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[0]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[0]);
   #if CYTHON_IMMORTAL_CONSTANTS
@@ -9365,31 +9421,31 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 9; } index[] = {{1},{11},{105},{2},{1},{1},{25},{7},{23},{6},{2},{9},{27},{29},{38},{33},{31},{14},{27},{12},{12},{30},{32},{32},{35},{32},{31},{30},{30},{27},{25},{27},{18},{17},{9},{20},{7},{9},{7},{17},{18},{8},{8},{6},{6},{6},{6},{18},{6},{9},{18},{1},{9},{13},{2},{5},{5},{3},{14},{5},{7},{9},{8},{19},{22},{19},{18},{17},{17},{14},{12},{14},{12},{4},{13},{5},{9},{8},{9},{20},{10},{8},{9},{8},{13},{13},{2},{5},{3},{13},{11},{3},{11},{14},{12},{10},{6},{16},{16},{14},{12},{9},{7},{19},{17},{18},{7},{10},{17},{13},{5},{7},{4},{4},{12},{10},{12},{19},{15},{12},{4},{9},{8},{5},{6},{25},{29},{25},{29},{15},{10},{49},{260},{13},{15},{13},{9}};
-    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (1262 bytes) */
-const char* const cstring = "BZh91AY&SY\0043\324\004\000\000W\377\377\365\375\374\367\177}\177e\377\341\376\032\277\357\377\370@@@@@@@@@@@@@\000@\000P\004\215\033@QJP\030\303I\24515=M\246\223\311\242i\220\323\324\032\000\032\000\320\320\000\000\003F\231\250i\200\324\022\232@\215#L\021\rL@&\206!\243@\000\000\000\000\000\001\247\241\003F\223H\320\201\0106M\032CF\232\006\206\200\030\000\020\030CL\2004\031\244\01644h\320h\3204\000\000\000\0002\000\000\0004\006@\001\207\032\0324h4h\032\000\000\000\000\031\000\000\000\032\003 \000\310\\\200~\326\037\225\355&\322\227.\035\270\014\356\335\200,\000@DW\033X\312\020 \202\010\216\271D\026+\264\302\344\370rp\315:\014Ve\244\213J\007\353\341\230\203\343\366E\202\010_g\207\340:\036;\000\322o\2344\233\346\371H\300\016\003\220\324\225\024t*\201\246\302!\236\372VQS\202\205\032(\007}\251\355\374\034\216$\232H\006\2260u\t\246\304n&\341_\251\314\333\201&\243\263\217\222\022\265YuU\324A/\232H3Nr\330m\244Ey\023f\204,\221M|\002\"\275\256\232W\365\023\032\234_Z\275I\n\261:s\001\2531\031\246O\363\255\261k\017\313[\357m\237G\316\260\014Q\207y\330\336u\2342 \245\375'\346\2008\213mS\265GY\247\204\327\232\002L\025P\310\336J\036*9HP\240\210\270p\245\002\224\240\207\245\326\245DDKU\226\024i\263\206\266\224\237\262\250.\233\263\311k\025*\010tt\220]muM\253c\263\316\252q\rW\t\354\250\244B\226\275\216Job\215\177\307o\306Y@\346r\376\366\243\033\232\363\313\216\006\232\016 \016k\316;7d2\317F0\317/\327\r\204\202M\321:\270\344`\233\006(\374\301x\317\320\355n\263*\220\2013_\010V\r\311\010O\227\206\010\266\207u\r$\334\364\327Tt\206\255\205\200\200\264g\210f85\311\271\004\352|S\013\221\021K\254\354Z*I\266M\342\250\354<x\355\200i\332\327\3257\362\207}tr\317Y\2563\300f\234o\037\234\353rFR\212JpTC\031\346\202\006\021i\000\252\252P\225V%\232\323\001=k\364\306\252\"\220D\251\256\255\322\352h\374<\3514\021\263\rN\343>X\273DD\336y:\206\360\022\030L\220Hh\227r\252\243\257\237\026\326\312\202\322\254\305\302\265\203\266\270\241\324\\v-\323Y\251'V\256$\223\252OW%\226\347[\325h\341\016\303\341\301""\335\356a\300\301\263\"\314\0046\241\"\241\272\217r\250\2062\263a\300\262\251J\0014]P`\344\315\n\356'\241\020\232\242\006]\032\355GR\376Z\356 \333\033m\264\200\306U\220lj\221m\232\231\233\234\010\330\3620\275\211\031\305\006\253ZR\033I\026\253DH\245\215l\032\034V\r\303\026\260\022\023go6\261\006\035\372\324\207\262\265\347\274i\221!\020\2528\027\02052p\312\035\005E\0203$\230u\004\321\240\317\003VY\317\375P-\332\373p|ja-\272;\034\005|6IA\206;1\030\202a\002\331\0275\006\203\221\016\236\302\003_\245\206\275\230\351\223\265\007;\004\307\244\203\237b\201\016e2xP\"\001\026\365\341pu: \264enV\036\355\253%\211y\262\334\325!\243ms2\251\223\02214\216q\230\253E\"#6\364 6\232\230\351\014\333\000\2316\260r\316\336\021\306x\361\306R\327\321\004\364\316w`FI\266\347\352\341Z\023\265\304\215\260/\344R\267\rv\006\033g\215\262\206\254oL\320 \031\222D7A\262\207\367\260x\230\365\317\023\033\006\350)p5\235\t\020\335=&\003\202f:\316\303\347k\020\2602v/\251\tr\005\321\243\023M\240\246\230\242\\9\022z\323S\210*_\256\334\271\375\370\205\225!do\337\201\300\233\237\270\r\350\274\230\316R\362\206<\021\244\3234\262\301o,i\013\305\210\036h\3153\202\245{\234\274\353$]\007D\006so\021\330\360Fk$m\214\312\306&\001\r%\037\035\220&zT\301\243g\317\320\275}\200\356\335\260\340\2459\021\003\271_\002\311\331j\325x\230u\016\253\342N>\277\333\350+x!\276\370\341\317\332b\3357\177\207\231\212\334U\351|\313\225\2466G,\371E(\034\221c\"\r\376\014\222\014\213o=q\221x&\364\314\273.\\\033\257\373\354H\236\363\237qX\240\303\013\365\301\213\211\307\003\313+\341\014E\317\313{\356bc0bf\311h\317\377\027rE8P\220\0043\324\004";
-    PyObject *data = __Pyx_DecompressString(cstring, 1262, 2);
+    const struct { const unsigned int length: 9; } index[] = {{1},{11},{105},{2},{1},{1},{25},{7},{23},{6},{2},{9},{27},{29},{38},{33},{31},{14},{27},{12},{12},{30},{32},{32},{35},{32},{31},{30},{30},{27},{25},{27},{18},{17},{9},{20},{7},{9},{7},{17},{18},{8},{8},{6},{6},{6},{6},{18},{6},{9},{18},{1},{9},{13},{2},{5},{5},{3},{14},{5},{7},{9},{8},{19},{22},{19},{18},{17},{17},{14},{12},{14},{12},{4},{13},{5},{9},{8},{9},{20},{10},{8},{9},{8},{13},{13},{2},{5},{3},{13},{11},{15},{15},{3},{11},{14},{12},{10},{6},{10},{10},{16},{16},{14},{12},{9},{7},{19},{17},{18},{7},{10},{17},{13},{5},{7},{4},{4},{12},{10},{12},{19},{15},{12},{4},{9},{8},{5},{6},{25},{29},{25},{29},{15},{10},{49},{260},{13},{15},{13},{9}};
+    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (1272 bytes) */
+const char* const cstring = "BZh91AY&SYg\r\333\220\000\000W\377\377\365\375\374\367\177}\177e\377\341\376\032\277\357\377\370@@@@@@@@@@@@@\000@\000P\004\255\033@\210$\000\300j4\247\246\246\247\251\215G\223D\323A\247\250=@\006\200\032\032\000\000\000h\3235\r0\321\250%4\200\232F\232h\021\244\364\200\217H\304\006\200\000\000\000\000\000\003OD\006!\020\230\203HL\3114\365\000\000\000\006\200\000\000\000\000\003M\001\306\206\215\032\r\032\006\200\000\000\000\006@\000\000\006\200\310\0000\343CF\215\006\215\003@\000\000\000\003 \000\000\003@d\000\031\023\220\017\332\303\362\275\244ZM\273e\004$W.B\024\0008<\206\332Q\032 09\201\344\256h\303\005\367\240e\247J\251\007zH\324wU\260\304\200\374z\370\304{\276eA\021\256\362\217\250\221mk\000\220O\224T\023\344\371\245_\206\301JfZR\340X\342{\007\212[\350RV(hQ\242pW\272\236\337\301\271\"Y \3002\242\005P\314\264/8\232\211|\236f\233\010$\270\361rDZ\254w\026]'2\371\2469\0223\225\206\322\004\207O:p:\220)\257~c\032\356\272)_TE\3459\036\265z\220\026a\347\230\014\327H\3152\177\225\256\213T\374s\276\366\321\363\374\313\020\322\214{\316\306\363\231\303\"\n_\312~x\r\246\262#\301\275\275zb\214\317\002\247\t\026\251\263\033\306Fh\177\030 \203\t\310HE\002\224\240\207\245\367%DDI\263V\245\032l\341\235\245'\355*\n\367\352\241\321\t\254\342\255\340\207GQ\006k_\236mj\273<\354\247\020\317x\236\266\024\210R\347\253\222\233\325F\337\333\267\341,\240s\271\207{1\225\355\201\345G\023V\261\304\001\317\201\320\256\334\206Z\265\261\216\254\277Lt\022\032M\323;\3559\030\246\305\212?8`3\364\274]\265\312\304 L\317\304\026\203p\204'\313\305\004]A\273\250i&\350\246\276\303\2445\252T\020\027\014\361\rC\203^\233\200\235O\216az\")s;\027\n\2228&\320\250bZ4\352p3\270v\355\306M@?\253gv;E\261< \231\305\360\331Yh$.\224$\247\010\226\2354A\016&\365\000\222LY\222vg|N\0056\353\327;/L\3016\032\357W-\266sh\345\221t0a\261\230\026\273\023\030\010M\247s'\310\000\220\302d\202CD\277\225Y\035\215\\{\033*\013]\231\213\305s\007mq\303\254\272\025[f\265)'W.4\223\252O7\n\335\252\330+Q\302\035\227\307ww\271\216\346\r""\031\025\304Cf\023&~\r.L\323 \367c3D\303\024\327\260V\222Lj\353\3228H\255\354\316\366\230x\224k\363\035l9m\264\203hm\227R\003\031ZA\241\254E\264ffn@F\207\221\213`$%#TP\331\256iHmr.Mp\310\221J\265\320g\322\244\035\0304\200\220G\035Z\026\260h\344[X\226\025~\234\315]L\300\226F@e!\353\252A\320\221\0261!\312H\206`\316\214P\0138\262\354s\326N)\317l\374_M\214e\263[\261\270kx,\222\203\014v\2421\004\302\005\242,\346`\3269\020\352\350 6\032\352g\321\247]\272\332\242DW\034Z\336\264c\210\261\r\227V\370\330\2309\277\333\217!\315\325\036\023\272\271\367\341\242\2344\305\340\357J\345\265\257!\255\2669\254\262d\304\214\215\221\327\031\212\324R\"3oB\003i\231\216\240\315\240bd\332\243\225\355\343\0353\323\320\214\245\237\246\t\351\252w\342FI\266j\3651\265\t\334\342F\310\030pR\273\034\365\014vOM\322\206m8&h\020\rD\221\r\260l\241\375h\036&\236\301\341i\250\335%-\315^\022!\266z\346\003\202f9\235\207\325s\020\250d\354ab\022\340\027\306\214M6\261M1D\270\262$\366\246g\020X\303=\331t\177\330\205lB\261\303~&\344\335\035\240oF\004\306r\230\0244\356\215&\231\245\226+yV\220\2748\201\346\014\3237X\267s\227\222\262/\203\241A\204\221\263\214\354\365\306j\310\331\247\n9\300+\006\331\337\340\034>\252\2304l\371\372\033\327\330\016\355\333\r\212O\0360s+\340Y+,\332\257\033\016\241U|K\307\327\373|\346\203\0045\337$7\373LAM\317\341\346B\267\025z_3fO\033#\227Na\246\002\226,dC\277\301\222a\034@\353\266\343\213\241;\247\002\344\331\260\356\277\357\261+M\326\376\3441A\206\027\353\207\027\023\216\027Tt\266&\237{A0$\226%\224\020D\247\220\264_\361w$S\205\t\006p\335\271\000";
+    PyObject *data = __Pyx_DecompressString(cstring, 1272, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (1114 bytes) */
-const char* const cstring = "x\332uUMo\333F\020\255\n\303UR\243\215\022\003M\212\266\240[\267\260[C\250c\327H\200\242\255j\367\303\227$\216\235K\003c\260Z\016\245EH.\265\273\224\304\366\342\243\216<\362\250\243\216:\372\350c\2179\352\350\237\320\237\320Y\352\303\222\251\010\020\271\273ov\366\315\274\331au\307\331\333\336q\032\3228[/\004\177\343\213\260\341H\317\321F\305\3348\001\006uT\332\3211o:\214\336\350{U\3565v\362\001\206m'\210\265q\352\350`7\362\005\027\306O\034\205\255\030\265A\327\351\010\323t~a\261\221\020Y\347\270u\246b\244\363\266\177f\334\010\031\352\361\376&k\243\243\233,Bg\313\025\232\325}t\225\014\021t\207\251\000\352\"t\211W5J\272\030Z\260\301\205\036\217\334\020rK=#\"B\347\365\367;\316\301\376y\010mA\247\004\005l\367\361\223\3630\016\242\244\312\245\302j\020\373F0\245X\342xL\220O\307HG\004\221Tf\316*\016\030\005s\333@\3265\204\020\"S\024\361\355s\236\234\377Hy$\346Z\306\212\343O\035\251|\027\264\370\033g\226\221\324\302\2106\036\302\341\363gg\307\177\274z\376\352\36409\262!\235\332\330\347\307U\000\205n\314\021xb\2322\004\270\205j4\3320\363\016\274\201\006\270\014=\241\002ti\024\207f\031\036\"'\351\300Sc\205\n&.\372\304W\275\323\205-\004\231\303\350\373\272\000\207\330\271a\261\024\235\035PD\343`\242v\001\262:\330\304\026\000\252\303h\tS\222\013\027W\254\341oa\373\320rk\000\274H\272\364?\242\002\202g\3305/\321\233T\354\344\005\234\351\274f\230\246p\214h\3042\236.$!\027\322V\215\214\215 \266u\246\021Hi\016\030\242j$\034\204\353#\207@\266\351\2519\0139P\235\"\247\333\207 B0\224|\2543\376&\317Tc\226\257\242<\356,[\363\027\206\273\3065I\204\030D&\241[\272\250\211\347\263\006=$3{\217=%)\2476J\360b\242\001K\252dya,\251\205\242\374\005\305\013\"/\352:/\345\242z9\263quS\206<\t\202$\230fX\030\014t0u\n\0200J\"=\273\271\003\035\210I\227\240\033\0221\305,}\202\245\033\373\344m\332Af\355\202\226X`\201y\342\013\244\303(o\014\304t\341\376[\252A\036J\024\311\010\200\372\025L(\333a\333\330\216\005\364k\305\314\037\237\241\200E\221\222\2147U\276YMO\004\305\\\021\353\2719\222\264\256\232*!\332""\302$\212\244\323\0215h\nHMS\257\300\243\204\271\223\027Y\264\205\213PO\200Ld\207\n\360FL\225\027_N\177\022<\255`\250q\326i\240\320sf\013\330\265C\272FcfZ#\272\366\263\220\367\241I\ni\344\322\315\241\006;\327\235`I\247\322\021\353L\210\330\3332\236\216S`%\234\325$\200\241D\003\264\255\272m\346\323\207fL<W\233\262a /i\353\344\235\0000\337LA[\032Kw\025\200\205]] \325\3527\r\375\355\312\243\2542*\177\330\373!\375 m\215\326>\313j\331I\346\366\277\031\334\035n\214\312\004f\033\331~\326\032\225?\356\231\364iV\273\250]\227\327\323_\323f\306\262d\260:\250\017Kv\373\323\364w2\334\313x\177\275\377\327@\017\267/\017\256*W_]\235\376[\032\255\335O\277\315j\243{\225\321\203O\322\177\372\333\203\203ae\2709\024\227\355\253\223+vM\273\367{I\266J\016\211\300\303\354\375\267\237\356\014j\203\327\227\253\227\365\253\322u\371aV\"\026\233\231\327\377sp<<\031\225?\352\271\351v\266;*\337O7\323\240\277{]\2763Z[O\017\323V\266\222\035\365\351\300G\331\003\212\343\214\270\234\334\232|\331\377\272\337\032\254\014j\243\265\317\263\323~\211V\317\006\225[\223/(\214J\177\263\357\0166\376[}\357\316\275^\234\036\223\203\361\322\326p\343\242f\323\241\323\215t?m\315OL\266;\236\306i-=\313*\027\245\321\312\335\336w\351\311\377\t\322u\204";
-    PyObject *data = __Pyx_DecompressString(cstring, 1114, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (1128 bytes) */
+const char* const cstring = "x\332uU;o\033G\020\216\002A\241\035!1m\001\261\203$8%J %\202\020Y\212`\003A\022F\312C\215mYr\023C\030,\367\346\310\205\357v\217\273{$/iT\262\274\362J\226,Y\252T\231\322%K\375\204\374\204\314\036\037\"E\232\000\357fwfg\277\231ofng\333\333\333\332\366j\312z\233/\004\177\023\nY\363T\340\031\253\023n\275\010\243*j\343\231\204\327=Fo\014\203\035\036\324\266\013\001e\323\213\022c\275*z\330\216C\301\205\rSOc#Ac\321\367Z\302\326\275_Xb\025\304\3169n\236\351\004\351\276\255\237\031\267BI3<_gM\364L\235\305\350m\372\302\260j\210\276V\022\301\264\230\216\240*\244O\270v\342\264\215\322)k\\\230\241\344K(,\315\004\210\220\336\353\357\267\275\203\375s\tMA\267Ds\272\335\307O\316e\022\305\351\016W\032w\242$\264\202i\315R/`\202|zVy\"\212\225\266SVI\304(\230\333\006\252j@\202D\246)\342\333\367<9\377\221\362H\310\215J4\307\237ZJ\207>\030\3617N,ce\204\025M<\204\303\347\317\316\216\377x\365\374\325\351az\344B:u\261O\313;\000\032\375\204#\360\324\326\225\004\270\2455h\215e\366\035\372\032Z\340J\006BG\350\223\224H\273H/\221\023u\020\350!Cs&>\206\204W\277\323\205+\004U\2501\014\315\234Zb\353\006\305B\355\344\202ym\022\215\330\236S9\036\\b\347\024T\207\361\002\244D\027\316\3568\303\337d\363\320a\253\001\274H\333\364?\242\002\202g\330\266/1\030U\354\350\005\234\231\242f\230\241p\254\250%*\031o\244\222\013\345\252F%V\020\332*3\010\3044\007\224\250k)\007\341\207\310!RMz\032\316$\007\252S\344\324}\010B\202\245\344c\225\3617E\246j\223|\315\323\343O\2625\3350\334\267\276Mc\304(\266)u\351,'A\310j\364P\314\356=\016\264\242\234\272(!H\010\006,\250\222\305\205\261\240\026\346\351\237c|\216\344Y^\247\251\234e\257@6\254n\312P\240@\020\005\343\014\013\213\221\211\306N\001\"FI\244g\273p`\"1\232\022\324!1\323\314\301'\265\362\223\220\274\215'\310d\\\320\026\213\234b\032\370\014h\031\027\203\201\220\316\364\277\203\032\025\241\304S\242\3031\263\0242\246\027\3204\203Q@NlZ7\317\200~\215\204\205C\004\032X\034k\305x]\027\016\206O\347p,\t\251\307\030A3_$fj\215T\014\276\036s'\232\302\246\232\31061\215tJ\201\036""\223\245!\240\024\373\243\027Y4\205\217PM\201LT\213J\366\206~]\224k\021\360(]\264\203\322\340d6\301\334\224\232l`\333\211\324xCd\306 \372\356CRL\256Q\322I\362\251\327h$O\3153X0\333L\314Z# \256\277\206\313a\n\034\351\223*\006\260D\r@\323\245\255\311B\3724\r\201\027\365A\331\260P4\201s\362N\005\260\320\216\225\256\230\026\236\232S\314\234j\0031Y\275\371\004\274]~\224\227\007\245\017;?d\037d\215\301\352gy%?\311\375\3567\275\273\375\365A\211\224\371z\276\2377\006\245\217;6{\232W.*\327\245\265\354\327\254\236\263<\355\255\364\252\375%w\374i\366;\031\356\345\274\273\326\375\253g\372[\227\007W\345\253\257\256N\377]\032\254\336\317\276\315+\203{\345\301\203O\262\177\272[\275\203~\271\277\321\027\227\315\253\223+vM\247\367;i\276B\016\t\300\303\374\375\267\237n\367*\275\327\227+\227\325\253\245\353\322\303|\211Pl\344A\367\317\336q\377dP\372\250\343g[\371\356\240t?\333\310\242\356\356u\351\316`u-;\314\032\371r~\324\245\013\037\345\017(\2163\302rrk\361e\367\353n\243\267\334\253\014V?\317O\273K\264{\326+\337Z|Aa\224\273\033]\277\267\376\337\312{w\356u\222\354\230\034\014\2676\373\353\027\025\227\016\223\255g\373Ycza\363\335\3412\311*\331Y^\276X\032,\337\355|\227\235\374\017O\006\212,";
+    PyObject *data = __Pyx_DecompressString(cstring, 1128, 1);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (2223 bytes) */
-const char* const bytes = "., 3), got (Pickling of struct members such as self.cfg,self.env must be explicitly requested with @auto_pickle(True), )?actions must have shape (disabledrone_swarm_binding.pyxenablegcisenabledn_drones must be in [0, 64]n_victims must be in [0, 128]numpy.core.multiarray failed to importnumpy.core.umath failed to importobs_n_nearest must be in [0, 8]<stringsource>world_size must be positiveC_CONTIGUOUSCyDroneSwarmCyDroneSwarm.__reduce_cython__CyDroneSwarm.__setstate_cython__CyDroneSwarm.get_confirmed_countCyDroneSwarm.get_connected_fractionCyDroneSwarm.get_delivered_countCyDroneSwarm.get_explored_cellsCyDroneSwarm.get_new_confirmedCyDroneSwarm.get_new_deliveredCyDroneSwarm.get_num_dronesCyDroneSwarm.get_obs_sizeCyDroneSwarm.get_step_countCyDroneSwarm.resetCyDroneSwarm.stepEnvConfig__Pyx_PyDict_NextRefactionsactions_casarrayascontiguousarrayasyncio.coroutinesbase_posc_energyc_idlec_movec_scanc_timecline_in_tracebackconfigconfirmedconnected_fractionddelivereddrone_swarm_cdtdtypeemptyenvexplored_cellsflagsfloat32from_dict__func__get_confirmed_countget_connected_fractionget_delivered_countget_explored_cellsget_new_confirmedget_new_deliveredget_num_dronesget_obs_sizeget_step_count__getstate__info_is_coroutineitemsm_deliver__main__max_stepsmin_drone_separation__module__n_dronesn_victims__name__new_confirmednew_deliverednpnumpyobsobs_n_nearestp_comm_droppop__pyx_state__pyx_vtable____qualname__r_approachr_commr_confirm_radiusr_confirm_rewardr_connectivityr_dispersionr_explorer_foundr_found_divide_by_nr_owner_connectedr_scan_near_victimr_sense__reduce____reduce_cython____reduce_ex__resetrewardsseedself__set_name__setdefault__setstate____setstate_cython__spawn_near_basespawn_radiusstept_confirm__test__v_maxvaluesvictim_max_dist_from_basevictim_max_dist_from_base_altvictim_min_dist_from_basevictim_min_dist_from_base_altvictim_mix_probworld_size\320\004\031\230\021\330\010\013\2105\220\007\220q\330\014\034\230A\230Q\230d\240&\250\n\260!\330\010\031\230\021\230!\2304\230q\330""\010\017\210t\2209\230A\200A\340\010\024\220B\220h\230a\230y\250\006\250b\260\001\330\010\013\2109\220F\230!\2303\230c\240\024\240Z\250s\260)\2706\300\021\300#\300S\310\001\330\014\022\220*\230A\330\020\021\330\023\027\220{\240)\2506\260\021\260$\260i\270v\300Q\300a\340\010\013\2104\210y\230\006\230a\230q\330\014\030\230\002\320\032,\250A\250[\270\006\270b\300\001\340\010\030\230\001\230\021\230$\230f\240H\250I\260Q\330\010\016\210d\220)\2301\330\010\022\220$\220m\2401\340\010\t\330\014\024\220C\220q\230\004\230D\240\001\330\014\031\230\023\230A\230T\240\024\240Q\330\014\031\230\023\230A\230T\240\024\240Q\330\014\"\240%\240q\250\004\250A\330\014\035\230S\240\001\240\024\240T\250\021\330\014\035\230S\240\001\240\024\240T\250\021\330\014\036\230c\240\021\240$\240d\250!\360\006\000\t\020\210u\220I\230T\240\021\240$\240d\250(\260!\200A\330\010\017\210s\220!\2204\220q\200A\330\010\017\210s\220!\2204\220t\2301\200A\330\010\017\210u\220A\220T\230\021\200\001\330\004\n\210+\220Q";
+    #else /* compression: none (2273 bytes) */
+const char* const bytes = "., 3), got (Pickling of struct members such as self.cfg,self.env must be explicitly requested with @auto_pickle(True), )?actions must have shape (disabledrone_swarm_binding.pyxenablegcisenabledn_drones must be in [0, 64]n_victims must be in [0, 128]numpy.core.multiarray failed to importnumpy.core.umath failed to importobs_n_nearest must be in [0, 8]<stringsource>world_size must be positiveC_CONTIGUOUSCyDroneSwarmCyDroneSwarm.__reduce_cython__CyDroneSwarm.__setstate_cython__CyDroneSwarm.get_confirmed_countCyDroneSwarm.get_connected_fractionCyDroneSwarm.get_delivered_countCyDroneSwarm.get_explored_cellsCyDroneSwarm.get_new_confirmedCyDroneSwarm.get_new_deliveredCyDroneSwarm.get_num_dronesCyDroneSwarm.get_obs_sizeCyDroneSwarm.get_step_countCyDroneSwarm.resetCyDroneSwarm.stepEnvConfig__Pyx_PyDict_NextRefactionsactions_casarrayascontiguousarrayasyncio.coroutinesbase_posc_energyc_idlec_movec_scanc_timecline_in_tracebackconfigconfirmedconnected_fractionddelivereddrone_swarm_cdtdtypeemptyenvexplored_cellsflagsfloat32from_dict__func__get_confirmed_countget_connected_fractionget_delivered_countget_explored_cellsget_new_confirmedget_new_deliveredget_num_dronesget_obs_sizeget_step_count__getstate__info_is_coroutineitemsm_deliver__main__max_stepsmin_drone_separation__module__n_dronesn_victims__name__new_confirmednew_deliverednpnumpyobsobs_n_nearestp_comm_dropp_comm_drop_maxp_comm_drop_minpop__pyx_state__pyx_vtable____qualname__r_approachr_commr_comm_maxr_comm_minr_confirm_radiusr_confirm_rewardr_connectivityr_dispersionr_explorer_foundr_found_divide_by_nr_owner_connectedr_scan_near_victimr_sense__reduce____reduce_cython____reduce_ex__resetrewardsseedself__set_name__setdefault__setstate____setstate_cython__spawn_near_basespawn_radiusstept_confirm__test__v_maxvaluesvictim_max_dist_from_basevictim_max_dist_from_base_altvictim_min_dist_from_basevictim_min_dist_from_base_altvictim_mix_probworld_size\320\004\031\230\021\330\010\013\2105\220\007\220q\330\014\034\230A\230Q\230d\240&""\250\n\260!\330\010\031\230\021\230!\2304\230q\330\010\017\210t\2209\230A\200A\340\010\024\220B\220h\230a\230y\250\006\250b\260\001\330\010\013\2109\220F\230!\2303\230c\240\024\240Z\250s\260)\2706\300\021\300#\300S\310\001\330\014\022\220*\230A\330\020\021\330\023\027\220{\240)\2506\260\021\260$\260i\270v\300Q\300a\340\010\013\2104\210y\230\006\230a\230q\330\014\030\230\002\320\032,\250A\250[\270\006\270b\300\001\340\010\030\230\001\230\021\230$\230f\240H\250I\260Q\330\010\016\210d\220)\2301\330\010\022\220$\220m\2401\340\010\t\330\014\024\220C\220q\230\004\230D\240\001\330\014\031\230\023\230A\230T\240\024\240Q\330\014\031\230\023\230A\230T\240\024\240Q\330\014\"\240%\240q\250\004\250A\330\014\035\230S\240\001\240\024\240T\250\021\330\014\035\230S\240\001\240\024\240T\250\021\330\014\036\230c\240\021\240$\240d\250!\360\006\000\t\020\210u\220I\230T\240\021\240$\240d\250(\260!\200A\330\010\017\210s\220!\2204\220q\200A\330\010\017\210s\220!\2204\220t\2301\200A\330\010\017\210u\220A\220T\230\021\200\001\330\004\n\210+\220Q";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
     PyObject **stringtab = __pyx_mstate->__pyx_string_tab;
     Py_ssize_t pos = 0;
-    for (int i = 0; i < 131; i++) {
+    for (int i = 0; i < 135; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyUnicode_DecodeUTF8(bytes + pos, bytes_length, NULL);
       if (likely(string) && i >= 19) PyUnicode_InternInPlace(&string);
@@ -9400,7 +9456,7 @@ const char* const bytes = "., 3), got (Pickling of struct members such as self.c
       stringtab[i] = string;
       pos += bytes_length;
     }
-    for (int i = 131; i < 137; i++) {
+    for (int i = 135; i < 141; i++) {
       Py_ssize_t bytes_length = index[i].length;
       PyObject *string = PyBytes_FromStringAndSize(bytes + pos, bytes_length);
       stringtab[i] = string;
@@ -9411,14 +9467,14 @@ const char* const bytes = "., 3), got (Pickling of struct members such as self.c
       }
     }
     Py_XDECREF(data);
-    for (Py_ssize_t i = 0; i < 137; i++) {
+    for (Py_ssize_t i = 0; i < 141; i++) {
       if (unlikely(PyObject_Hash(stringtab[i]) == -1)) {
         __PYX_ERR(0, 1, __pyx_L1_error)
       }
     }
     #if CYTHON_IMMORTAL_CONSTANTS
     {
-      PyObject **table = stringtab + 131;
+      PyObject **table = stringtab + 135;
       for (Py_ssize_t i=0; i<6; ++i) {
         #if CYTHON_COMPILING_IN_CPYTHON_FREETHREADING
         Py_SET_REFCNT(table[i], _Py_IMMORTAL_REFCNT_LOCAL);
@@ -9477,57 +9533,57 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 165};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 173};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_seed};
     __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_drone_swarm_binding_pyx, __pyx_mstate->__pyx_n_u_reset, __pyx_mstate->__pyx_kp_b_iso88591_5_q_AQd_4q_t9A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 171};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 179};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_actions, __pyx_mstate->__pyx_n_u_actions_c, __pyx_mstate->__pyx_n_u_obs, __pyx_mstate->__pyx_n_u_rewards, __pyx_mstate->__pyx_n_u_info};
     __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_drone_swarm_binding_pyx, __pyx_mstate->__pyx_n_u_step, __pyx_mstate->__pyx_kp_b_iso88591_A_Bhay_b_9F_3c_Zs_6_S_A_6_ivQa_4, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 204};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 212};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_drone_swarm_binding_pyx, __pyx_mstate->__pyx_n_u_get_delivered_count, __pyx_mstate->__pyx_kp_b_iso88591_A_s_4t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 207};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 215};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_drone_swarm_binding_pyx, __pyx_mstate->__pyx_n_u_get_confirmed_count, __pyx_mstate->__pyx_kp_b_iso88591_A_s_4t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 210};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 218};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_drone_swarm_binding_pyx, __pyx_mstate->__pyx_n_u_get_connected_fraction, __pyx_mstate->__pyx_kp_b_iso88591_A_uAT, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 213};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 221};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[5] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_drone_swarm_binding_pyx, __pyx_mstate->__pyx_n_u_get_step_count, __pyx_mstate->__pyx_kp_b_iso88591_A_s_4t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[5])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 216};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 224};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[6] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_drone_swarm_binding_pyx, __pyx_mstate->__pyx_n_u_get_explored_cells, __pyx_mstate->__pyx_kp_b_iso88591_A_s_4t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[6])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 219};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 227};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[7] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_drone_swarm_binding_pyx, __pyx_mstate->__pyx_n_u_get_new_delivered, __pyx_mstate->__pyx_kp_b_iso88591_A_s_4t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[7])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 222};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 230};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_drone_swarm_binding_pyx, __pyx_mstate->__pyx_n_u_get_new_confirmed, __pyx_mstate->__pyx_kp_b_iso88591_A_s_4t1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 225};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 233};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_drone_swarm_binding_pyx, __pyx_mstate->__pyx_n_u_get_obs_size, __pyx_mstate->__pyx_kp_b_iso88591_A_s_4q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 228};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 236};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[10] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_drone_swarm_binding_pyx, __pyx_mstate->__pyx_n_u_get_num_drones, __pyx_mstate->__pyx_kp_b_iso88591_A_s_4q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[10])) goto bad;
   }

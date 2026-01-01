@@ -18,6 +18,8 @@ class EnvConfig:
     n_drones: int = 8
     n_victims: int = 10
     r_comm: float = 15.0
+    r_comm_min: float = 0.0
+    r_comm_max: float = 0.0
     r_confirm_radius: float = 3.0
     r_sense: float = 15.0  # Slightly larger sense range
     t_confirm: int = 4
@@ -41,6 +43,8 @@ class EnvConfig:
     r_dispersion: float = 0.05  # NEW: reward for spreading out
     r_owner_connected: float = 0.0  # Bonus when deliver-owner is connected for confirmed victim
     p_comm_drop: float = 0.0  # Probability of comm drop per link per step
+    p_comm_drop_min: float = 0.0
+    p_comm_drop_max: float = 0.0
     min_drone_separation: float = 8.0  # Drones should stay this far apart
     max_steps: int = 800
     base_pos: Optional[Tuple[float, float]] = None
@@ -67,6 +71,14 @@ class EnvConfig:
             payload["r_owner_connected"] = cls().r_owner_connected
         if "p_comm_drop" not in payload:
             payload["p_comm_drop"] = cls().p_comm_drop
+        if "p_comm_drop_min" not in payload:
+            payload["p_comm_drop_min"] = cls().p_comm_drop_min
+        if "p_comm_drop_max" not in payload:
+            payload["p_comm_drop_max"] = cls().p_comm_drop_max
+        if "r_comm_min" not in payload:
+            payload["r_comm_min"] = cls().r_comm_min
+        if "r_comm_max" not in payload:
+            payload["r_comm_max"] = cls().r_comm_max
         if "victim_mix_prob" not in payload:
             payload["victim_mix_prob"] = cls().victim_mix_prob
         if "victim_min_dist_from_base_alt" not in payload:
@@ -109,6 +121,14 @@ class DroneSwarmEnv:
 
         self.step_count = 0
         L = self.cfg.world_size
+
+        if self.cfg.r_comm_max > self.cfg.r_comm_min > 0.0:
+            self.cfg.r_comm = float(self.rng.uniform(self.cfg.r_comm_min, self.cfg.r_comm_max))
+
+        if self.cfg.p_comm_drop_max > self.cfg.p_comm_drop_min >= 0.0:
+            self.cfg.p_comm_drop = float(
+                self.rng.uniform(self.cfg.p_comm_drop_min, self.cfg.p_comm_drop_max)
+            )
 
         if self.cfg.spawn_near_base:
             radius = self.cfg.spawn_radius
