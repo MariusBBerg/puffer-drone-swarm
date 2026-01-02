@@ -21,41 +21,14 @@ import pufferlib.pytorch
 from puffer_drone_swarm import PufferDroneSwarm
 from env import EnvConfig
 
-# ============================================================================
-# TRAINING STRATEGY FOR RELAY BEHAVIOR (Stage C3+)
-# ============================================================================
-# Problem: Policy confirms victims at far distances but fails to deliver 
-# because it doesn't maintain connectivity chains back to base.
-#
-# Solution: Add relay-focused reward shaping:
-#   - r_relay_bonus: Reward drones that serve as relay nodes for disconnected owners
-#   - r_chain_progress: Potential-based reward for getting owner closer to base
-#   - r_owner_connected: Existing reward, keep it
-#
-# Curriculum (incremental, warm-start from stage_c2_best.pt):
-#
-# Stage C3a: Train at 20-45 range with relay shaping (moderate difficulty)
-#   - Keep r_owner_connected=0.02 
-#   - Add r_relay_bonus=0.03, r_chain_progress=0.01
-#   - This teaches: "if you're near a disconnected owner, help relay"
-#   - Train until ~90%+ success on 20-45
-#
-# Stage C3b: Extend to 25-55 range 
-#   - Same rewards, harder victim distances
-#   - Train until ~85%+ success on 25-55
-#
-# Stage C4: Domain randomization for robustness
-#   - Mix victim distances: 50% near (10-35), 50% far (25-55)
-#   - Slight comm drop noise (p_comm_drop=0.02)
-# ============================================================================
-
 # Edit these configs directly instead of passing CLI flags.
 ENV_CONFIG = EnvConfig(
     n_drones=4,
     n_victims=6,
-    r_comm=18.0,
-    r_comm_min=0.0,
-    r_comm_max=0.0,
+    # Stage C5: Comm range randomization for robustness
+    r_comm=18.0,              # Default (will be randomized)
+    r_comm_min=14.0,          # Train on tighter comm ranges
+    r_comm_max=22.0,          # And looser ones
     r_confirm_radius=8.0,
     t_confirm=1,
     t_confirm_values=(),
@@ -69,9 +42,9 @@ ENV_CONFIG = EnvConfig(
     r_connectivity=0.0,
     r_dispersion=0.0,
     r_owner_connected=0.02,
-    # NEW: Relay shaping rewards - INCREASED for stronger signal
-    r_relay_bonus=0.1,        # Reward drones serving as relay nodes (was 0.03)
-    r_chain_progress=0.05,    # Potential shaping for chain completion (was 0.01)
+    # Relay shaping rewards
+    r_relay_bonus=0.1,
+    r_chain_progress=0.05,
     detect_prob_scale=2.0,
     detect_noise_std=0.0,
     false_positive_rate=0.0,
@@ -83,11 +56,11 @@ ENV_CONFIG = EnvConfig(
     c_energy=0.0,
     c_scan=0.0,
     spawn_near_base=True,
-    # Stage C4: Push toward far range - primary 20-45, mix in 25-55
-    victim_min_dist_from_base=20.0,
+    # Mix of distance ranges
+    victim_min_dist_from_base=15.0,
     victim_max_dist_from_base=45.0,
-    # Mix in far cases 30% of the time
-    victim_mix_prob=0.3,
+    # Mix in far cases 20% of the time
+    victim_mix_prob=0.2,
     victim_min_dist_from_base_alt=25.0,
     victim_max_dist_from_base_alt=55.0,
     obs_n_nearest=3,
@@ -97,7 +70,7 @@ ENV_CONFIG = EnvConfig(
 )
 
 TRAINING_CONFIG = {
-    "total_timesteps": 100_000_000,  # Continue from ~58M
+    "total_timesteps": 120_000_000,  # Continue from ~77M
     "num_envs": 64,
     "num_workers": 1,
     "num_steps": 256,
@@ -120,11 +93,10 @@ TRAINING_CONFIG = {
     "seed": 42,
     "checkpoint_dir": "checkpoints_new",
     "checkpoint_interval": 10,
-    # Resume from checkpoint_890 (92% on 20-45, 40% on 25-55)
-    "resume": "checkpoints_new/checkpoint_890.pt",
+    # Resume from stage_c4_final (best model so far)
+    "resume": "checkpoints_new/stage_c4_final.pt",
     "reset_optimizer": True,
 }
-
 
 def layer_init(layer, std=np.sqrt(2), bias_const=0.0):
     """Initialize layer weights using orthogonal initialization."""
