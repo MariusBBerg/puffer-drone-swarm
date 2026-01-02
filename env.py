@@ -44,6 +44,13 @@ class EnvConfig:
     r_connectivity: float = 0.01
     r_dispersion: float = 0.05  # NEW: reward for spreading out
     r_owner_connected: float = 0.0  # Bonus when deliver-owner is connected for confirmed victim
+    r_relay_bonus: float = 0.0  # Bonus for drones serving as relay nodes for disconnected owners
+    r_chain_progress: float = 0.0  # Potential shaping: reward progress toward connecting owner to base
+    # Detection model (used when scan=1)
+    detect_prob_scale: float = 1.0
+    detect_noise_std: float = 0.0
+    false_positive_rate: float = 0.0
+    false_positive_confidence: float = 0.3
     p_comm_drop: float = 0.0  # Probability of comm drop per link per step
     p_comm_drop_min: float = 0.0
     p_comm_drop_max: float = 0.0
@@ -71,6 +78,10 @@ class EnvConfig:
             payload["r_found_divide_by_n"] = cls().r_found_divide_by_n
         if "r_owner_connected" not in payload:
             payload["r_owner_connected"] = cls().r_owner_connected
+        if "r_relay_bonus" not in payload:
+            payload["r_relay_bonus"] = cls().r_relay_bonus
+        if "r_chain_progress" not in payload:
+            payload["r_chain_progress"] = cls().r_chain_progress
         if "p_comm_drop" not in payload:
             payload["p_comm_drop"] = cls().p_comm_drop
         if "p_comm_drop_min" not in payload:
@@ -81,6 +92,14 @@ class EnvConfig:
             payload["r_comm_min"] = cls().r_comm_min
         if "r_comm_max" not in payload:
             payload["r_comm_max"] = cls().r_comm_max
+        if "detect_prob_scale" not in payload:
+            payload["detect_prob_scale"] = cls().detect_prob_scale
+        if "detect_noise_std" not in payload:
+            payload["detect_noise_std"] = cls().detect_noise_std
+        if "false_positive_rate" not in payload:
+            payload["false_positive_rate"] = cls().false_positive_rate
+        if "false_positive_confidence" not in payload:
+            payload["false_positive_confidence"] = cls().false_positive_confidence
         if "t_confirm_values" not in payload:
             payload["t_confirm_values"] = cls().t_confirm_values
         elif isinstance(payload["t_confirm_values"], list):
@@ -124,6 +143,7 @@ class DroneSwarmEnv:
         self.confirm_owner = -np.ones(self.cfg.n_victims, dtype=np.int32) # which drone is currently confirming this victim (used during scanning)
         self.deliver_owner = -np.ones(self.cfg.n_victims, dtype=np.int32) # which drone confirmed this victim (used during delivery)
         self.delivery_ttl = -np.ones(self.cfg.n_victims, dtype=np.int32) # how many steps remain to deliver before it expires
+        self.detections = np.zeros((self.cfg.n_drones, self.cfg.obs_n_nearest, 3), dtype=np.float32)
 
     def reset(self, seed: Optional[int] = None):
         if seed is not None:
@@ -178,6 +198,7 @@ class DroneSwarmEnv:
         self.confirm_owner.fill(-1)
         self.deliver_owner.fill(-1)
         self.delivery_ttl.fill(-1)
+        self.detections.fill(0.0)
 
         self.connected = self._compute_connectivity()
         self._update_comm_age()
@@ -222,6 +243,7 @@ class DroneSwarmEnv:
         self._update_comm_age()
 
         new_delivered, new_confirmed, new_expired, confirming_drone = self._update_confirm_and_delivery(scan)
+        self.detections = self._compute_detections(scan)
         
         # INDIVIDUAL exploration tracking - which drone explored new cells
         drone_explored = self._update_explored_cells_per_drone()
@@ -283,6 +305,12 @@ class DroneSwarmEnv:
                     owner = self.deliver_owner[v]
                     if owner >= 0 and self.connected[owner]:
                         rewards[owner] += self.cfg.r_owner_connected
+
+        # Relay rewards: reward drones that form relay chains for disconnected owners
+        if self.cfg.r_relay_bonus != 0.0 or self.cfg.r_chain_progress != 0.0:
+            relay_rewards, chain_progress = self._compute_relay_rewards()
+            rewards += relay_rewards
+            rewards += chain_progress  # Distributed to all agents
 
         self.step_count += 1
         done = bool(
@@ -382,6 +410,95 @@ class DroneSwarmEnv:
         
         return new_cells
     
+    def _compute_relay_rewards(self):
+        """Reward drones that serve as relay nodes for disconnected confirmed-victim owners.
+        
+        For each confirmed victim with a disconnected owner:
+        1. Find all drones on the shortest path from owner to base (relay nodes)
+        2. Give r_relay_bonus to each relay drone (not the owner)
+        
+        Also compute chain progress: how many hops is the owner from a connected drone?
+        """
+        relay_rewards = np.zeros(self.cfg.n_drones, dtype=np.float32)
+        
+        # Find confirmed victims with disconnected owners
+        confirmed_mask = self.victim_status == 1
+        if not confirmed_mask.any():
+            return relay_rewards, 0.0
+        
+        # Build adjacency matrix
+        N = self.cfg.n_drones
+        pos = self.positions
+        diff = pos[:, None, :] - pos[None, :, :]
+        dist_matrix = np.linalg.norm(diff, axis=-1)
+        adj = dist_matrix <= self.cfg.r_comm
+        np.fill_diagonal(adj, False)
+        
+        # Distance to base for each drone
+        dist_base = np.linalg.norm(pos - self.base_pos[None, :], axis=1)
+        base_links = dist_base <= self.cfg.r_comm
+        
+        total_chain_progress = 0.0
+        
+        for v in np.where(confirmed_mask)[0]:
+            owner = self.deliver_owner[v]
+            if owner < 0 or self.connected[owner]:
+                continue  # Owner connected, no relay needed
+            
+            # BFS from owner to find path to any connected drone or base
+            visited = np.zeros(N, dtype=bool)
+            parent = -np.ones(N, dtype=np.int32)
+            queue = [owner]
+            visited[owner] = True
+            found_connected = -1
+            
+            while queue and found_connected < 0:
+                current = queue.pop(0)
+                
+                # Check if this drone can reach base directly
+                if base_links[current]:
+                    found_connected = current
+                    break
+                
+                # Check if connected to a connected drone
+                for neighbor in range(N):
+                    if adj[current, neighbor] and not visited[neighbor]:
+                        visited[neighbor] = True
+                        parent[neighbor] = current
+                        queue.append(neighbor)
+                        if self.connected[neighbor]:
+                            found_connected = neighbor
+                            break
+            
+            if found_connected >= 0 and found_connected != owner:
+                # Trace back path and reward relay drones
+                node = found_connected
+                path_length = 0
+                while node != owner and node >= 0:
+                    if node != owner:
+                        relay_rewards[node] += self.cfg.r_relay_bonus
+                    path_length += 1
+                    node = parent[node]
+                
+                # Chain progress: shorter path = better (invert for potential)
+                # Normalize by max possible hops
+                max_hops = N
+                progress = 1.0 - (path_length / max_hops)
+                total_chain_progress += progress * self.cfg.r_chain_progress
+            else:
+                # No path exists - compute distance to nearest connected drone
+                if self.connected.any():
+                    connected_positions = pos[self.connected]
+                    owner_pos = pos[owner]
+                    dists_to_connected = np.linalg.norm(connected_positions - owner_pos, axis=1)
+                    min_dist = np.min(dists_to_connected)
+                    # Potential based on distance (closer = better)
+                    # Normalize by world size
+                    potential = 1.0 - min(min_dist / self.cfg.world_size, 1.0)
+                    total_chain_progress += potential * self.cfg.r_chain_progress * 0.5
+        
+        return relay_rewards, total_chain_progress
+    
     def _compute_dispersion_rewards(self):
         """Reward drones for maintaining good separation from each other."""
         rewards = np.zeros(self.cfg.n_drones, dtype=np.float32)
@@ -472,7 +589,7 @@ class DroneSwarmEnv:
         return new_delivered, new_confirmed, new_expired, confirming_drone
 
     def _get_obs(self):
-        """Observation per drone: position, battery, connectivity, and nearest victims."""
+        """Observation per drone: position, battery, connectivity, and scan detections."""
         L = self.cfg.world_size
         pos_norm = self.positions / max(L, 1e-6)
         dist_to_base = (
@@ -500,35 +617,7 @@ class DroneSwarmEnv:
         to_base = self.base_pos[None, :] - self.positions
         to_base_norm = to_base / (np.linalg.norm(to_base, axis=1, keepdims=True) + 1e-8)
         
-        # Find nearest undelivered victims for each drone
-        n_nearest = self.cfg.obs_n_nearest
-        undelivered_mask = self.victim_status < 2
-        
-        # Victim features per drone: relative position and status
-        nearest_victim_features = np.zeros((self.cfg.n_drones, n_nearest * 3), dtype=np.float32)
-        
-        if undelivered_mask.any():
-            undelivered_pos = self.victim_pos[undelivered_mask]
-            undelivered_status = self.victim_status[undelivered_mask]
-            
-            for d in range(self.cfg.n_drones):
-                drone_pos = self.positions[d]
-                dists = np.linalg.norm(undelivered_pos - drone_pos, axis=1)
-                
-                # Only sense victims within sensing range
-                in_range_mask = dists <= self.cfg.r_sense
-                if in_range_mask.any():
-                    # Get indices of in-range victims sorted by distance
-                    in_range_indices = np.where(in_range_mask)[0]
-                    sorted_idx = in_range_indices[np.argsort(dists[in_range_indices])][:n_nearest]
-                    
-                    for i, idx in enumerate(sorted_idx):
-                        rel_pos = (undelivered_pos[idx] - drone_pos) / max(L, 1e-6)
-                        status = undelivered_status[idx]
-                        nearest_victim_features[d, i*3:(i+1)*3] = [
-                            rel_pos[0], rel_pos[1], 
-                            1.0 if status == 1 else 0.0  # Is confirmed
-                        ]
+        detection_features = self.detections.reshape(self.cfg.n_drones, -1)
 
         obs = np.concatenate([
             pos_norm,  # (n_drones, 2)
@@ -539,10 +628,73 @@ class DroneSwarmEnv:
             neighbor_count_norm[:, None],  # (n_drones, 1)
             min_neighbor_dist_norm[:, None],  # (n_drones, 1)
             to_base_norm,  # (n_drones, 2)
-            nearest_victim_features,  # (n_drones, n_nearest * 3)
+            detection_features,  # (n_drones, obs_n_nearest * 3)
         ], axis=1).astype(np.float32)
         
         return obs
+
+    def _compute_detections(self, scan_mask: np.ndarray) -> np.ndarray:
+        """Compute noisy local detections for scanning drones."""
+        n = self.cfg.n_drones
+        k = self.cfg.obs_n_nearest
+        detections = np.zeros((n, k, 3), dtype=np.float32)
+        if k == 0:
+            return detections
+
+        r_sense = float(self.cfg.r_sense)
+        if r_sense <= 0.0:
+            return detections
+        inv_L = 1.0 / max(self.cfg.world_size, 1e-6)
+        detect_scale = float(self.cfg.detect_prob_scale)
+        noise_std = float(self.cfg.detect_noise_std)
+        fp_rate = float(self.cfg.false_positive_rate)
+        fp_conf = float(self.cfg.false_positive_confidence)
+
+        for d in range(n):
+            if not scan_mask[d]:
+                continue
+            drone_pos = self.positions[d]
+            candidates = []
+            for vid in range(self.cfg.n_victims):
+                if self.victim_status[vid] >= 2:
+                    continue
+                dx = self.victim_pos[vid, 0] - drone_pos[0]
+                dy = self.victim_pos[vid, 1] - drone_pos[1]
+                dist = float(np.hypot(dx, dy))
+                if dist > r_sense:
+                    continue
+                p = max(0.0, 1.0 - dist / r_sense) * detect_scale
+                if p <= 0.0:
+                    continue
+                if p > 1.0:
+                    p = 1.0
+                if self.rng.uniform(0.0, 1.0) > p:
+                    continue
+                if noise_std > 0.0:
+                    dx += self.rng.normal(0.0, noise_std)
+                    dy += self.rng.normal(0.0, noise_std)
+                candidates.append((dist, dx, dy, p))
+
+            if fp_rate > 0.0 and self.rng.uniform(0.0, 1.0) < fp_rate:
+                angle = self.rng.uniform(0.0, 2.0 * np.pi)
+                r = np.sqrt(self.rng.uniform(0.0, 1.0)) * r_sense
+                dx = np.cos(angle) * r
+                dy = np.sin(angle) * r
+                if noise_std > 0.0:
+                    dx += self.rng.normal(0.0, noise_std)
+                    dy += self.rng.normal(0.0, noise_std)
+                conf = self.rng.uniform(0.0, fp_conf) if fp_conf > 0.0 else 0.0
+                candidates.append((r, dx, dy, conf))
+
+            if not candidates:
+                continue
+            candidates.sort(key=lambda item: item[0])
+            for i, (_, dx, dy, conf) in enumerate(candidates[:k]):
+                detections[d, i, 0] = np.clip(dx * inv_L, -1.0, 1.0)
+                detections[d, i, 1] = np.clip(dy * inv_L, -1.0, 1.0)
+                detections[d, i, 2] = np.clip(conf, 0.0, 1.0)
+
+        return detections
 
 
 if __name__ == "__main__":

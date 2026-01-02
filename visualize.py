@@ -278,7 +278,7 @@ def run_policy_demo(checkpoint_path: str):
     viz = DroneSwarmVisualizer(env, scale=6.0, fps=30)
     
     # Get obs_size from checkpoint or compute from env config
-    # obs = 8 base features + 3 * obs_n_nearest victim features
+    # obs = 10 base features + 3 * obs_n_nearest detection features
     obs_size = 10 + 3 * env_config.obs_n_nearest
     act_size = 3
     agent = DroneSwarmPolicy(obs_size, act_size)

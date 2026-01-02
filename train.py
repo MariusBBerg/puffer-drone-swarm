@@ -21,58 +21,95 @@ import pufferlib.pytorch
 from puffer_drone_swarm import PufferDroneSwarm
 from env import EnvConfig
 
+# ============================================================================
+# TRAINING STRATEGY FOR RELAY BEHAVIOR (Stage C3+)
+# ============================================================================
+# Problem: Policy confirms victims at far distances but fails to deliver 
+# because it doesn't maintain connectivity chains back to base.
+#
+# Solution: Add relay-focused reward shaping:
+#   - r_relay_bonus: Reward drones that serve as relay nodes for disconnected owners
+#   - r_chain_progress: Potential-based reward for getting owner closer to base
+#   - r_owner_connected: Existing reward, keep it
+#
+# Curriculum (incremental, warm-start from stage_c2_best.pt):
+#
+# Stage C3a: Train at 20-45 range with relay shaping (moderate difficulty)
+#   - Keep r_owner_connected=0.02 
+#   - Add r_relay_bonus=0.03, r_chain_progress=0.01
+#   - This teaches: "if you're near a disconnected owner, help relay"
+#   - Train until ~90%+ success on 20-45
+#
+# Stage C3b: Extend to 25-55 range 
+#   - Same rewards, harder victim distances
+#   - Train until ~85%+ success on 25-55
+#
+# Stage C4: Domain randomization for robustness
+#   - Mix victim distances: 50% near (10-35), 50% far (25-55)
+#   - Slight comm drop noise (p_comm_drop=0.02)
+# ============================================================================
+
 # Edit these configs directly instead of passing CLI flags.
 ENV_CONFIG = EnvConfig(
     n_drones=4,
     n_victims=6,
     r_comm=18.0,
-    r_comm_min=16,
-    r_comm_max=20,
+    r_comm_min=0.0,
+    r_comm_max=0.0,
     r_confirm_radius=8.0,
-    t_confirm=3,
-    t_confirm_values=(3, 3, 3, 3, 3, 3, 3, 5),
-    m_deliver=30,
-    m_deliver_values=(20, 30, 45),
+    t_confirm=1,
+    t_confirm_values=(),
+    m_deliver=120,
+    m_deliver_values=(),
     r_found=1.0,
     r_found_divide_by_n=False,
     r_confirm_reward=0.0,
-    r_explore=0.0,
-    r_scan_near_victim=0.0,
+    r_explore=0.01,
+    r_scan_near_victim=0.01,
     r_connectivity=0.0,
     r_dispersion=0.0,
-    r_owner_connected=0.0,
+    r_owner_connected=0.02,
+    # NEW: Relay shaping rewards - INCREASED for stronger signal
+    r_relay_bonus=0.1,        # Reward drones serving as relay nodes (was 0.03)
+    r_chain_progress=0.05,    # Potential shaping for chain completion (was 0.01)
+    detect_prob_scale=2.0,
+    detect_noise_std=0.0,
+    false_positive_rate=0.0,
+    false_positive_confidence=0.3,
     p_comm_drop=0.0,
     p_comm_drop_min=0.0,
-    p_comm_drop_max=0.10,
+    p_comm_drop_max=0.0,
     c_time=0.01,
-    c_energy=0.01,
-    c_scan=0.01,
+    c_energy=0.0,
+    c_scan=0.0,
     spawn_near_base=True,
-    victim_min_dist_from_base=10.0,
-    victim_max_dist_from_base=35.0,
-    victim_mix_prob=0.5,
-    victim_min_dist_from_base_alt=35.0,
+    # Stage C4: Push toward far range - primary 20-45, mix in 25-55
+    victim_min_dist_from_base=20.0,
+    victim_max_dist_from_base=45.0,
+    # Mix in far cases 30% of the time
+    victim_mix_prob=0.3,
+    victim_min_dist_from_base_alt=25.0,
     victim_max_dist_from_base_alt=55.0,
     obs_n_nearest=3,
-    r_sense=40.0,
+    r_sense=80.0,
     spawn_radius=5.0,
 
 )
 
 TRAINING_CONFIG = {
-    "total_timesteps": 22_500_000,
+    "total_timesteps": 100_000_000,  # Continue from ~58M
     "num_envs": 64,
     "num_workers": 1,
     "num_steps": 256,
     "num_minibatches": 4,
     "log_interval": 32,
     "print_interval": 10,
-    "learning_rate": 2e-4,
+    "learning_rate": 1e-4,
     "gamma": 0.995,
     "gae_lambda": 0.95,
     "clip_coef": 0.2,
     "clip_vloss": True,
-    "ent_coef": 0.005,
+    "ent_coef": 0.002,
     "vf_coef": 0.5,
     "max_grad_norm": 0.5,
     "update_epochs": 4,
@@ -81,10 +118,11 @@ TRAINING_CONFIG = {
     "hidden_size": 256,
     "device": "cpu",
     "seed": 42,
-    "checkpoint_dir": "checkpoints",
-    "checkpoint_interval": 50,
-    "resume": "checkpoints/policy_final_step12.pt",
-    "reset_optimizer": False,
+    "checkpoint_dir": "checkpoints_new",
+    "checkpoint_interval": 10,
+    # Resume from checkpoint_890 (92% on 20-45, 40% on 25-55)
+    "resume": "checkpoints_new/checkpoint_890.pt",
+    "reset_optimizer": True,
 }
 
 

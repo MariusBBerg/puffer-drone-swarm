@@ -5,7 +5,8 @@
 #include <stdint.h>
 
 // Fixed-size limits for fast stack allocation
-enum {
+enum
+{
     MAX_DRONES = 64,
     MAX_VICTIMS = 128,
     MAX_NEAREST = 8,
@@ -14,7 +15,8 @@ enum {
     MAX_T_CONFIRM_VALUES = 8
 };
 
-typedef struct {
+typedef struct
+{
     float world_size;
     int n_drones;
     int n_victims;
@@ -48,6 +50,12 @@ typedef struct {
     float r_dispersion;
     float min_drone_separation;
     float r_owner_connected;
+    float r_relay_bonus;
+    float r_chain_progress;
+    float detect_prob_scale;
+    float detect_noise_std;
+    float false_positive_rate;
+    float false_positive_confidence;
     float p_comm_drop;
     float p_comm_drop_min;
     float p_comm_drop_max;
@@ -63,7 +71,8 @@ typedef struct {
     float victim_max_dist_from_base_alt;
 } DroneSwarmConfig;
 
-typedef struct {
+typedef struct
+{
     // Drone state
     float positions[MAX_DRONES][2];
     float battery[MAX_DRONES];
@@ -95,6 +104,8 @@ typedef struct {
     bool explored_global[MAX_GRID * MAX_GRID];
     bool explored_per_drone[MAX_DRONES][MAX_GRID * MAX_GRID];
 
+    float detections[MAX_DRONES][MAX_NEAREST][3];
+
     // Buffers
     float observations[MAX_DRONES * (10 + 3 * MAX_NEAREST)];
     float rewards[MAX_DRONES];
@@ -104,9 +115,9 @@ typedef struct {
     DroneSwarmConfig cfg;
 } DroneSwarm;
 
-void drone_swarm_init(DroneSwarm* env, const DroneSwarmConfig* cfg);
-void drone_swarm_seed(DroneSwarm* env, uint64_t seed);
-void drone_swarm_reset(DroneSwarm* env);
-void drone_swarm_step(DroneSwarm* env, const float* actions);
+void drone_swarm_init(DroneSwarm *env, const DroneSwarmConfig *cfg);
+void drone_swarm_seed(DroneSwarm *env, uint64_t seed);
+void drone_swarm_reset(DroneSwarm *env);
+void drone_swarm_step(DroneSwarm *env, const float *actions);
 
 #endif

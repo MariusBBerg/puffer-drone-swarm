@@ -51,6 +51,12 @@ cdef extern from "drone_swarm.h":
         float r_dispersion
         float min_drone_separation
         float r_owner_connected
+        float r_relay_bonus
+        float r_chain_progress
+        float detect_prob_scale
+        float detect_noise_std
+        float false_positive_rate
+        float false_positive_confidence
         float p_comm_drop
         float p_comm_drop_min
         float p_comm_drop_max
@@ -195,6 +201,12 @@ cdef class CyDroneSwarm:
         self.cfg.r_dispersion = float(config.r_dispersion)
         self.cfg.min_drone_separation = float(config.min_drone_separation)
         self.cfg.r_owner_connected = float(config.r_owner_connected)
+        self.cfg.r_relay_bonus = float(getattr(config, 'r_relay_bonus', 0.0))
+        self.cfg.r_chain_progress = float(getattr(config, 'r_chain_progress', 0.0))
+        self.cfg.detect_prob_scale = float(config.detect_prob_scale)
+        self.cfg.detect_noise_std = float(config.detect_noise_std)
+        self.cfg.false_positive_rate = float(config.false_positive_rate)
+        self.cfg.false_positive_confidence = float(config.false_positive_confidence)
         self.cfg.p_comm_drop = float(config.p_comm_drop)
         self.cfg.p_comm_drop_min = float(config.p_comm_drop_min)
         self.cfg.p_comm_drop_max = float(config.p_comm_drop_max)

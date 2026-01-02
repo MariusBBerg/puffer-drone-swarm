@@ -39,7 +39,7 @@ class PufferDroneSwarm(pufferlib.PufferEnv):
         self.tick = 0
         
         # Observation size: 2 (pos) + 1 (battery) + 1 (dist_base) + 1 (connected) + 1 (comm_age)
-        # + 1 (neighbor_count) + 1 (min_neighbor_dist) + 2 (to_base_dir) + 3*n_nearest (victims)
+        # + 1 (neighbor_count) + 1 (min_neighbor_dist) + 2 (to_base_dir) + 3*n_nearest (detections)
         obs_size = 10 + 3 * config.obs_n_nearest
         
         # Define spaces BEFORE calling super().__init__
