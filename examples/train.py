@@ -24,6 +24,7 @@ import pufferlib.pytorch
 from puffer_drone_swarm import PufferDroneSwarm
 from env import EnvConfig
 from policy import DroneSwarmPolicy
+from configs import get_env_config
 
 # ============================================================================
 # ENVIRONMENT V2.1: CHALLENGING BUT FEASIBLE
@@ -58,78 +59,8 @@ from policy import DroneSwarmPolicy
 # - Stronger relay shaping, lower dispersion/explore pressure
 # ============================================================================
 
-ENV_CONFIG = EnvConfig(
-    # === WORLD SIZE: Moderately larger ===
-    world_size=120.0,
-
-    # === AGENTS ===
-    n_drones=10,
-    n_victims=8,
-
-    # === COMMUNICATION: Widened randomization for robustness ===
-    r_comm=15.0,
-    r_comm_min=15.0,
-    r_comm_max=15.0,
-    p_comm_drop=0.0,
-    p_comm_drop_min=0.0,
-    p_comm_drop_max=0.02,
-
-    # === SENSING ===
-    r_sense=30.0,
-    r_confirm_radius=5.0,
-    detect_prob_scale=1.8,
-    detect_noise_std=0.06,
-
-    # === TIMING: Slightly more time for long chains ===
-    max_steps=1000,
-    t_confirm=2,
-    t_confirm_values=(),
-    m_deliver=240,
-    m_deliver_values=(),
-
-    # === REWARDS: Emphasize delivery reliability ===
-    r_found=6.0,
-    r_found_divide_by_n=False,
-    r_confirm_reward=0.2,
-    r_explore=0.01,
-    r_scan_near_victim=0.02,
-    r_dispersion=0.01,
-    r_connectivity=0.0,
-    r_owner_connected=0.15,
-
-    # === RELAY REWARDS: Stronger chain formation ===
-    r_relay_bonus=0.08,
-    r_chain_progress=0.04,
-
-    # === COSTS ===
-    c_time=0.003,
-    c_energy=0.0,
-    c_scan=0.0003,
-
-    # === VICTIM PLACEMENT: Wider mix, still feasible ===
-    victim_min_dist_from_base=35.0,
-    victim_max_dist_from_base=55.0,
-    victim_mix_prob=0.0,
-    victim_min_dist_from_base_alt=25.0,
-    victim_max_dist_from_base_alt=45.0,
-
-    # === OTHER ===
-    spawn_near_base=True,
-    spawn_radius=12.0,
-    obs_n_nearest=3,
-    false_positive_rate=0.0,
-    false_positive_confidence=0.3,
-
-    # === OBSTACLES (stage 2) ===
-    obstacle_count=6,
-    obstacle_min_size=8.0,
-    obstacle_max_size=25.0,
-    obstacle_margin=5.0,
-    obstacle_base_clearance=18.0,
-    obstacle_min_separation=3.0,
-    obstacle_blocks_sensing=True,
-    obs_n_obstacles=3,
-)
+PRESET_NAME = "wilderness_hard_obstacles_stage2"
+ENV_CONFIG = get_env_config(PRESET_NAME)
 
 TRAINING_CONFIG = {
     "total_timesteps": 120_000_000,

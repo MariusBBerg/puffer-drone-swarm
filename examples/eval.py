@@ -17,6 +17,7 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from env import EnvConfig
 from policy import DroneSwarmPolicy
+from configs import get_env_config
 
 try:
     from drone_swarm_c import CyDroneSwarm
@@ -36,39 +37,22 @@ EVAL_EPISODES = 100
 EVAL_SEED = 0
 BASELINE_NAME = None  # Run all baselines to test v2 difficulty
 
-# ============================================================================
-# WILDERNESS HARD-ONLY EVAL CONFIG
-# ============================================================================
-# Matches examples/train.py wilderness hard-only config (10 drones, r_comm=15)
-# ============================================================================
+PRESET_NAME = "wilderness_hard_obstacles_stage2"
 
 BASE_ENV_CONFIG = EnvConfig.from_dict({
-      **EnvConfig().__dict__,
-      # Ensure no randomization during eval
-      "r_comm_min": 0.0,
-      "r_comm_max": 0.0,
-      "p_comm_drop_min": 0.0,
-      "p_comm_drop_max": 0.0,
-      "t_confirm_values": (),
-      "m_deliver_values": (),
-      "victim_mix_prob": 0.0,
-      # Obstacle curriculum (stage 2)
-      "obstacle_count": 6,
-      "obstacle_min_size": 8.0,
-      "obstacle_max_size": 25.0,
-      "obstacle_margin": 5.0,
-      "obstacle_base_clearance": 18.0,
-      "obstacle_min_separation": 3.0,
-      "obstacle_blocks_sensing": True,
-      "obs_n_obstacles": 3,
-  })
+    **get_env_config(PRESET_NAME).__dict__,
+    # Ensure no randomization during eval
+    "r_comm_min": 0.0,
+    "r_comm_max": 0.0,
+    "p_comm_drop_min": 0.0,
+    "p_comm_drop_max": 0.0,
+    "t_confirm_values": (),
+    "m_deliver_values": (),
+    "victim_mix_prob": 0.0,
+})
 
 EVAL_VARIANTS = {
-    "hard (35-55)": {
-        "victim_min_dist_from_base": 35.0,
-        "victim_max_dist_from_base": 55.0,
-        "r_comm": 15.0,
-    },
+    "hard (35-55)": {},
 }
 
 

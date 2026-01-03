@@ -112,7 +112,7 @@ scan_rate=87.8% detections=41.3%
 
 ### Train a Policy
 
-Edit the config block at the top of `examples/train.py`, then run:
+Edit the preset in `examples/train.py` (see `configs.py`), then run:
 
 ```bash
 uv run python examples/train.py
@@ -120,7 +120,7 @@ uv run python examples/train.py
 
 ### Evaluate a Trained Policy
 
-Edit the config block in `examples/eval.py`, then run:
+Edit the config block in `examples/eval.py` (see `configs.py` presets), then run:
 
 ```bash
 uv run python examples/eval.py
@@ -224,6 +224,7 @@ PufferDroneSwarm/
 ├── env.py                 # Core environment logic
 ├── puffer_drone_swarm.py  # PufferLib wrapper
 ├── policy.py              # Model definition (GRU policy)
+├── configs.py             # Environment presets
 ├── examples/              # Training/eval/render scripts
 ├── project.md             # Detailed project spec
 └── pyproject.toml         # Dependencies
