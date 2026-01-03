@@ -9,5 +9,4 @@ dependencies = [
     "numpy>=1.26.0,<2.0.0",
     "pufferlib>=2.0.6",
     "torch>=2.0.0",
-    "pygame>=2.5.0",
 ]

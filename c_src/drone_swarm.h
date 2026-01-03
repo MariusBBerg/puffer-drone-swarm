@@ -12,7 +12,9 @@ enum
     MAX_NEAREST = 8,
     MAX_GRID = 64,
     MAX_M_DELIVER_VALUES = 8,
-    MAX_T_CONFIRM_VALUES = 8
+    MAX_T_CONFIRM_VALUES = 8,
+    MAX_OBSTACLES = 32,
+    MAX_OBS_OBSTACLES = 8
 };
 
 typedef struct
@@ -69,6 +71,16 @@ typedef struct
     float victim_mix_prob;
     float victim_min_dist_from_base_alt;
     float victim_max_dist_from_base_alt;
+    int obstacle_count;
+    float obstacle_min_size;
+    float obstacle_max_size;
+    float obstacle_margin;
+    float obstacle_base_clearance;
+    float obstacle_min_separation;
+    int obstacle_random;
+    int obstacle_blocks_sensing;
+    int obs_n_obstacles;
+    float obstacle_rects[MAX_OBSTACLES][4];
 } DroneSwarmConfig;
 
 typedef struct
@@ -105,9 +117,11 @@ typedef struct
     bool explored_per_drone[MAX_DRONES][MAX_GRID * MAX_GRID];
 
     float detections[MAX_DRONES][MAX_NEAREST][3];
+    float obstacles[MAX_OBSTACLES][4];
+    int obstacle_count;
 
     // Buffers
-    float observations[MAX_DRONES * (10 + 3 * MAX_NEAREST)];
+    float observations[MAX_DRONES * (10 + 3 * MAX_NEAREST + 3 * MAX_OBS_OBSTACLES)];
     float rewards[MAX_DRONES];
     bool done;
 

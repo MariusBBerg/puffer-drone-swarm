@@ -5,7 +5,10 @@ and deliver confirmations to base through a limited-range comm network.
 """
 
 import argparse
+import os
 import sys
+
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 
 def main():
@@ -15,16 +18,16 @@ def main():
         epilog="""
 Examples:
   # Test the environment
-  python main.py test
+  python examples/main.py test
   
   # Train with default settings
-  python main.py train
+  python examples/main.py train
   
   # Train with custom settings
-  python main.py train --n-drones 12 --total-timesteps 1000000
+  python examples/main.py train --n-drones 12 --total-timesteps 1000000
   
   # Evaluate a trained model
-  python main.py eval --checkpoint checkpoints/policy_final.pt
+  python examples/main.py eval --checkpoint checkpoints/policy_final.pt
 """
     )
     
@@ -106,11 +109,12 @@ def test_env(args):
 
 
 def train_policy(args):
-    """Train a policy using the train.py script."""
+    """Train a policy using the examples/train.py script."""
     import subprocess
     
+    train_path = os.path.join(os.path.dirname(__file__), 'train.py')
     cmd = [
-        sys.executable, 'train.py',
+        sys.executable, train_path,
         '--n-drones', str(args.n_drones),
         '--n-victims', str(args.n_victims),
         '--total-timesteps', str(args.total_timesteps),
@@ -129,7 +133,7 @@ def eval_policy(args):
     import numpy as np
     from puffer_drone_swarm import PufferDroneSwarm
     from env import EnvConfig
-    from train import DroneSwarmPolicy
+    from policy import DroneSwarmPolicy
     
     print(f"Loading checkpoint: {args.checkpoint}")
     checkpoint = torch.load(args.checkpoint, map_location='cpu')
@@ -143,7 +147,10 @@ def eval_policy(args):
     # Recreate policy
     obs_size = env.single_observation_space.shape[0]
     act_size = env.single_action_space.shape[0]
-    agent = DroneSwarmPolicy(obs_size, act_size)
+    hidden_size = checkpoint.get("model_state_dict", {}).get("encoder.0.weight", None)
+    if hidden_size is not None:
+        hidden_size = int(hidden_size.shape[0])
+    agent = DroneSwarmPolicy(obs_size, act_size, hidden_size=hidden_size or 256)
     agent.load_state_dict(checkpoint['model_state_dict'])
     agent.eval()
     
@@ -158,12 +165,14 @@ def eval_policy(args):
         obs, _ = env.reset()
         obs = torch.FloatTensor(obs)
         done = False
+        h = agent.init_hidden(env.num_agents, obs.device)
+        done_mask = torch.zeros(env.num_agents, device=obs.device)
         ep_reward = 0
         steps = 0
         
         while not done:
             with torch.no_grad():
-                action, _, _, _ = agent.get_action_and_value(obs)
+                action, _, _, _, h = agent.get_action_and_value(obs, h, done_mask)
             action = action.numpy()
             action = np.clip(action, -1.0, 1.0)
             
@@ -172,6 +181,7 @@ def eval_policy(args):
             ep_reward += rewards.sum()
             steps += 1
             done = terminals.any() or truncations.any()
+            done_mask = torch.tensor(terminals | truncations, device=obs.device, dtype=torch.float32)
             
             if infos:
                 for info in infos:

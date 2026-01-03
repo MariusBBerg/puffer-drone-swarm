@@ -1,4 +1,7 @@
-"""Pygame visualization for the Drone Swarm environment."""
+"""Legacy pygame visualization for the Drone Swarm environment.
+
+Raylib is the preferred renderer (see c_src/drone_swarm_demo.c).
+"""
 
 import numpy as np
 import pygame
@@ -28,6 +31,8 @@ VICTIM_CONFIRMED = (255, 165, 0)  # Orange
 VICTIM_DELIVERED = (0, 255, 0)    # Green
 COMM_LINE_COLOR = (0, 100, 100, 128)
 SCAN_COLOR = (255, 255, 0, 64)
+OBSTACLE_COLOR = (40, 70, 40)
+OBSTACLE_OUTLINE = (70, 110, 70)
 
 
 class DroneSwarmVisualizer:
@@ -95,6 +100,19 @@ class DroneSwarmVisualizer:
                 pygame.draw.line(self.comm_surface, (255, 215, 0, 100), p1, base_screen, 2)
         
         self.screen.blit(self.comm_surface, (0, 0))
+
+    def draw_obstacles(self):
+        """Draw axis-aligned obstacle rectangles."""
+        if self.env.obstacle_count == 0:
+            return
+        for rect in self.env.obstacles:
+            x0, y0, x1, y1 = rect
+            w = (x1 - x0) * self.scale
+            h = (y1 - y0) * self.scale
+            screen_x = x0 * self.scale
+            screen_y = self.height - y1 * self.scale
+            pygame.draw.rect(self.screen, OBSTACLE_COLOR, pygame.Rect(screen_x, screen_y, w, h))
+            pygame.draw.rect(self.screen, OBSTACLE_OUTLINE, pygame.Rect(screen_x, screen_y, w, h), 1)
     
     def draw_base(self):
         """Draw the base station."""
@@ -198,6 +216,7 @@ class DroneSwarmVisualizer:
         """Draw legend."""
         legend_items = [
             ("Base", BASE_COLOR),
+            ("Obstacle", OBSTACLE_COLOR),
             ("Unknown", VICTIM_UNKNOWN),
             ("Confirmed", VICTIM_CONFIRMED),
             ("Delivered", VICTIM_DELIVERED),
@@ -222,6 +241,7 @@ class DroneSwarmVisualizer:
         
         self.screen.fill(BACKGROUND)
         self.draw_grid()
+        self.draw_obstacles()
         self.draw_comm_links()
         self.draw_base()
         self.draw_victims()
@@ -241,7 +261,9 @@ def run_random_demo():
     """Run a demo with random actions."""
     config = EnvConfig(n_drones=8, n_victims=10, max_steps=600)
     env = DroneSwarmEnv(config)
-    viz = DroneSwarmVisualizer(env, scale=6.0, fps=30)
+    # Adjust scale for world size (aim for ~600-900 pixel window)
+    scale = min(6.0, 800.0 / config.world_size)
+    viz = DroneSwarmVisualizer(env, scale=scale, fps=30)
     
     env.reset(seed=42)
     running = True
@@ -266,7 +288,7 @@ def run_random_demo():
 def run_policy_demo(checkpoint_path: str):
     """Run a demo with a trained policy."""
     import torch
-    from train import DroneSwarmPolicy
+    from policy import DroneSwarmPolicy
     
     # Load checkpoint
     checkpoint = torch.load(checkpoint_path, map_location='cpu', weights_only=False)
@@ -275,25 +297,35 @@ def run_policy_demo(checkpoint_path: str):
     
     # Create environment and visualizer
     env = DroneSwarmEnv(env_config)
-    viz = DroneSwarmVisualizer(env, scale=6.0, fps=30)
+    # Adjust scale for world size (aim for ~600-900 pixel window)
+    scale = min(6.0, 800.0 / env_config.world_size)
+    viz = DroneSwarmVisualizer(env, scale=scale, fps=30)
     
     # Get obs_size from checkpoint or compute from env config
-    # obs = 10 base features + 3 * obs_n_nearest detection features
-    obs_size = 10 + 3 * env_config.obs_n_nearest
+    obs_size = 10 + 3 * env_config.obs_n_nearest + 3 * env_config.obs_n_obstacles
+    checkpoint_obs = checkpoint.get("model_state_dict", {}).get("encoder.0.weight")
+    if checkpoint_obs is not None:
+        obs_size = int(checkpoint_obs.shape[1])
+    hidden_size = checkpoint.get("model_state_dict", {}).get("encoder.0.weight")
+    if hidden_size is not None:
+        hidden_size = int(hidden_size.shape[0])
     act_size = 3
-    agent = DroneSwarmPolicy(obs_size, act_size)
+    agent = DroneSwarmPolicy(obs_size, act_size, hidden_size=hidden_size or 256)
     agent.load_state_dict(checkpoint['model_state_dict'])
     agent.eval()
     
     env.reset(seed=42)
     running = True
     
+    h = agent.init_hidden(env_config.n_drones, device=torch.device("cpu"))
+    done_mask = torch.zeros(env_config.n_drones, device=torch.device("cpu"))
+
     while running:
         obs = env._get_obs()
         obs_tensor = torch.FloatTensor(obs)
         
         with torch.no_grad():
-            actions, _, _, _ = agent.get_action_and_value(obs_tensor)
+            actions, _, _, _, h = agent.get_action_and_value(obs_tensor, h, done_mask)
         
         actions = actions.numpy()
         actions = np.clip(actions, -1.0, 1.0)
@@ -306,6 +338,8 @@ def run_policy_demo(checkpoint_path: str):
         if done:
             print(f"Episode done! Delivered: {info['delivered']}/{env_config.n_victims}")
             env.reset()
+            h = agent.init_hidden(env_config.n_drones, device=torch.device("cpu"))
+            done_mask = torch.zeros(env_config.n_drones, device=torch.device("cpu"))
     
     viz.close()
 

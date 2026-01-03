@@ -48,6 +48,85 @@ static inline float clampf(float x, float lo, float hi)
     return x;
 }
 
+static inline bool point_in_rect(float x, float y, const float rect[4])
+{
+    return (x >= rect[0] && x <= rect[2] && y >= rect[1] && y <= rect[3]);
+}
+
+static inline float point_rect_distance(float x, float y, const float rect[4])
+{
+    float cx = clampf(x, rect[0], rect[2]);
+    float cy = clampf(y, rect[1], rect[3]);
+    float dx = cx - x;
+    float dy = cy - y;
+    return sqrtf(dx * dx + dy * dy);
+}
+
+static bool point_in_any_obstacle(DroneSwarm *env, float x, float y)
+{
+    for (int i = 0; i < env->obstacle_count; i++)
+    {
+        if (point_in_rect(x, y, env->obstacles[i]))
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+static bool segment_intersects_rect(float x0, float y0, float x1, float y1, const float rect[4])
+{
+    float dx = x1 - x0;
+    float dy = y1 - y0;
+    float p[4] = {-dx, dx, -dy, dy};
+    float q[4] = {x0 - rect[0], rect[2] - x0, y0 - rect[1], rect[3] - y0};
+    float u1 = 0.0f;
+    float u2 = 1.0f;
+    for (int i = 0; i < 4; i++)
+    {
+        float pi = p[i];
+        float qi = q[i];
+        if (pi == 0.0f)
+        {
+            if (qi < 0.0f)
+            {
+                return false;
+            }
+        }
+        else
+        {
+            float t = qi / pi;
+            if (pi < 0.0f)
+            {
+                if (t > u2)
+                    return false;
+                if (t > u1)
+                    u1 = t;
+            }
+            else
+            {
+                if (t < u1)
+                    return false;
+                if (t < u2)
+                    u2 = t;
+            }
+        }
+    }
+    return true;
+}
+
+static bool segment_intersects_any_obstacle(DroneSwarm *env, float x0, float y0, float x1, float y1)
+{
+    for (int i = 0; i < env->obstacle_count; i++)
+    {
+        if (segment_intersects_rect(x0, y0, x1, y1, env->obstacles[i]))
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
 static void compute_connectivity(DroneSwarm *env)
 {
     int n = env->cfg.n_drones;
@@ -97,7 +176,8 @@ static void compute_connectivity(DroneSwarm *env)
     {
         float dx = env->positions[i][0] - base_x;
         float dy = env->positions[i][1] - base_y;
-        if (dx * dx + dy * dy <= r_comm_sq)
+        float dist_sq = dx * dx + dy * dy;
+        if (dist_sq <= r_comm_sq)
         {
             if (p_drop > 0.0f && rand_float(&env->rng_state) < p_drop)
             {
@@ -300,6 +380,86 @@ static void compute_dispersion_rewards(DroneSwarm *env, float *out_dispersion_re
             out_dispersion_rewards[i] = -env->cfg.r_dispersion * (1.0f - min_dist / min_sep);
         }
     }
+}
+
+static void generate_obstacles(DroneSwarm *env)
+{
+    int count = env->cfg.obstacle_count;
+    if (count <= 0)
+    {
+        env->obstacle_count = 0;
+        return;
+    }
+
+    float L = env->cfg.world_size;
+    float min_size = env->cfg.obstacle_min_size;
+    float max_size = env->cfg.obstacle_max_size;
+    float margin = env->cfg.obstacle_margin;
+    float separation = env->cfg.obstacle_min_separation;
+    float base_clearance = env->cfg.obstacle_base_clearance;
+    if (base_clearance <= 0.0f && env->cfg.spawn_near_base)
+    {
+        float spawn_radius = env->cfg.spawn_radius > 0.0f ? env->cfg.spawn_radius : env->cfg.r_comm;
+        base_clearance = spawn_radius + margin;
+    }
+
+    int placed = 0;
+    int attempts = 0;
+    int max_attempts = count * 200;
+    if (max_attempts < 100)
+        max_attempts = 100;
+
+    while (placed < count && attempts < max_attempts)
+    {
+        attempts++;
+        float w = rand_uniform(&env->rng_state, min_size, max_size);
+        float h = rand_uniform(&env->rng_state, min_size, max_size);
+        if (w <= 0.0f || h <= 0.0f)
+        {
+            continue;
+        }
+        float max_x = L - margin - w;
+        float max_y = L - margin - h;
+        float x = rand_uniform(&env->rng_state, margin, max_x > margin ? max_x : margin);
+        float y = rand_uniform(&env->rng_state, margin, max_y > margin ? max_y : margin);
+
+        float rect[4] = {x, y, x + w, y + h};
+
+        if (base_clearance > 0.0f)
+        {
+            if (point_rect_distance(env->cfg.base_pos[0], env->cfg.base_pos[1], rect) < base_clearance)
+            {
+                continue;
+            }
+        }
+
+        bool overlap = false;
+        if (separation > 0.0f)
+        {
+            for (int i = 0; i < placed; i++)
+            {
+                float *other = env->obstacles[i];
+                if (!(rect[2] + separation < other[0] || rect[0] - separation > other[2] ||
+                      rect[3] + separation < other[1] || rect[1] - separation > other[3]))
+                {
+                    overlap = true;
+                    break;
+                }
+            }
+        }
+        if (overlap)
+        {
+            continue;
+        }
+
+        env->obstacles[placed][0] = rect[0];
+        env->obstacles[placed][1] = rect[1];
+        env->obstacles[placed][2] = rect[2];
+        env->obstacles[placed][3] = rect[3];
+        placed++;
+    }
+
+    env->obstacle_count = placed;
 }
 
 static void compute_relay_rewards(DroneSwarm *env, float *out_rewards, float *out_chain_progress)
@@ -605,7 +765,8 @@ static void compute_observations(DroneSwarm *env)
 {
     int n = env->cfg.n_drones;
     int k = env->cfg.obs_n_nearest;
-    int obs_size = 10 + 3 * k;
+    int o = env->cfg.obs_n_obstacles;
+    int obs_size = 10 + 3 * k + 3 * o;
     float L = env->cfg.world_size;
     float inv_L = 1.0f / fmaxf(L, 1e-6f);
     float base_x = env->cfg.base_pos[0];
@@ -680,6 +841,60 @@ static void compute_observations(DroneSwarm *env)
             out[10 + i * 3 + 1] = env->detections[d][i][1];
             out[10 + i * 3 + 2] = env->detections[d][i][2];
         }
+
+        int obs_offset = 10 + 3 * k;
+        for (int i = 0; i < o; i++)
+        {
+            out[obs_offset + i * 3] = 0.0f;
+            out[obs_offset + i * 3 + 1] = 0.0f;
+            out[obs_offset + i * 3 + 2] = 0.0f;
+        }
+        if (o > 0 && env->obstacle_count > 0)
+        {
+            float best_dist[MAX_OBS_OBSTACLES];
+            float best_dx[MAX_OBS_OBSTACLES];
+            float best_dy[MAX_OBS_OBSTACLES];
+            for (int i = 0; i < o; i++)
+            {
+                best_dist[i] = 1e18f;
+                best_dx[i] = 0.0f;
+                best_dy[i] = 0.0f;
+            }
+
+            for (int i = 0; i < env->obstacle_count; i++)
+            {
+                const float *rect = env->obstacles[i];
+                float cx = clampf(px, rect[0], rect[2]);
+                float cy = clampf(py, rect[1], rect[3]);
+                float dx = cx - px;
+                float dy = cy - py;
+                float dist = sqrtf(dx * dx + dy * dy);
+
+                for (int slot = 0; slot < o; slot++)
+                {
+                    if (dist < best_dist[slot])
+                    {
+                        for (int shift = o - 1; shift > slot; shift--)
+                        {
+                            best_dist[shift] = best_dist[shift - 1];
+                            best_dx[shift] = best_dx[shift - 1];
+                            best_dy[shift] = best_dy[shift - 1];
+                        }
+                        best_dist[slot] = dist;
+                        best_dx[slot] = dx;
+                        best_dy[slot] = dy;
+                        break;
+                    }
+                }
+            }
+
+            for (int i = 0; i < o; i++)
+            {
+                out[obs_offset + i * 3] = clampf(best_dx[i] * inv_L, -1.0f, 1.0f);
+                out[obs_offset + i * 3 + 1] = clampf(best_dy[i] * inv_L, -1.0f, 1.0f);
+                out[obs_offset + i * 3 + 2] = clampf(best_dist[i] * inv_L, 0.0f, 1.0f);
+            }
+        }
     }
 }
 
@@ -736,6 +951,13 @@ static void compute_detections(DroneSwarm *env, const bool *scan_mask)
             if (dist_sq > r_sense_sq)
             {
                 continue;
+            }
+            if (env->cfg.obstacle_blocks_sensing && env->obstacle_count > 0)
+            {
+                if (segment_intersects_any_obstacle(env, px, py, px + dx, py + dy))
+                {
+                    continue;
+                }
             }
             float dist = sqrtf(dist_sq);
             float p = (1.0f - dist / r_sense) * detect_scale;
@@ -828,6 +1050,10 @@ void drone_swarm_init(DroneSwarm *env, const DroneSwarmConfig *cfg)
     {
         env->cfg.obs_n_nearest = MAX_NEAREST;
     }
+    if (env->cfg.obs_n_obstacles > MAX_OBS_OBSTACLES)
+    {
+        env->cfg.obs_n_obstacles = MAX_OBS_OBSTACLES;
+    }
     if (env->cfg.n_drones > MAX_DRONES)
     {
         env->cfg.n_drones = MAX_DRONES;
@@ -835,6 +1061,21 @@ void drone_swarm_init(DroneSwarm *env, const DroneSwarmConfig *cfg)
     if (env->cfg.n_victims > MAX_VICTIMS)
     {
         env->cfg.n_victims = MAX_VICTIMS;
+    }
+    if (env->cfg.obstacle_count > MAX_OBSTACLES)
+    {
+        env->cfg.obstacle_count = MAX_OBSTACLES;
+    }
+    env->obstacle_count = env->cfg.obstacle_count;
+    if (env->obstacle_count > 0)
+    {
+        for (int i = 0; i < env->obstacle_count; i++)
+        {
+            env->obstacles[i][0] = env->cfg.obstacle_rects[i][0];
+            env->obstacles[i][1] = env->cfg.obstacle_rects[i][1];
+            env->obstacles[i][2] = env->cfg.obstacle_rects[i][2];
+            env->obstacles[i][3] = env->cfg.obstacle_rects[i][3];
+        }
     }
     int grid_w = (int)ceilf(env->cfg.world_size / CELL_SIZE);
     if (grid_w < 1)
@@ -906,6 +1147,12 @@ void drone_swarm_reset(DroneSwarm *env)
         }
     }
 
+    env->obstacle_count = env->cfg.obstacle_count;
+    if (env->obstacle_count > 0 && env->cfg.obstacle_random)
+    {
+        generate_obstacles(env);
+    }
+
     if (env->cfg.spawn_near_base)
     {
         float radius = env->cfg.spawn_radius;
@@ -915,20 +1162,54 @@ void drone_swarm_reset(DroneSwarm *env)
         }
         for (int i = 0; i < env->cfg.n_drones; i++)
         {
-            float angle = rand_uniform(&env->rng_state, 0.0f, 2.0f * PI_F);
-            float r = sqrtf(rand_float(&env->rng_state)) * radius;
-            float x = base_x + cosf(angle) * r;
-            float y = base_y + sinf(angle) * r;
-            env->positions[i][0] = clampf(x, 0.0f, L);
-            env->positions[i][1] = clampf(y, 0.0f, L);
+            bool placed = false;
+            for (int attempt = 0; attempt < 100; attempt++)
+            {
+                float angle = rand_uniform(&env->rng_state, 0.0f, 2.0f * PI_F);
+                float r = sqrtf(rand_float(&env->rng_state)) * radius;
+                float x = base_x + cosf(angle) * r;
+                float y = base_y + sinf(angle) * r;
+                x = clampf(x, 0.0f, L);
+                y = clampf(y, 0.0f, L);
+                if (env->obstacle_count > 0 && point_in_any_obstacle(env, x, y))
+                {
+                    continue;
+                }
+                env->positions[i][0] = x;
+                env->positions[i][1] = y;
+                placed = true;
+                break;
+            }
+            if (!placed)
+            {
+                env->positions[i][0] = base_x;
+                env->positions[i][1] = base_y;
+            }
         }
     }
     else
     {
         for (int i = 0; i < env->cfg.n_drones; i++)
         {
-            env->positions[i][0] = rand_uniform(&env->rng_state, 0.0f, L);
-            env->positions[i][1] = rand_uniform(&env->rng_state, 0.0f, L);
+            bool placed = false;
+            for (int attempt = 0; attempt < 100; attempt++)
+            {
+                float x = rand_uniform(&env->rng_state, 0.0f, L);
+                float y = rand_uniform(&env->rng_state, 0.0f, L);
+                if (env->obstacle_count > 0 && point_in_any_obstacle(env, x, y))
+                {
+                    continue;
+                }
+                env->positions[i][0] = x;
+                env->positions[i][1] = y;
+                placed = true;
+                break;
+            }
+            if (!placed)
+            {
+                env->positions[i][0] = base_x;
+                env->positions[i][1] = base_y;
+            }
         }
     }
 
@@ -964,6 +1245,10 @@ void drone_swarm_reset(DroneSwarm *env)
             float y = base_y + sinf(angle) * r;
             if (x >= 0.0f && x <= L && y >= 0.0f && y <= L)
             {
+                if (env->obstacle_count > 0 && point_in_any_obstacle(env, x, y))
+                {
+                    continue;
+                }
                 env->victim_pos[i][0] = x;
                 env->victim_pos[i][1] = y;
                 placed = true;
@@ -972,8 +1257,25 @@ void drone_swarm_reset(DroneSwarm *env)
         }
         if (!placed)
         {
-            env->victim_pos[i][0] = rand_uniform(&env->rng_state, 0.0f, L);
-            env->victim_pos[i][1] = rand_uniform(&env->rng_state, 0.0f, L);
+            bool fallback = false;
+            for (int attempt = 0; attempt < 100; attempt++)
+            {
+                float x = rand_uniform(&env->rng_state, 0.0f, L);
+                float y = rand_uniform(&env->rng_state, 0.0f, L);
+                if (env->obstacle_count > 0 && point_in_any_obstacle(env, x, y))
+                {
+                    continue;
+                }
+                env->victim_pos[i][0] = x;
+                env->victim_pos[i][1] = y;
+                fallback = true;
+                break;
+            }
+            if (!fallback)
+            {
+                env->victim_pos[i][0] = rand_uniform(&env->rng_state, 0.0f, L);
+                env->victim_pos[i][1] = rand_uniform(&env->rng_state, 0.0f, L);
+            }
         }
     }
 
@@ -1036,8 +1338,19 @@ void drone_swarm_step(DroneSwarm *env, const float *actions)
         vx *= v_max;
         vy *= v_max;
 
-        env->positions[i][0] = clampf(env->positions[i][0] + vx * dt, 0.0f, L);
-        env->positions[i][1] = clampf(env->positions[i][1] + vy * dt, 0.0f, L);
+        float old_x = env->positions[i][0];
+        float old_y = env->positions[i][1];
+        float new_x = clampf(old_x + vx * dt, 0.0f, L);
+        float new_y = clampf(old_y + vy * dt, 0.0f, L);
+        if (env->obstacle_count > 0 &&
+            (point_in_any_obstacle(env, new_x, new_y) ||
+             segment_intersects_any_obstacle(env, old_x, old_y, new_x, new_y)))
+        {
+            new_x = old_x;
+            new_y = old_y;
+        }
+        env->positions[i][0] = new_x;
+        env->positions[i][1] = new_y;
 
         env->battery[i] -= (env->cfg.c_idle + env->cfg.c_move * (speed_ratio * speed_ratio)) * dt;
         if (env->battery[i] < 0.0f)

@@ -8,3 +8,10 @@ wheels/
 
 # Virtual environments
 .venv
+PufferLib/
+drone_swarm_c*.so
+drone_swarm_binding.c
+drone_swarm_demo
+drone_swarm/*.so
+checkpoints*/
+checkpoints_*/

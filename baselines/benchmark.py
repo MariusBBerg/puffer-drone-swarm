@@ -10,7 +10,6 @@ from dataclasses import asdict
 import numpy as np
 
 from env import EnvConfig
-from train import ENV_CONFIG
 from baselines import list_baselines, make_baseline
 
 try:
@@ -27,7 +26,7 @@ BENCHMARK_SEED = 0
 BASELINE_NAMES = list_baselines()
 
 BASE_ENV_CONFIG = EnvConfig.from_dict({
-    **ENV_CONFIG.__dict__,
+    **EnvConfig().__dict__,
     "n_drones": 4,
     "n_victims": 6,
     "r_comm": 18.0,

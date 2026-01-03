@@ -15,6 +15,8 @@ np.import_array()
 DEF MAX_DRONES = 64
 DEF MAX_VICTIMS = 128
 DEF MAX_NEAREST = 8
+DEF MAX_OBSTACLES = 32
+DEF MAX_OBS_OBSTACLES = 8
 DEF MAX_M_DELIVER_VALUES = 8
 DEF MAX_T_CONFIRM_VALUES = 8
 
@@ -70,9 +72,19 @@ cdef extern from "drone_swarm.h":
         float victim_mix_prob
         float victim_min_dist_from_base_alt
         float victim_max_dist_from_base_alt
+        int obstacle_count
+        float obstacle_min_size
+        float obstacle_max_size
+        float obstacle_margin
+        float obstacle_base_clearance
+        float obstacle_min_separation
+        int obstacle_random
+        int obstacle_blocks_sensing
+        int obs_n_obstacles
+        float obstacle_rects[MAX_OBSTACLES][4]
 
     ctypedef struct DroneSwarm:
-        float observations[MAX_DRONES * (10 + 3 * MAX_NEAREST)]
+        float observations[MAX_DRONES * (10 + 3 * MAX_NEAREST + 3 * MAX_OBS_OBSTACLES)]
         float rewards[MAX_DRONES]
         int step_count
         int delivered_count
@@ -108,7 +120,7 @@ cdef class CyDroneSwarm:
         self._init_cfg(config)
         drone_swarm_init(&self.env, &self.cfg)
         self.n_drones = self.cfg.n_drones
-        self.obs_size = 10 + 3 * self.cfg.obs_n_nearest
+        self.obs_size = 10 + 3 * self.cfg.obs_n_nearest + 3 * self.cfg.obs_n_obstacles  
 
     cdef void _init_cfg(self, config):
         cdef float world_size = float(config.world_size)
@@ -118,6 +130,7 @@ cdef class CyDroneSwarm:
         cdef int n_drones = int(config.n_drones)
         cdef int n_victims = int(config.n_victims)
         cdef int obs_n_nearest = int(config.obs_n_nearest)
+        cdef int obs_n_obstacles = int(getattr(config, "obs_n_obstacles", 0))
 
         if n_drones < 0 or n_drones > MAX_DRONES:
             raise ValueError(f"n_drones must be in [0, {MAX_DRONES}]")
@@ -125,6 +138,8 @@ cdef class CyDroneSwarm:
             raise ValueError(f"n_victims must be in [0, {MAX_VICTIMS}]")
         if obs_n_nearest < 0 or obs_n_nearest > MAX_NEAREST:
             raise ValueError(f"obs_n_nearest must be in [0, {MAX_NEAREST}]")
+        if obs_n_obstacles < 0 or obs_n_obstacles > MAX_OBS_OBSTACLES:
+            raise ValueError(f"obs_n_obstacles must be in [0, {MAX_OBS_OBSTACLES}]")
 
         t_confirm_values = getattr(config, "t_confirm_values", ())
         if t_confirm_values is None:
@@ -155,6 +170,19 @@ cdef class CyDroneSwarm:
             spawn_radius = float(config.r_comm)
         else:
             spawn_radius = float(spawn_radius)
+
+        obstacles = getattr(config, "obstacles", ())
+        if obstacles is None:
+            obstacles = ()
+        if isinstance(obstacles, list):
+            obstacles = tuple(obstacles)
+        cdef int obstacle_count = int(getattr(config, "obstacle_count", 0))
+        cdef int obstacle_random = 1
+        if len(obstacles) > 0:
+            obstacle_count = len(obstacles)
+            obstacle_random = 0
+        if obstacle_count < 0 or obstacle_count > MAX_OBSTACLES:
+            raise ValueError(f"obstacle_count must be in [0, {MAX_OBSTACLES}]")
 
         self.cfg.world_size = world_size
         self.cfg.n_drones = n_drones
@@ -216,11 +244,48 @@ cdef class CyDroneSwarm:
         self.cfg.spawn_near_base = 1 if bool(config.spawn_near_base) else 0
         self.cfg.spawn_radius = spawn_radius
         self.cfg.obs_n_nearest = obs_n_nearest
+        self.cfg.obs_n_obstacles = obs_n_obstacles
         self.cfg.victim_min_dist_from_base = float(config.victim_min_dist_from_base)
         self.cfg.victim_max_dist_from_base = float(config.victim_max_dist_from_base)
         self.cfg.victim_mix_prob = float(config.victim_mix_prob)
         self.cfg.victim_min_dist_from_base_alt = float(config.victim_min_dist_from_base_alt)
         self.cfg.victim_max_dist_from_base_alt = float(config.victim_max_dist_from_base_alt)
+        self.cfg.obstacle_count = obstacle_count
+        self.cfg.obstacle_min_size = float(getattr(config, "obstacle_min_size", 0.0))
+        self.cfg.obstacle_max_size = float(getattr(config, "obstacle_max_size", 0.0))
+        self.cfg.obstacle_margin = float(getattr(config, "obstacle_margin", 0.0))
+        self.cfg.obstacle_base_clearance = float(getattr(config, "obstacle_base_clearance", 0.0))
+        self.cfg.obstacle_min_separation = float(getattr(config, "obstacle_min_separation", 0.0))
+        self.cfg.obstacle_random = obstacle_random
+        self.cfg.obstacle_blocks_sensing = 1 if bool(getattr(config, "obstacle_blocks_sensing", True)) else 0
+        for i in range(MAX_OBSTACLES):
+            self.cfg.obstacle_rects[i][0] = 0.0
+            self.cfg.obstacle_rects[i][1] = 0.0
+            self.cfg.obstacle_rects[i][2] = 0.0
+            self.cfg.obstacle_rects[i][3] = 0.0
+        if obstacle_count > 0 and not obstacle_random:
+            for i, entry in enumerate(obstacles):
+                if i >= MAX_OBSTACLES:
+                    break
+                if isinstance(entry, dict):
+                    x = float(entry.get("x", 0.0))
+                    y = float(entry.get("y", 0.0))
+                    w = float(entry.get("w", 0.0))
+                    h = float(entry.get("h", 0.0))
+                else:
+                    x, y, w, h = entry
+                    x = float(x)
+                    y = float(y)
+                    w = float(w)
+                    h = float(h)
+                if w < 0.0:
+                    w = -w
+                if h < 0.0:
+                    h = -h
+                self.cfg.obstacle_rects[i][0] = x
+                self.cfg.obstacle_rects[i][1] = y
+                self.cfg.obstacle_rects[i][2] = x + w
+                self.cfg.obstacle_rects[i][3] = y + h
 
     def reset(self, seed=None):
         if seed is not None:

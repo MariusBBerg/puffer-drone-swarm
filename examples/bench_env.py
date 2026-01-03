@@ -6,9 +6,13 @@ Runs the C backend if available, otherwise falls back to the Python env.
 from __future__ import annotations
 
 import argparse
+import os
+import sys
 import time
 
 import numpy as np
+
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from env import EnvConfig
 

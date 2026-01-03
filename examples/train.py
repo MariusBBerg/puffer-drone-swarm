@@ -6,8 +6,11 @@ A clean, standalone PPO implementation that works with PufferLib environments.
 from __future__ import annotations
 
 import os
+import sys
 import time
 from collections import defaultdict
+
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 import numpy as np
 import torch
@@ -20,154 +23,142 @@ import pufferlib.pytorch
 
 from puffer_drone_swarm import PufferDroneSwarm
 from env import EnvConfig
+from policy import DroneSwarmPolicy
 
-# Edit these configs directly instead of passing CLI flags.
+# ============================================================================
+# ENVIRONMENT V2.1: CHALLENGING BUT FEASIBLE
+# ============================================================================
+# V2.0 was physically impossible - victims at 70 units need 5 relay hops
+# but 4 drones only provide 3 hops (45 unit max reach with r_comm=15).
+#
+# V2.1 fixes this with more drones OR closer victims:
+# - Option A: 6 drones (5 hops × 15 = 75 unit reach) ✅
+# - Option B: Shorter max victim distance (45 units) ✅
+#
+# We choose Option A (more drones) for more impressive swarm behavior.
+#
+# Key differences from v1:
+# 1. LARGER WORLD: 120x120 (1.44x area vs 100x100)
+# 2. MORE DRONES: 6 (was 4) - enables longer relay chains
+# 3. SMALLER SENSE: r_sense=30 (was 80) - must explore
+# 4. MORE VICTIMS: 8 (was 6)
+# 5. FEASIBLE DISTANCES: max 60 units (6 drones × 12 r_comm = 60 reach)
+#
+# Expected performance:
+# - Random walk: ~5-15% (coverage too hard)
+# - RL target: 70%+ with good coordination
+# ============================================================================
+# 
+# WILDERNESS SAR (REALISTIC, HARD-ONLY, FROM SCRATCH)
+# ============================================================================
+# Assumes no infrastructure (mesh-only comms).
+# Goal: 90%+ on hard variant by keeping it feasible and relay-friendly.
+# - Fixed comm range (15) to reduce variance
+# - Hard victim distances (35-55) only
+# - Stronger relay shaping, lower dispersion/explore pressure
+# ============================================================================
+
 ENV_CONFIG = EnvConfig(
-    n_drones=4,
-    n_victims=6,
-    # Stage C5: Comm range randomization for robustness
-    r_comm=18.0,              # Default (will be randomized)
-    r_comm_min=14.0,          # Train on tighter comm ranges
-    r_comm_max=22.0,          # And looser ones
-    r_confirm_radius=8.0,
-    t_confirm=1,
-    t_confirm_values=(),
-    m_deliver=120,
-    m_deliver_values=(),
-    r_found=1.0,
-    r_found_divide_by_n=False,
-    r_confirm_reward=0.0,
-    r_explore=0.01,
-    r_scan_near_victim=0.01,
-    r_connectivity=0.0,
-    r_dispersion=0.0,
-    r_owner_connected=0.02,
-    # Relay shaping rewards
-    r_relay_bonus=0.1,
-    r_chain_progress=0.05,
-    detect_prob_scale=2.0,
-    detect_noise_std=0.0,
-    false_positive_rate=0.0,
-    false_positive_confidence=0.3,
+    # === WORLD SIZE: Moderately larger ===
+    world_size=120.0,
+
+    # === AGENTS ===
+    n_drones=10,
+    n_victims=8,
+
+    # === COMMUNICATION: Widened randomization for robustness ===
+    r_comm=15.0,
+    r_comm_min=15.0,
+    r_comm_max=15.0,
     p_comm_drop=0.0,
     p_comm_drop_min=0.0,
-    p_comm_drop_max=0.0,
-    c_time=0.01,
-    c_energy=0.0,
-    c_scan=0.0,
-    spawn_near_base=True,
-    # Mix of distance ranges
-    victim_min_dist_from_base=15.0,
-    victim_max_dist_from_base=45.0,
-    # Mix in far cases 20% of the time
-    victim_mix_prob=0.2,
-    victim_min_dist_from_base_alt=25.0,
-    victim_max_dist_from_base_alt=55.0,
-    obs_n_nearest=3,
-    r_sense=80.0,
-    spawn_radius=5.0,
+    p_comm_drop_max=0.02,
 
+    # === SENSING ===
+    r_sense=30.0,
+    r_confirm_radius=5.0,
+    detect_prob_scale=1.8,
+    detect_noise_std=0.06,
+
+    # === TIMING: Slightly more time for long chains ===
+    max_steps=1000,
+    t_confirm=2,
+    t_confirm_values=(),
+    m_deliver=240,
+    m_deliver_values=(),
+
+    # === REWARDS: Emphasize delivery reliability ===
+    r_found=6.0,
+    r_found_divide_by_n=False,
+    r_confirm_reward=0.2,
+    r_explore=0.01,
+    r_scan_near_victim=0.02,
+    r_dispersion=0.01,
+    r_connectivity=0.0,
+    r_owner_connected=0.15,
+
+    # === RELAY REWARDS: Stronger chain formation ===
+    r_relay_bonus=0.08,
+    r_chain_progress=0.04,
+
+    # === COSTS ===
+    c_time=0.003,
+    c_energy=0.0,
+    c_scan=0.0003,
+
+    # === VICTIM PLACEMENT: Wider mix, still feasible ===
+    victim_min_dist_from_base=35.0,
+    victim_max_dist_from_base=55.0,
+    victim_mix_prob=0.0,
+    victim_min_dist_from_base_alt=25.0,
+    victim_max_dist_from_base_alt=45.0,
+
+    # === OTHER ===
+    spawn_near_base=True,
+    spawn_radius=12.0,
+    obs_n_nearest=3,
+    false_positive_rate=0.0,
+    false_positive_confidence=0.3,
+
+    # === OBSTACLES (stage 2) ===
+    obstacle_count=6,
+    obstacle_min_size=8.0,
+    obstacle_max_size=25.0,
+    obstacle_margin=5.0,
+    obstacle_base_clearance=18.0,
+    obstacle_min_separation=3.0,
+    obstacle_blocks_sensing=True,
+    obs_n_obstacles=3,
 )
 
 TRAINING_CONFIG = {
-    "total_timesteps": 120_000_000,  # Continue from ~77M
-    "num_envs": 64,
+    "total_timesteps": 120_000_000,
+    "num_envs": 32,
     "num_workers": 1,
-    "num_steps": 256,
+    "num_steps": 128,
     "num_minibatches": 4,
     "log_interval": 32,
     "print_interval": 10,
-    "learning_rate": 1e-4,
+    "learning_rate": 1.5e-4,
     "gamma": 0.995,
     "gae_lambda": 0.95,
-    "clip_coef": 0.2,
+    "clip_coef": 0.1,
     "clip_vloss": True,
-    "ent_coef": 0.002,
+    "ent_coef": 0.01,
     "vf_coef": 0.5,
     "max_grad_norm": 0.5,
     "update_epochs": 4,
     "norm_adv": True,
     "anneal_lr": True,
-    "hidden_size": 256,
+    "hidden_size": 192,
     "device": "cpu",
     "seed": 42,
-    "checkpoint_dir": "checkpoints_new",
-    "checkpoint_interval": 10,
-    # Resume from stage_c4_final (best model so far)
-    "resume": "checkpoints_new/stage_c4_final.pt",
+    "checkpoint_dir": "checkpoints_v2.7_wilderness_gru",
+    "checkpoint_interval": 80,
+    # Warm-start from stage-1 checkpoint and reset optimizer
+    "resume": "checkpoints_v2.7_wilderness_gru/checkpoint_320.pt",
     "reset_optimizer": True,
 }
-
-def layer_init(layer, std=np.sqrt(2), bias_const=0.0):
-    """Initialize layer weights using orthogonal initialization."""
-    torch.nn.init.orthogonal_(layer.weight, std)
-    torch.nn.init.constant_(layer.bias, bias_const)
-    return layer
-
-
-class DroneSwarmPolicy(nn.Module):
-    """Actor-Critic policy for continuous action drone swarm."""
-    
-    def __init__(self, obs_size: int, act_size: int, hidden_size: int = 256):
-        super().__init__()
-        
-        # Deeper shared feature extractor
-        self.encoder = nn.Sequential(
-            layer_init(nn.Linear(obs_size, hidden_size)),
-            nn.LayerNorm(hidden_size),
-            nn.Tanh(),
-            layer_init(nn.Linear(hidden_size, hidden_size)),
-            nn.LayerNorm(hidden_size),
-            nn.Tanh(),
-            layer_init(nn.Linear(hidden_size, hidden_size)),
-            nn.Tanh(),
-        )
-        
-        # Actor head - outputs mean of action distribution
-        self.actor_mean = layer_init(nn.Linear(hidden_size, act_size), std=0.01)
-        # Log std as learnable parameter - start with lower std for less random actions
-        self.actor_logstd = nn.Parameter(torch.full((1, act_size), -0.5))
-        
-        # Critic head
-        self.critic = layer_init(nn.Linear(hidden_size, 1), std=1.0)
-    
-    def get_value(self, x):
-        """Get value estimate only."""
-        return self.critic(self.encoder(x))
-    
-    def get_action_and_value(self, x, action=None):
-        """Get action, log prob, entropy, and value for PPO (tanh-squashed Gaussian)."""
-        hidden = self.encoder(x)
-        
-        action_mean = self.actor_mean(hidden)
-        action_logstd = self.actor_logstd.expand_as(action_mean)
-        action_std = torch.exp(action_logstd)
-        
-        # Create normal distribution
-        probs = torch.distributions.Normal(action_mean, action_std)
-
-        if action is None:
-            pre_tanh = probs.sample()
-            action = torch.tanh(pre_tanh)
-        else:
-            eps = 1e-6
-            action = torch.clamp(action, -1 + eps, 1 - eps)
-            pre_tanh = 0.5 * torch.log((1 + action) / (1 - action))
-
-        # Tanh-squash correction
-        eps = 1e-6
-        logprob = probs.log_prob(pre_tanh) - torch.log(1 - action * action + eps)
-        logprob = logprob.sum(1)
-        base_entropy = probs.entropy().sum(1)     # entropy of pre-tanh normal
-        entropy = base_entropy
-
-        return (
-            action,
-            logprob,
-            entropy,
-            self.critic(hidden),
-        )
-
 
 def make_env_creator(config: EnvConfig = None, log_interval: int = 32):
     """Create an environment factory function."""
@@ -239,15 +230,55 @@ def train(env_config: EnvConfig = ENV_CONFIG, cfg: dict | None = None):
     global_step = 0
     if cfg["resume"]:
         checkpoint = torch.load(cfg["resume"], map_location=device)
-        agent.load_state_dict(checkpoint['model_state_dict'])
+        old_state_dict = checkpoint['model_state_dict']
+        new_state_dict = agent.state_dict()
+        
+        # Check if observation dimension changed (warm-weight transfer)
+        old_input_dim = old_state_dict['encoder.0.weight'].shape[1]
+        new_input_dim = new_state_dict['encoder.0.weight'].shape[1]
+        
+        if old_input_dim != new_input_dim:
+            print(f"Observation dimension changed: {old_input_dim} -> {new_input_dim}")
+            print("Performing warm-weight transfer for first layer...")
+            
+            # Expand the first layer weights to accommodate new input dimension
+            old_weight = old_state_dict['encoder.0.weight']  # [hidden, old_dim]
+            new_weight = new_state_dict['encoder.0.weight']  # [hidden, new_dim]
+            
+            # Copy old weights and initialize new columns to small values
+            min_dim = min(old_input_dim, new_input_dim)
+            new_weight[:, :min_dim] = old_weight[:, :min_dim]
+            if new_input_dim > old_input_dim:
+                # Initialize new input dimensions with small random values
+                nn.init.orthogonal_(new_weight[:, old_input_dim:], gain=0.1)
+            
+            old_state_dict['encoder.0.weight'] = new_weight
+            print(f"  First layer weight shape: {old_weight.shape} -> {new_weight.shape}")
+        
+        incompatible = agent.load_state_dict(old_state_dict, strict=False)
+        if incompatible.missing_keys or incompatible.unexpected_keys:
+            print("Warning: checkpoint keys did not fully match current model.")
+            if incompatible.missing_keys:
+                print(f"  Missing keys: {len(incompatible.missing_keys)}")
+            if incompatible.unexpected_keys:
+                print(f"  Unexpected keys: {len(incompatible.unexpected_keys)}")
+        
         if not cfg["reset_optimizer"] and 'optimizer_state_dict' in checkpoint:
             optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
-        global_step = int(checkpoint.get('global_step', 0))
+        
+        # Don't resume global_step when changing observation space
+        if old_input_dim != new_input_dim:
+            global_step = 0
+            print("Starting fresh step count due to observation space change.")
+        else:
+            global_step = int(checkpoint.get('global_step', 0))
+        
         print(f"Resumed from {cfg['resume']} at global_step={global_step:,}")
     
     # Calculate batch sizes
     batch_size = int(num_agents * num_steps)
-    minibatch_size = int(batch_size // num_minibatches)
+    minibatch_agents = max(1, int(num_agents // num_minibatches))
+    minibatch_size = int(minibatch_agents * num_steps)
     num_iterations = total_timesteps // batch_size
     start_iteration = global_step // batch_size + 1
     
@@ -278,6 +309,7 @@ def train(env_config: EnvConfig = ENV_CONFIG, cfg: dict | None = None):
     next_obs, _ = envs.reset()
     next_obs = torch.Tensor(next_obs).to(device)
     next_done = torch.zeros(num_agents).to(device)
+    next_h = agent.init_hidden(num_agents, device)
     
     if start_iteration > num_iterations:
         print("Total timesteps already reached for this run; increase TRAINING_CONFIG['total_timesteps'] to continue.")
@@ -290,6 +322,8 @@ def train(env_config: EnvConfig = ENV_CONFIG, cfg: dict | None = None):
             frac = 1.0 - (iteration - 1.0) / num_iterations
             lrnow = frac * cfg["learning_rate"]
             optimizer.param_groups[0]["lr"] = lrnow
+
+        h0 = next_h.detach()
         
         # Rollout
         for step in range(0, num_steps):
@@ -299,7 +333,9 @@ def train(env_config: EnvConfig = ENV_CONFIG, cfg: dict | None = None):
             
             # Get action from policy
             with torch.no_grad():
-                action, logprob, _, value = agent.get_action_and_value(next_obs)
+                action, logprob, _, value, next_h = agent.get_action_and_value(
+                    next_obs, next_h, next_done
+                )
                 values[step] = value.flatten()
             
             actions[step] = action
@@ -327,7 +363,8 @@ def train(env_config: EnvConfig = ENV_CONFIG, cfg: dict | None = None):
         
         # Compute GAE
         with torch.no_grad():
-            next_value = agent.get_value(next_obs).reshape(1, -1)
+            next_value, _ = agent.get_value(next_obs, next_h, next_done)
+            next_value = next_value.reshape(1, -1)
             advantages = torch.zeros_like(rewards).to(device)
             lastgaelam = 0
             for t in reversed(range(num_steps)):
@@ -341,59 +378,70 @@ def train(env_config: EnvConfig = ENV_CONFIG, cfg: dict | None = None):
                 advantages[t] = lastgaelam = delta + cfg["gamma"] * cfg["gae_lambda"] * nextnonterminal * lastgaelam
             returns = advantages + values
         
-        # Flatten batch
-        b_obs = obs.reshape((-1,) + (obs_size,))
-        b_logprobs = logprobs.reshape(-1)
-        b_actions = actions.reshape((-1,) + (act_size,))
-        b_advantages = advantages.reshape(-1)
-        b_returns = returns.reshape(-1)
-        b_values = values.reshape(-1)
-        
-        # PPO update
-        b_inds = np.arange(batch_size)
+        # PPO update (sequence-aware for GRU)
+        agent_inds = np.arange(num_agents)
         clipfracs = []
         for epoch in range(cfg["update_epochs"]):
-            np.random.shuffle(b_inds)
-            for start in range(0, batch_size, minibatch_size):
-                end = start + minibatch_size
-                mb_inds = b_inds[start:end]
-                
-                _, newlogprob, entropy, newvalue = agent.get_action_and_value(
-                    b_obs[mb_inds], b_actions[mb_inds]
+            np.random.shuffle(agent_inds)
+            for start in range(0, num_agents, minibatch_agents):
+                end = start + minibatch_agents
+                mb_inds = agent_inds[start:end]
+
+                obs_seq = obs[:, mb_inds]
+                action_seq = actions[:, mb_inds]
+                done_seq = dones[:, mb_inds]
+                old_logprobs = logprobs[:, mb_inds]
+                old_values = values[:, mb_inds]
+                mb_advantages = advantages[:, mb_inds]
+                mb_returns = returns[:, mb_inds]
+                h0_mb = h0[:, mb_inds]
+
+                newlogprob, entropy, newvalue = agent.get_action_and_value_sequence(
+                    obs_seq, action_seq, h0_mb, done_seq
                 )
-                logratio = newlogprob - b_logprobs[mb_inds]
+
+                # Flatten time and batch dims
+                newlogprob = newlogprob.reshape(-1)
+                entropy = entropy.reshape(-1)
+                newvalue = newvalue.reshape(-1)
+                old_logprobs = old_logprobs.reshape(-1)
+                old_values = old_values.reshape(-1)
+                mb_advantages = mb_advantages.reshape(-1)
+                mb_returns = mb_returns.reshape(-1)
+
+                logratio = newlogprob - old_logprobs
                 ratio = logratio.exp()
-                
+
                 with torch.no_grad():
                     old_approx_kl = (-logratio).mean()
                     approx_kl = ((ratio - 1) - logratio).mean()
                     clipfracs.append(((ratio - 1.0).abs() > cfg["clip_coef"]).float().mean().item())
-                
-                mb_advantages = b_advantages[mb_inds]
+
                 if cfg["norm_adv"]:
                     mb_advantages = (mb_advantages - mb_advantages.mean()) / (mb_advantages.std() + 1e-8)
-                
+
                 # Policy loss
                 pg_loss1 = -mb_advantages * ratio
-                pg_loss2 = -mb_advantages * torch.clamp(ratio, 1 - cfg["clip_coef"], 1 + cfg["clip_coef"])
+                pg_loss2 = -mb_advantages * torch.clamp(
+                    ratio, 1 - cfg["clip_coef"], 1 + cfg["clip_coef"]
+                )
                 pg_loss = torch.max(pg_loss1, pg_loss2).mean()
-                
+
                 # Value loss
-                newvalue = newvalue.view(-1)
                 if cfg["clip_vloss"]:
-                    v_loss_unclipped = (newvalue - b_returns[mb_inds]) ** 2
-                    v_clipped = b_values[mb_inds] + torch.clamp(
-                        newvalue - b_values[mb_inds], -cfg["clip_coef"], cfg["clip_coef"]
+                    v_loss_unclipped = (newvalue - mb_returns) ** 2
+                    v_clipped = old_values + torch.clamp(
+                        newvalue - old_values, -cfg["clip_coef"], cfg["clip_coef"]
                     )
-                    v_loss_clipped = (v_clipped - b_returns[mb_inds]) ** 2
+                    v_loss_clipped = (v_clipped - mb_returns) ** 2
                     v_loss_max = torch.max(v_loss_unclipped, v_loss_clipped)
                     v_loss = 0.5 * v_loss_max.mean()
                 else:
-                    v_loss = 0.5 * ((newvalue - b_returns[mb_inds]) ** 2).mean()
-                
+                    v_loss = 0.5 * ((newvalue - mb_returns) ** 2).mean()
+
                 entropy_loss = entropy.mean()
                 loss = pg_loss - cfg["ent_coef"] * entropy_loss + v_loss * cfg["vf_coef"]
-                
+
                 optimizer.zero_grad()
                 loss.backward()
                 nn.utils.clip_grad_norm_(agent.parameters(), cfg["max_grad_norm"])

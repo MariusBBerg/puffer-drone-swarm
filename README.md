@@ -9,6 +9,7 @@ A high-throughput multi-agent Search and Rescue (SAR) benchmark where drones mus
 - **Scan/confirm/deliver mechanics**: Realistic SAR workflow
 - **High throughput**: Vectorized NumPy core, PufferLib integration
 - **Continuous actions**: (vx, vy, scan) control per drone
+- **Optional obstacles**: Axis-aligned rectangles with collision + sensor occlusion
 
 ## Quick Start
 
@@ -30,35 +31,107 @@ pip install -e .
 
 ```bash
 # Quick test with random actions
-uv run python main.py test --steps 100
+uv run python examples/main.py test
 
 # Or directly test the env module
 uv run python puffer_drone_swarm.py
 ```
 
-### Train a Policy
+### Raylib Demo (C)
 
 ```bash
-# Default training (10M steps)
-uv run python main.py train
+# Build and run the C demo (requires raylib installed)
+cc c_src/drone_swarm_demo.c c_src/drone_swarm.c -I c_src -o drone_swarm_demo -lraylib -lm
+./drone_swarm_demo
+```
 
-# Quick training run
-uv run python train.py --total-timesteps 1000000 --num-envs 4
+Note: `visualize.py` is a legacy pygame-based viewer and is no longer part of the default dependencies.
 
-# With custom settings
-uv run python train.py \
-    --n-drones 8 \
-    --n-victims 10 \
-    --total-timesteps 10000000 \
-    --num-envs 8 \
-    --learning-rate 3e-4 \
-    --checkpoint-dir checkpoints
+## Model Log (GRU)
+
+**Architecture (DroneSwarmPolicy, GRU):**
+
+- Encoder: 3x `Linear` + `LayerNorm` + `Tanh`
+- Memory: single-layer `GRU` (hidden_size=192)
+- Actor: `Linear(hidden_size -> 3)` + tanh-squashed Normal policy
+- Critic: `Linear(hidden_size -> 1)`
+- `actor_logstd` init: -0.5
+
+**Training config (v2.7 wilderness GRU):**
+
+```
+total_timesteps=120_000_000
+num_envs=32
+num_steps=128
+num_minibatches=4
+learning_rate=1.5e-4
+gamma=0.995
+gae_lambda=0.95
+clip_coef=0.1
+ent_coef=0.01
+update_epochs=4
+hidden_size=192
+device=cpu
+checkpoint_dir=checkpoints_v2.7_wilderness_gru
+```
+
+**Env config (hard-only wilderness):**
+
+```
+world_size=120
+n_drones=10
+n_victims=8
+r_comm=15 (fixed)
+r_sense=30
+r_confirm_radius=5
+t_confirm=2
+m_deliver=240
+victim_min/max=35-55
+```
+
+**Reward shaping:**
+
+```
+r_found=6.0
+r_confirm_reward=0.2
+r_explore=0.01
+r_scan_near_victim=0.02
+r_dispersion=0.01
+r_owner_connected=0.15
+r_relay_bonus=0.08
+r_chain_progress=0.04
+c_time=0.003
+```
+
+**Result (checkpoint_880.pt):**
+
+```
+hard (35-55): success=94.0% delivered=7.91 confirmed=7.93 len=410.3
+scan_rate=87.8% detections=41.3%
+```
+
+### Train a Policy
+
+Edit the config block at the top of `examples/train.py`, then run:
+
+```bash
+uv run python examples/train.py
 ```
 
 ### Evaluate a Trained Policy
 
+Edit the config block in `examples/eval.py`, then run:
+
 ```bash
-uv run python main.py eval --checkpoint checkpoints/policy_final.pt --episodes 10
+uv run python examples/eval.py
+```
+
+### Render a Policy (Raylib)
+
+Edit the config block in `examples/render_policy.py`, then run:
+
+```bash
+uv run python examples/render_policy.py
 ```
 
 ## Environment Details
@@ -75,6 +148,11 @@ uv run python main.py eval --checkpoint checkpoints/policy_final.pt --episodes 1
 | 5     | comm age         | [0, 1] | Normalized time since last connected              |
 | 6     | neighbor count   | [0, 1] | Neighbors within comm radius (normalized)         |
 | 7     | min neighbor dist| [0, 1] | Distance to closest neighbor / r_comm             |
+
+Following the base features, observations append:
+
+- `3 * obs_n_nearest` victim detection features (dx, dy, confidence)
+- `3 * obs_n_obstacles` obstacle features (dx, dy, distance) if enabled
 
 ### Action Space (per drone)
 
@@ -113,6 +191,29 @@ EnvConfig(
     m_deliver=10,          # Delivery window (steps)
     v_max=3.0,             # Max velocity
     max_steps=600,         # Episode length
+    obstacle_count=0,      # Set >0 to generate random rectangles
+    obs_n_obstacles=0,     # Set >0 to include nearest obstacles in obs
+)
+```
+
+### Obstacles (optional)
+
+You can either generate random rectangles or provide them explicitly:
+
+```python
+EnvConfig(
+    obstacle_count=6,          # Random obstacles
+    obstacle_min_size=8.0,
+    obstacle_max_size=25.0,
+    obs_n_obstacles=3,         # Include nearest obstacles in obs
+)
+
+EnvConfig(
+    obstacles=[                # Explicit rectangles (x, y, w, h)
+        {"x": 20.0, "y": 30.0, "w": 12.0, "h": 8.0},
+        {"x": 60.0, "y": 55.0, "w": 18.0, "h": 10.0},
+    ],
+    obs_n_obstacles=3,
 )
 ```
 
@@ -122,8 +223,8 @@ EnvConfig(
 PufferDroneSwarm/
 ├── env.py                 # Core environment logic
 ├── puffer_drone_swarm.py  # PufferLib wrapper
-├── train.py               # PPO training script
-├── main.py                # CLI entry point
+├── policy.py              # Model definition (GRU policy)
+├── examples/              # Training/eval/render scripts
 ├── project.md             # Detailed project spec
 └── pyproject.toml         # Dependencies
 ```

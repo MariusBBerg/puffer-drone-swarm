@@ -7,12 +7,16 @@ from __future__ import annotations
 
 from dataclasses import asdict
 from pathlib import Path
+import os
+import sys
 
 import numpy as np
 import torch
 
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
 from env import EnvConfig
-from train import DroneSwarmPolicy, ENV_CONFIG
+from policy import DroneSwarmPolicy
 
 try:
     from drone_swarm_c import CyDroneSwarm
@@ -24,52 +28,46 @@ except Exception as exc:  # pragma: no cover - runtime guard
 
 # Edit these configs directly instead of passing CLI flags.
 MODEL_PATHS = [
-    "checkpoints_new/stage_c5_robust.pt",
+    "checkpoints_v2.7_wilderness_gru/checkpoint_160.pt",
 ]
 
 EVAL_DEVICE = "cpu"
-EVAL_EPISODES = 200
+EVAL_EPISODES = 100
 EVAL_SEED = 0
-BASELINE_NAME = None  # Set to "random_walk", "lawnmower", "voronoi", or "all"
+BASELINE_NAME = None  # Run all baselines to test v2 difficulty
+
+# ============================================================================
+# WILDERNESS HARD-ONLY EVAL CONFIG
+# ============================================================================
+# Matches examples/train.py wilderness hard-only config (10 drones, r_comm=15)
+# ============================================================================
 
 BASE_ENV_CONFIG = EnvConfig.from_dict({
-      **ENV_CONFIG.__dict__,
-      "n_drones": 4,
-      "n_victims": 6,
-      "r_comm": 18.0,
+      **EnvConfig().__dict__,
+      # Ensure no randomization during eval
       "r_comm_min": 0.0,
       "r_comm_max": 0.0,
-      "p_comm_drop": 0.0,
       "p_comm_drop_min": 0.0,
       "p_comm_drop_max": 0.0,
-      "t_confirm": 1,
       "t_confirm_values": (),
-      "m_deliver": 120,
       "m_deliver_values": (),
-      "r_sense": 80.0,
-      "detect_prob_scale": 2.0,
-      "detect_noise_std": 0.0,
-      "false_positive_rate": 0.0,
-      "false_positive_confidence": 0.3,
-      "victim_min_dist_from_base": 10.0,
-      "victim_max_dist_from_base": 35.0,
+      "victim_mix_prob": 0.0,
+      # Obstacle curriculum (stage 2)
+      "obstacle_count": 6,
+      "obstacle_min_size": 8.0,
+      "obstacle_max_size": 25.0,
+      "obstacle_margin": 5.0,
+      "obstacle_base_clearance": 18.0,
+      "obstacle_min_separation": 3.0,
+      "obstacle_blocks_sensing": True,
+      "obs_n_obstacles": 3,
   })
+
 EVAL_VARIANTS = {
-    "C2 default 10-35": {},
-    "C3a alt 20-45": {
-        "victim_min_dist_from_base": 20.0,
-        "victim_max_dist_from_base": 45.0,
-    },
-    "C3 far 25-55": {
-        "victim_min_dist_from_base": 25.0,
+    "hard (35-55)": {
+        "victim_min_dist_from_base": 35.0,
         "victim_max_dist_from_base": 55.0,
-    },
-    "C4 no_detections far no_shaping": {
-        "r_sense": 0.0,
-        "victim_min_dist_from_base": 25.0,
-        "victim_max_dist_from_base": 55.0,
-        "r_explore": 0.0,
-        "r_scan_near_victim": 0.0,
+        "r_comm": 15.0,
     },
 }
 
@@ -80,9 +78,17 @@ def with_overrides(config: EnvConfig, **overrides) -> EnvConfig:
     return EnvConfig(**payload)
 
 
+def infer_checkpoint_hidden_size(checkpoint: dict) -> int | None:
+    weight = checkpoint.get("model_state_dict", {}).get("encoder.0.weight")
+    if weight is None:
+        return None
+    return int(weight.shape[0])
+
+
 def load_policy(checkpoint_path: str, obs_size: int, act_size: int, device: torch.device) -> DroneSwarmPolicy:
     checkpoint = torch.load(checkpoint_path, map_location=device)
-    policy = DroneSwarmPolicy(obs_size, act_size).to(device)
+    hidden_size = infer_checkpoint_hidden_size(checkpoint) or 256
+    policy = DroneSwarmPolicy(obs_size, act_size, hidden_size=hidden_size).to(device)
     policy.load_state_dict(checkpoint["model_state_dict"])
     policy.eval()
     return policy
@@ -122,6 +128,8 @@ def evaluate(
         total_agent_steps = 0
         scan_steps = 0
         detect_steps = 0
+        h = policy.init_hidden(env_config.n_drones, device)
+        done_mask = torch.zeros(env_config.n_drones, device=device)
 
         while not done:
             obs_in = obs
@@ -132,12 +140,7 @@ def evaluate(
                 obs_in = obs[:, :obs_size]
             obs_t = torch.tensor(obs_in, dtype=torch.float32, device=device)
             with torch.no_grad():
-                hidden = policy.encoder(obs_t)
-                mean = policy.actor_mean(hidden)
-                logstd = policy.actor_logstd.expand_as(mean)
-                std = torch.exp(logstd)
-                pre_tanh = mean + std * torch.randn_like(mean)
-                action = torch.tanh(pre_tanh)
+                action, _, _, _, h = policy.get_action_and_value(obs_t, h, done_mask)
             action_np = action.cpu().numpy()
 
             scan_mask = action_np[:, 2] > 0.0
@@ -145,6 +148,7 @@ def evaluate(
             total_agent_steps += scan_mask.size
 
             obs, _, done, info = env.step(action_np)
+            done_mask = torch.full((env_config.n_drones,), float(done), device=device)
             if env_config.obs_n_nearest > 0:
                 detect_block = obs[:, 10:10 + 3 * env_config.obs_n_nearest]
                 detect_nonzero = np.any(detect_block != 0.0, axis=1)
@@ -291,11 +295,12 @@ def main() -> None:
             )
 
         checkpoint_obs = infer_checkpoint_obs_size(checkpoint)
-        obs_size = 10 + 3 * base_cfg.obs_n_nearest
+        obs_size = 10 + 3 * base_cfg.obs_n_nearest + 3 * base_cfg.obs_n_obstacles
         if checkpoint_obs is not None:
             obs_size = checkpoint_obs
         act_size = 3
-        policy = DroneSwarmPolicy(obs_size, act_size).to(device)
+        hidden_size = infer_checkpoint_hidden_size(checkpoint) or 256
+        policy = DroneSwarmPolicy(obs_size, act_size, hidden_size=hidden_size).to(device)
         policy.load_state_dict(checkpoint["model_state_dict"])
         policy.eval()
 

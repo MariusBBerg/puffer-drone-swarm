@@ -60,12 +60,22 @@ class EnvConfig:
     spawn_near_base: bool = True
     spawn_radius: Optional[float] = None
     obs_n_nearest: int = 3
+    obs_n_obstacles: int = 0
     # New: victim spawn control
     victim_min_dist_from_base: float = 25.0  # Victims spawn away from base
     victim_max_dist_from_base: float = 90.0  # But not at edges
     victim_mix_prob: float = 0.0  # Probability of using alternate victim distance range
     victim_min_dist_from_base_alt: float = 0.0
     victim_max_dist_from_base_alt: float = 0.0
+    # Obstacles (axis-aligned rectangles)
+    obstacle_count: int = 0
+    obstacle_min_size: float = 8.0
+    obstacle_max_size: float = 25.0
+    obstacle_margin: float = 5.0
+    obstacle_base_clearance: float = 0.0
+    obstacle_min_separation: float = 2.0
+    obstacle_blocks_sensing: bool = True
+    obstacles: Tuple[Tuple[float, float, float, float], ...] = ()
 
     @classmethod
     def from_dict(cls, data: dict) -> "EnvConfig":
@@ -114,6 +124,26 @@ class EnvConfig:
             payload["victim_min_dist_from_base_alt"] = cls().victim_min_dist_from_base_alt
         if "victim_max_dist_from_base_alt" not in payload:
             payload["victim_max_dist_from_base_alt"] = cls().victim_max_dist_from_base_alt
+        if "obs_n_obstacles" not in payload:
+            payload["obs_n_obstacles"] = cls().obs_n_obstacles
+        if "obstacle_count" not in payload:
+            payload["obstacle_count"] = cls().obstacle_count
+        if "obstacle_min_size" not in payload:
+            payload["obstacle_min_size"] = cls().obstacle_min_size
+        if "obstacle_max_size" not in payload:
+            payload["obstacle_max_size"] = cls().obstacle_max_size
+        if "obstacle_margin" not in payload:
+            payload["obstacle_margin"] = cls().obstacle_margin
+        if "obstacle_base_clearance" not in payload:
+            payload["obstacle_base_clearance"] = cls().obstacle_base_clearance
+        if "obstacle_min_separation" not in payload:
+            payload["obstacle_min_separation"] = cls().obstacle_min_separation
+        if "obstacle_blocks_sensing" not in payload:
+            payload["obstacle_blocks_sensing"] = cls().obstacle_blocks_sensing
+        if "obstacles" not in payload:
+            payload["obstacles"] = cls().obstacles
+        elif isinstance(payload["obstacles"], list):
+            payload["obstacles"] = tuple(payload["obstacles"])
         return cls(**payload)
 
 
@@ -144,6 +174,8 @@ class DroneSwarmEnv:
         self.deliver_owner = -np.ones(self.cfg.n_victims, dtype=np.int32) # which drone confirmed this victim (used during delivery)
         self.delivery_ttl = -np.ones(self.cfg.n_victims, dtype=np.int32) # how many steps remain to deliver before it expires
         self.detections = np.zeros((self.cfg.n_drones, self.cfg.obs_n_nearest, 3), dtype=np.float32)
+        self.obstacles = np.zeros((0, 4), dtype=np.float32)
+        self.obstacle_count = 0
 
     def reset(self, seed: Optional[int] = None):
         if seed is not None:
@@ -166,19 +198,44 @@ class DroneSwarmEnv:
         if self.cfg.m_deliver_values:
             self.cfg.m_deliver = int(self.rng.choice(self.cfg.m_deliver_values))
 
+        self._init_obstacles()
+
         if self.cfg.spawn_near_base:
             radius = self.cfg.spawn_radius
             if radius is None:
                 radius = self.cfg.r_comm
-            angles = self.rng.uniform(0.0, 2.0 * np.pi, size=self.cfg.n_drones)
-            radii = np.sqrt(self.rng.uniform(0.0, 1.0, size=self.cfg.n_drones)) * radius
-            offsets = np.stack([np.cos(angles), np.sin(angles)], axis=1) * radii[:, None]
-            self.positions = (self.base_pos[None, :] + offsets).astype(np.float32)
-            self.positions = np.clip(self.positions, 0.0, L)
+            if self.obstacle_count == 0:
+                angles = self.rng.uniform(0.0, 2.0 * np.pi, size=self.cfg.n_drones)
+                radii = np.sqrt(self.rng.uniform(0.0, 1.0, size=self.cfg.n_drones)) * radius
+                offsets = np.stack([np.cos(angles), np.sin(angles)], axis=1) * radii[:, None]
+                self.positions = (self.base_pos[None, :] + offsets).astype(np.float32)
+                self.positions = np.clip(self.positions, 0.0, L)
+            else:
+                for i in range(self.cfg.n_drones):
+                    for _ in range(100):
+                        angle = self.rng.uniform(0.0, 2.0 * np.pi)
+                        r = np.sqrt(self.rng.uniform(0.0, 1.0)) * radius
+                        pos = self.base_pos + np.array([np.cos(angle), np.sin(angle)]) * r
+                        pos = np.clip(pos, 0.0, L)
+                        if not self._point_in_any_obstacle(pos):
+                            self.positions[i] = pos
+                            break
+                    else:
+                        self.positions[i] = self.base_pos
         else:
-            self.positions = self.rng.uniform(0.0, L, size=(self.cfg.n_drones, 2)).astype(
-                np.float32
-            )
+            if self.obstacle_count == 0:
+                self.positions = self.rng.uniform(0.0, L, size=(self.cfg.n_drones, 2)).astype(
+                    np.float32
+                )
+            else:
+                for i in range(self.cfg.n_drones):
+                    for _ in range(100):
+                        pos = self.rng.uniform(0.0, L, size=2)
+                        if not self._point_in_any_obstacle(pos):
+                            self.positions[i] = pos.astype(np.float32)
+                            break
+                    else:
+                        self.positions[i] = self.base_pos
         self.battery.fill(1.0)
         self.last_comm_age.fill(0.0)
 
@@ -231,8 +288,15 @@ class DroneSwarmEnv:
         vel = np.where(norms > 1.0, vel / (norms + 1e-8), vel)
         vel = vel * self.cfg.v_max
 
+        old_positions = self.positions.copy()
         self.positions += vel * self.cfg.dt
         self.positions = np.clip(self.positions, 0.0, self.cfg.world_size)
+        if self.obstacle_count:
+            for i in range(self.cfg.n_drones):
+                if self._point_in_any_obstacle(self.positions[i]) or self._segment_intersects_any_obstacle(
+                    old_positions[i], self.positions[i]
+                ):
+                    self.positions[i] = old_positions[i]
 
         speed = np.linalg.norm(vel, axis=1)
         speed_ratio = speed / max(self.cfg.v_max, 1e-6)
@@ -371,6 +435,55 @@ class DroneSwarmEnv:
         self.last_comm_age = np.where(
             self.connected, 0.0, self.last_comm_age + 1.0
         ).astype(np.float32)
+
+    def _point_in_rect(self, pos: np.ndarray, rect: np.ndarray) -> bool:
+        return (rect[0] <= pos[0] <= rect[2]) and (rect[1] <= pos[1] <= rect[3])
+
+    def _point_in_any_obstacle(self, pos: np.ndarray) -> bool:
+        for rect in self.obstacles:
+            if self._point_in_rect(pos, rect):
+                return True
+        return False
+
+    def _distance_point_to_rect(self, pos: np.ndarray, rect: np.ndarray) -> float:
+        cx = np.clip(pos[0], rect[0], rect[2])
+        cy = np.clip(pos[1], rect[1], rect[3])
+        dx = cx - pos[0]
+        dy = cy - pos[1]
+        return float(np.hypot(dx, dy))
+
+    def _segment_intersects_rect(self, p0: np.ndarray, p1: np.ndarray, rect: np.ndarray) -> bool:
+        x0, y0 = p0
+        x1, y1 = p1
+        dx = x1 - x0
+        dy = y1 - y0
+        p = [-dx, dx, -dy, dy]
+        q = [x0 - rect[0], rect[2] - x0, y0 - rect[1], rect[3] - y0]
+        u1 = 0.0
+        u2 = 1.0
+        for pi, qi in zip(p, q):
+            if pi == 0.0:
+                if qi < 0.0:
+                    return False
+            else:
+                t = qi / pi
+                if pi < 0.0:
+                    if t > u2:
+                        return False
+                    if t > u1:
+                        u1 = t
+                else:
+                    if t < u1:
+                        return False
+                    if t < u2:
+                        u2 = t
+        return True
+
+    def _segment_intersects_any_obstacle(self, p0: np.ndarray, p1: np.ndarray) -> bool:
+        for rect in self.obstacles:
+            if self._segment_intersects_rect(p0, p1, rect):
+                return True
+        return False
     
     def _spawn_victims_in_annulus(self, min_dist: float, max_dist: float):
         """Spawn victims in an annulus around the base (not too close, not too far)."""
@@ -385,12 +498,94 @@ class DroneSwarmEnv:
                 pos = self.base_pos + np.array([np.cos(angle), np.sin(angle)]) * r
                 # Check bounds
                 if 0 <= pos[0] <= L and 0 <= pos[1] <= L:
+                    if self.obstacle_count and self._point_in_any_obstacle(pos):
+                        continue
                     victims[i] = pos
                     break
             else:
                 # Fallback to random position
-                victims[i] = self.rng.uniform(0, L, size=2)
+                for _ in range(100):
+                    pos = self.rng.uniform(0, L, size=2)
+                    if not self.obstacle_count or not self._point_in_any_obstacle(pos):
+                        victims[i] = pos
+                        break
+                else:
+                    victims[i] = self.rng.uniform(0, L, size=2)
         return victims
+
+    def _init_obstacles(self):
+        """Initialize obstacles from config or generate random rectangles."""
+        if self.cfg.obstacles:
+            rects = []
+            for entry in self.cfg.obstacles:
+                if isinstance(entry, dict):
+                    x = float(entry.get("x", 0.0))
+                    y = float(entry.get("y", 0.0))
+                    w = float(entry.get("w", 0.0))
+                    h = float(entry.get("h", 0.0))
+                else:
+                    x, y, w, h = entry
+                rects.append((x, y, x + w, y + h))
+            self.obstacles = np.array(rects, dtype=np.float32)
+            self.obstacle_count = self.obstacles.shape[0]
+            return
+
+        if self.cfg.obstacle_count <= 0:
+            self.obstacles = np.zeros((0, 4), dtype=np.float32)
+            self.obstacle_count = 0
+            return
+
+        self.obstacles = self._generate_obstacles(self.cfg.obstacle_count)
+        self.obstacle_count = self.obstacles.shape[0]
+
+    def _generate_obstacles(self, count: int) -> np.ndarray:
+        """Generate axis-aligned rectangle obstacles."""
+        L = self.cfg.world_size
+        min_size = self.cfg.obstacle_min_size
+        max_size = self.cfg.obstacle_max_size
+        margin = self.cfg.obstacle_margin
+        separation = self.cfg.obstacle_min_separation
+        base_clearance = self.cfg.obstacle_base_clearance
+        if base_clearance <= 0.0 and self.cfg.spawn_near_base:
+            base_clearance = (self.cfg.spawn_radius or self.cfg.r_comm) + margin
+
+        rects: list[tuple[float, float, float, float]] = []
+        attempts = 0
+        max_attempts = max(100, count * 200)
+        while len(rects) < count and attempts < max_attempts:
+            attempts += 1
+            w = float(self.rng.uniform(min_size, max_size))
+            h = float(self.rng.uniform(min_size, max_size))
+            if w <= 0.0 or h <= 0.0:
+                continue
+            x = float(self.rng.uniform(margin, max(margin, L - margin - w)))
+            y = float(self.rng.uniform(margin, max(margin, L - margin - h)))
+            rect = np.array([x, y, x + w, y + h], dtype=np.float32)
+
+            if base_clearance > 0.0:
+                if self._distance_point_to_rect(self.base_pos, rect) < base_clearance:
+                    continue
+
+            if separation > 0.0:
+                overlap = False
+                for existing in rects:
+                    ex = np.array(existing, dtype=np.float32)
+                    if not (
+                        rect[2] + separation < ex[0]
+                        or rect[0] - separation > ex[2]
+                        or rect[3] + separation < ex[1]
+                        or rect[1] - separation > ex[3]
+                    ):
+                        overlap = True
+                        break
+                if overlap:
+                    continue
+
+            rects.append((float(rect[0]), float(rect[1]), float(rect[2]), float(rect[3])))
+
+        if not rects:
+            return np.zeros((0, 4), dtype=np.float32)
+        return np.array(rects, dtype=np.float32)
     
     def _update_explored_cells_per_drone(self):
         """Track which grid cells have been explored by each drone. Returns new cells per drone."""
@@ -618,6 +813,7 @@ class DroneSwarmEnv:
         to_base_norm = to_base / (np.linalg.norm(to_base, axis=1, keepdims=True) + 1e-8)
         
         detection_features = self.detections.reshape(self.cfg.n_drones, -1)
+        obstacle_features = self._compute_obstacle_features().reshape(self.cfg.n_drones, -1)
 
         obs = np.concatenate([
             pos_norm,  # (n_drones, 2)
@@ -629,6 +825,7 @@ class DroneSwarmEnv:
             min_neighbor_dist_norm[:, None],  # (n_drones, 1)
             to_base_norm,  # (n_drones, 2)
             detection_features,  # (n_drones, obs_n_nearest * 3)
+            obstacle_features,   # (n_drones, obs_n_obstacles * 3)
         ], axis=1).astype(np.float32)
         
         return obs
@@ -663,6 +860,9 @@ class DroneSwarmEnv:
                 dist = float(np.hypot(dx, dy))
                 if dist > r_sense:
                     continue
+                if self.cfg.obstacle_blocks_sensing and self.obstacle_count:
+                    if self._segment_intersects_any_obstacle(drone_pos, self.victim_pos[vid]):
+                        continue
                 p = max(0.0, 1.0 - dist / r_sense) * detect_scale
                 if p <= 0.0:
                     continue
@@ -695,6 +895,32 @@ class DroneSwarmEnv:
                 detections[d, i, 2] = np.clip(conf, 0.0, 1.0)
 
         return detections
+
+    def _compute_obstacle_features(self) -> np.ndarray:
+        """Return nearest obstacle features per drone (dx, dy, dist_norm)."""
+        n = self.cfg.n_drones
+        k = self.cfg.obs_n_obstacles
+        feats = np.zeros((n, k, 3), dtype=np.float32)
+        if k == 0 or self.obstacle_count == 0:
+            return feats
+        inv_L = 1.0 / max(self.cfg.world_size, 1e-6)
+
+        for d in range(n):
+            best = []
+            px, py = self.positions[d]
+            for rect in self.obstacles:
+                cx = np.clip(px, rect[0], rect[2])
+                cy = np.clip(py, rect[1], rect[3])
+                dx = cx - px
+                dy = cy - py
+                dist = float(np.hypot(dx, dy))
+                best.append((dist, dx, dy))
+            best.sort(key=lambda item: item[0])
+            for i, (dist, dx, dy) in enumerate(best[:k]):
+                feats[d, i, 0] = np.clip(dx * inv_L, -1.0, 1.0)
+                feats[d, i, 1] = np.clip(dy * inv_L, -1.0, 1.0)
+                feats[d, i, 2] = np.clip(dist * inv_L, 0.0, 1.0)
+        return feats
 
 
 if __name__ == "__main__":
