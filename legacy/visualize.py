@@ -7,9 +7,12 @@ import numpy as np
 import pygame
 import sys
 import time
+import os
 from typing import Optional
 
-from legacy_env import DroneSwarmEnv
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+
+from legacy.legacy_env import DroneSwarmEnv
 from env_config import EnvConfig
 
 

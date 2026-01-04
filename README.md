@@ -74,10 +74,9 @@ Override rewards or create new presets for your own experiments.
 
 | Doc | Contents |
 | --- | --- |
-| `MODEL_LOG.md` | Model architecture + training runs |
-| `OPTIMIZATION.md` | Performance notes and profiling tips |
-| `ROADMAP.md` | Ideas and future work |
-| `project.md` | Design notes and spec |
+| `docs/MODEL_LOG.md` | Model architecture + training runs |
+| `docs/ROADMAP.md` | Ideas and future work |
+| `docs/project.md` | Design notes and spec |
 
 ## Environment Details
 
@@ -90,11 +89,11 @@ Override rewards or create new presets for your own experiments.
 ```
 PufferDroneSwarm/
 ├── env_config.py          # Environment configuration
-├── legacy_env.py          # Reference Python env (optional)
+├── legacy/                # Legacy Python env + pygame viewer
 ├── puffer_drone_swarm.py  # PufferLib wrapper
 ├── policy.py              # Model definition (GRU policy)
 ├── configs.py             # Environment presets
 ├── examples/              # Training/eval/render scripts
-├── project.md             # Detailed project spec
+├── docs/project.md        # Detailed project spec
 └── pyproject.toml         # Dependencies
 ```
