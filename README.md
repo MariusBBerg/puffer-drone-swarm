@@ -2,6 +2,8 @@
 
 High-throughput multi-agent SAR benchmark with comm-limited swarm coordination and optional obstacle occlusion.
 
+![Demo](assets/demo.gif)
+
 ## Features
 
 - **Multi-agent continuous control**: (vx, vy, scan) per drone
