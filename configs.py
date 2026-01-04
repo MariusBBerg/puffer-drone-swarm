@@ -5,7 +5,7 @@ Edit or extend these presets instead of passing CLI args.
 
 from __future__ import annotations
 
-from env import EnvConfig
+from env_config import EnvConfig
 
 
 def _base_wilderness() -> EnvConfig:

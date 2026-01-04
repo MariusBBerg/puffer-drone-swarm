@@ -171,7 +171,7 @@ Provide baseline scripts that output the same metrics as RL.
 ### Phase 0 (1–2 days): Repo skeleton
 
 - Minimal package structure.
-- `env.py` (core), `configs/` (yaml), `baselines/`, `train/`, `eval/`, `viz/`.
+- `env_config.py` (config), `legacy_env.py` (Python fallback), `baselines/`, `train/`, `eval/`, `viz/`.
 - Deterministic seeding + unit tests.
 
 ### Phase 1 (1 week): v1 env + PPO training

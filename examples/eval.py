@@ -15,7 +15,7 @@ import torch
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
-from env import EnvConfig
+from env_config import EnvConfig
 from policy import DroneSwarmPolicy
 from configs import get_env_config
 

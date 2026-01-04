@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from env import EnvConfig
+from env_config import EnvConfig
 from baselines.base import BaselinePolicy
 
 

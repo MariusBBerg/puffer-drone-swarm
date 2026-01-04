@@ -9,7 +9,8 @@ import sys
 import time
 from typing import Optional
 
-from env import DroneSwarmEnv, EnvConfig
+from legacy_env import DroneSwarmEnv
+from env_config import EnvConfig
 
 
 # Colors

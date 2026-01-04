@@ -67,7 +67,7 @@ Examples:
 def test_env(args):
     """Test the environment with random actions."""
     from puffer_drone_swarm import PufferDroneSwarm
-    from env import EnvConfig
+    from env_config import EnvConfig
     import numpy as np
     
     print("Testing PufferDroneSwarm environment...")
@@ -132,7 +132,7 @@ def eval_policy(args):
     import torch
     import numpy as np
     from puffer_drone_swarm import PufferDroneSwarm
-    from env import EnvConfig
+    from env_config import EnvConfig
     from policy import DroneSwarmPolicy
     
     print(f"Loading checkpoint: {args.checkpoint}")

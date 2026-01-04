@@ -14,7 +14,7 @@ import numpy as np
 
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
-from env import EnvConfig
+from env_config import EnvConfig
 
 
 def make_env(config: EnvConfig):

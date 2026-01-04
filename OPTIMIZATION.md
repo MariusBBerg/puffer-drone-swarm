@@ -25,7 +25,7 @@ puffer_drone_swarm/
 ├── env_cy.pyx          # Cython environment
 ├── env_cy.pxd          # Cython declarations
 ├── setup.py            # Build script
-└── env.py              # Python fallback
+└── legacy_env.py       # Python fallback
 ```
 
 **Key changes:**
@@ -465,7 +465,8 @@ python -c "import pstats; pstats.Stats('profile.prof').sort_stats('cumtime').pri
 python -c "
 import time
 import numpy as np
-from env import DroneSwarmEnv, EnvConfig
+from legacy_env import DroneSwarmEnv
+from env_config import EnvConfig
 
 env = DroneSwarmEnv(EnvConfig())
 env.reset()

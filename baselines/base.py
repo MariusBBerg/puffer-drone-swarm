@@ -7,7 +7,7 @@ from typing import Optional
 
 import numpy as np
 
-from env import EnvConfig
+from env_config import EnvConfig
 
 
 POS_SLICE = slice(0, 2)

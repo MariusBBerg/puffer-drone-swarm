@@ -27,6 +27,12 @@ uv sync
 pip install -e .
 ```
 
+### Build the C Extension
+
+```bash
+uv run python setup.py build_ext --inplace --force
+```
+
 ### Test the Environment
 
 ```bash
@@ -112,7 +118,7 @@ scan_rate=87.8% detections=41.3%
 
 ### Train a Policy
 
-Edit the preset in `examples/train.py` (see `configs.py`), then run:
+Edit the preset in `examples/train.py` (see `configs.py`). Presets are defaults—override rewards/configs for your own research. Then run:
 
 ```bash
 uv run python examples/train.py
@@ -221,7 +227,8 @@ EnvConfig(
 
 ```
 PufferDroneSwarm/
-├── env.py                 # Core environment logic
+├── env_config.py          # Environment configuration
+├── legacy_env.py          # Reference Python env (optional)
 ├── puffer_drone_swarm.py  # PufferLib wrapper
 ├── policy.py              # Model definition (GRU policy)
 ├── configs.py             # Environment presets

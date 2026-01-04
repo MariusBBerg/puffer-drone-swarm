@@ -9,7 +9,7 @@ from dataclasses import asdict
 
 import numpy as np
 
-from env import EnvConfig
+from env_config import EnvConfig
 from baselines import list_baselines, make_baseline
 
 try:

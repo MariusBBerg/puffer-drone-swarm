@@ -111,10 +111,10 @@ cdef class CyDroneSwarm:
 
     def __init__(self, config=None):
         if config is None:
-            from env import EnvConfig
+            from env_config import EnvConfig
             config = EnvConfig()
         elif isinstance(config, dict):
-            from env import EnvConfig
+            from env_config import EnvConfig
             config = EnvConfig.from_dict(config)
 
         self._init_cfg(config)

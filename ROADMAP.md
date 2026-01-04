@@ -434,7 +434,7 @@ for each non-relay drone:
 
 ```python
 from dataclasses import asdict
-from env import EnvConfig
+from env_config import EnvConfig
 
 PRESETS = {
     # Training presets
@@ -951,7 +951,7 @@ PRESETS["sar-realistic"] = EnvConfig(
 
 ### 4.10 Implementation Checklist
 
-- [ ] Add `Obstacle` dataclass to `env.py`
+- [ ] Add `Obstacle` dataclass to `legacy_env.py`
 - [ ] Add obstacle fields to `EnvConfig`
 - [ ] Implement `generate_random_obstacles()` in Python
 - [ ] Add obstacle structs to C header (`drone_swarm.h`)

@@ -7,7 +7,7 @@ import numpy as np
 import gymnasium
 import pufferlib
 
-from env import EnvConfig
+from env_config import EnvConfig
 
 try:
     from drone_swarm import binding

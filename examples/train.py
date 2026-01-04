@@ -22,7 +22,7 @@ import pufferlib.vector
 import pufferlib.pytorch
 
 from puffer_drone_swarm import PufferDroneSwarm
-from env import EnvConfig
+from env_config import EnvConfig
 from policy import DroneSwarmPolicy
 from configs import get_env_config
 
